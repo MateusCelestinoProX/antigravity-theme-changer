@@ -143,11 +143,24 @@ async function main() {
   const font = FONTS[fontKey] || FONTS.jetbrains;
 
   const possiblePortFiles = [
-    "/Users/mcp/.gemini/antigravity/brain/38c03376-3545-4755-a269-82bc20b62dbc/DevToolsActivePort",
     path.join(process.env.HOME, "Library/Application Support/Antigravity/DevToolsActivePort"),
-    path.join(process.env.HOME, ".gemini/config/DevToolsActivePort"),
-    path.join(process.env.HOME, ".gemini/antigravity/DevToolsActivePort")
+    path.join(process.env.HOME, ".gemini/antigravity/DevToolsActivePort"),
+    path.join(process.env.HOME, ".gemini/config/DevToolsActivePort")
   ];
+
+  // Busca adicional dinâmica em sessões ativas do Antigravity
+  try {
+    const brainBase = path.join(process.env.HOME, ".gemini/antigravity/brain");
+    if (fs.existsSync(brainBase)) {
+      const dirs = fs.readdirSync(brainBase);
+      for (const d of dirs) {
+        const pFile = path.join(brainBase, d, "DevToolsActivePort");
+        if (fs.existsSync(pFile)) {
+          possiblePortFiles.push(pFile);
+        }
+      }
+    }
+  } catch (e) {}
 
   let port = null;
   for (const f of possiblePortFiles) {
@@ -251,7 +264,7 @@ async function main() {
           fontLink = document.createElement("link");
           fontLink.id = "antigravity-custom-fonts-link";
           fontLink.rel = "stylesheet";
-          fontLink.href = ${JSON.stringify(font.importUrl)};
+          document.head.appendChild(fontLink);
         }
         fontLink.href = ${JSON.stringify(font.importUrl)};
       ` : ""}
