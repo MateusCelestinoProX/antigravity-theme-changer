@@ -249,7 +249,137 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"current": "jetbrains", "name": "JetBrains Mono", "scope": "full", "error": str(e)}).encode("utf-8"))
                 return
 
+        # API: Status do Servidor e Configurações Ativas
+        elif parsed.path == "/api/status":
+            try:
+                if theme_changer:
+                    importlib.reload(theme_changer)
+                else:
+                    import theme_changer
+
+                # Tema
+                config_path = Path.home() / ".gemini/config/config.json"
+                cur_key = "green"
+                theme_mode = "THEME_MODE_DARK"
+                bg = ""
+                pri = ""
+                if config_path.exists():
+                    try:
+                        with open(config_path, "r", encoding="utf-8") as f:
+                            cfg = json.load(f)
+                            theme_mode = cfg.get("userSettings", {}).get("themeMode", "THEME_MODE_DARK")
+                            seeds = cfg.get("userSettings", {}).get("customThemeSeedsDark" if "DARK" in theme_mode else "customThemeSeedsLight", {})
+                            bg = seeds.get("background", "")
+                            pri = seeds.get("primary", "")
+                            for k, v in theme_changer.THEMES.items():
+                                if v["seeds"]["background"].lower() == bg.lower() and v["seeds"]["primary"].lower() == pri.lower():
+                                    cur_key = k
+                                    break
+                    except Exception:
+                        pass
+                cur_theme = theme_changer.THEMES.get(cur_key, {})
+
+                # Fonte
+                font_state_file = Path.home() / ".gemini/config/active_font.json"
+                cur_font = "jetbrains"
+                cur_name = "JetBrains Mono"
+                cur_scope = "full"
+                if font_state_file.exists():
+                    try:
+                        with open(font_state_file, "r", encoding="utf-8") as f:
+                            d = json.load(f)
+                            cur_font = d.get("font", "jetbrains")
+                            cur_name = d.get("name", "JetBrains Mono")
+                            cur_scope = d.get("scope", "full")
+                    except Exception:
+                        pass
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                resp = {
+                    "status": "online",
+                    "port": PORT,
+                    "dashboard_url": f"http://localhost:{PORT}/theme_changer_app.html",
+                    "current_theme": cur_key,
+                    "theme_mode": theme_mode,
+                    "theme": cur_theme,
+                    "current_font": cur_font,
+                    "font_name": cur_name,
+                    "font_scope": cur_scope
+                }
+                self.wfile.write(json.dumps(resp).encode("utf-8"))
+                return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "error", "error": str(e)}).encode("utf-8"))
+                return
+
+        # API: Catálogo Geral de Temas e Fontes
+        elif parsed.path == "/api/list":
+            try:
+                if theme_changer:
+                    importlib.reload(theme_changer)
+                else:
+                    import theme_changer
+
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                resp = {
+                    "total_themes": len(theme_changer.THEMES),
+                    "total_fonts": len(theme_changer.FONTS),
+                    "themes": theme_changer.THEMES,
+                    "fonts": theme_changer.FONTS
+                }
+                self.wfile.write(json.dumps(resp).encode("utf-8"))
+                return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
+                return
+
         super().do_GET()
+
+    def do_POST(self):
+        parsed = urllib.parse.urlparse(self.path)
+        content_length = int(self.headers.get("Content-Length", 0))
+        body = self.rfile.read(content_length).decode("utf-8") if content_length > 0 else ""
+        data = {}
+        if body:
+            try:
+                data = json.loads(body)
+            except Exception:
+                pass
+
+        params = urllib.parse.parse_qs(parsed.query)
+        for k, v in params.items():
+            if k not in data:
+                data[k] = v[0]
+
+        if parsed.path == "/api/set-theme":
+            theme_val = data.get("theme", "")
+            self.path = f"/api/set-theme?theme={urllib.parse.quote(str(theme_val))}"
+            return self.do_GET()
+        elif parsed.path == "/api/set-font":
+            font_val = data.get("font", "jetbrains")
+            scope_val = data.get("scope", "full")
+            self.path = f"/api/set-font?font={urllib.parse.quote(str(font_val))}&scope={urllib.parse.quote(str(scope_val))}"
+            return self.do_GET()
+        else:
+            self.send_response(404)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": "Rota POST não encontrada"}).encode("utf-8"))
 
 class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
     daemon_threads = True
