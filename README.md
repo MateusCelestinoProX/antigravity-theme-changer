@@ -233,7 +233,7 @@ A interface frontend do **Theme Studio** integra uma seção dedicada no padrão
 | **tarts** | Suíte de Screensavers em Rust | [levirs565/tarts](https://github.com/levirs565/tarts) | `tarts <efeito>` |
 | **terminal-fireworks** | Física Balística de Partículas | [faeb/terminal-fireworks](https://github.com/faeb/terminal-fireworks) | `fireworks` |
 | **nyancat** | Animação ANSI em Loop Cósmico | [klange/nyancat](https://github.com/klange/nyancat) | `nyancat` |
-| **btop** | Monitor de Recursos Clássico | [aristocratos/btop](https://github.com/aristocratos/btop) | `btop` |
+| **fastfetch** | Telemetria de Sistema em C | [fastfetch-cli/fastfetch](https://github.com/fastfetch-cli/fastfetch) | `fastfetch` |
 | **Combos Shell** | Setups Multi-Painel | [antigravity-theme-changer](https://github.com/MateusCelestinoProX/antigravity-theme-changer) | Multiplexing |
 
 Todos os comandos possuem botão de **cópia em 1 clique** com feedback visual imediato e preservam integralmente as funções do customizador.
