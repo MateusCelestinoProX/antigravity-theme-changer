@@ -873,7 +873,7 @@
       box-shadow: 
         0 30px 60px -15px rgba(0, 0, 0, 0.6),
         inset 0 1px 1px rgba(255, 255, 255, 0.08);
-      min-height: 680px;
+      min-height: 700px;
     }
 
     /* Sidebar Topics Panel */
@@ -924,7 +924,7 @@
       flex-direction: column;
       gap: 4px;
       overflow-y: auto;
-      max-height: 600px;
+      max-height: 620px;
       padding-right: 4px;
     }
 
@@ -998,7 +998,7 @@
     .apple-doc-content {
       padding: 6px 8px 12px 12px;
       overflow-y: auto;
-      max-height: 740px;
+      max-height: 760px;
       display: flex;
       flex-direction: column;
       gap: 28px;
@@ -1488,7 +1488,7 @@
           <div class="sidebar-search-box">
             <input type="text" id="docSearchInput" class="doc-search-input" placeholder="Buscar utilitário shell..." oninput="filterDocTopics()">
             <svg class="doc-search-icon" viewBox="0 0 24 24">
-              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/>
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
             </svg>
           </div>
 
@@ -2168,7 +2168,7 @@
     }
 
 
-    // DATA: 11 SHELL APPS & SUITES DOCUMENTATION
+    // DATA: 11 SHELL APPS & SUITES DOCUMENTATION (EXPANDED COMMUNITY CATALOG)
     const DOCS_DATA = [
       {
         id: "bottom",
@@ -2185,18 +2185,33 @@
           },
           {
             title: "Modo Básico Minimalista",
-            expl: "Interface compacta sem curvas contínuas, ideal para conexões remotas de baixo consumo.",
+            expl: "Visualização ultra-compacta inspirada em htop sem curvas de gráficos contínuas.",
             cmd: "btm --basic"
           },
           {
             title: "Foco Direto em Árvore de Processos",
-            expl: "Inicia o monitor com o cursor posicionado diretamente na visualização hierárquica.",
+            expl: "Inicia a interface com cursor posicionado diretamente na visualização hierárquica.",
             cmd: "btm --tree -d proc"
           },
           {
+            title: "Agrupamento de Processos & Contagem de Threads",
+            expl: "Agrupa processos com mesmo executável exibindo o consumo agregado de threads.",
+            cmd: "btm --group_processes --get_threads"
+          },
+          {
+            title: "Análise de CPU em Tela Expandida",
+            expl: "Inicia com o módulo de processamento expandido em tela inteira para telemetria profunda.",
+            cmd: "btm --expanded -d cpu"
+          },
+          {
             title: "Paleta Térmica Gruvbox com Unidade Celsius",
-            expl: "Atualização padrão de 1 segundo com tema quente e leituras métricas.",
+            expl: "Atualização padrão de 1 segundo com paleta quente gruvbox e leituras métricas.",
             cmd: "btm -c -r 1000 --color gruvbox"
+          },
+          {
+            title: "Estilo Ártico Nord com Escala Temporal Oculta",
+            expl: "Tons frios azuis do tema Nord com escala temporal auto-oculta para maior clareza visual.",
+            cmd: "btm -c -r 750 --color nord --autohide_time"
           }
         ],
         shortcuts: [
@@ -2239,6 +2254,21 @@
             cmd: "weathr -s rain --metric"
           },
           {
+            title: "Tempestade Severa com Granizo Noturno",
+            expl: "Simulação avançada de intempérie com pedras de gelo e descargas atmosféricas.",
+            cmd: "weathr -s thunderstorm-hail -n"
+          },
+          {
+            title: "Neblina Suave sem Identificação Local",
+            expl: "Cenário de cerração atmosférica densa sem coordenadas no cabeçalho.",
+            cmd: "weathr -s fog --hide-location"
+          },
+          {
+            title: "Garoa Noturna Silenciosa",
+            expl: "Precipitação leve noturna sem avisos ou telemetria auxiliar.",
+            cmd: "weathr -s drizzle -n --silent"
+          },
+          {
             title: "Clima Real da Sua Região Atual",
             expl: "Consulta automática de coordenadas via IP e dados meteorológicos da cidade.",
             cmd: "weathr --auto-location --metric"
@@ -2276,6 +2306,21 @@
             title: "Transição Suave Magenta e Azul Celeste",
             expl: "Gradiente de alta resolução espacial com dezesseis bolhas ativas no ambiente.",
             cmd: "lavat -g -c FF007F -k 00F0FF -s 5 -r 5 -b 16"
+          },
+          {
+            title: "Monocromático Puro com Contenção Total",
+            expl: "Bolhas brancas com contorno cinza carvão confinadas estritamente dentro da janela.",
+            cmd: "lavat -g -c FFFFFF -k 555555 -s 3 -r 8 -b 8 -C"
+          },
+          {
+            title: "Ciano Oceânico em Alta Velocidade",
+            expl: "Gotas menores e rápidas simulando efervescência de água cristalina.",
+            cmd: "lavat -g -c 00F0FF -k 003366 -s 8 -r 4 -b 18 -R 1"
+          },
+          {
+            title: "Veludo Carmesim e Azul Marinho",
+            expl: "Gradiente sofisticado entre vinho aveludado e azul marinho profundo.",
+            cmd: "lavat -g -G -c E63946 -k 1D3557 -s 5 -r 6 -b 12"
           },
           {
             title: "Ciclo Contínuo de Paletas",
@@ -2323,9 +2368,24 @@
             cmd: "pipes.sh -p 8 -t 4 -f 100 -s 8 -R"
           },
           {
+            title: "Estilo Trilhos de Ferrovia (Railway)",
+            expl: "Renderização procedural com glifos estilo trilhos em tom monocromático branco.",
+            cmd: "pipes.sh -p 2 -t 8 -c 7 -s 15 -f 60 -R"
+          },
+          {
+            title: "Estilo Articulado Knobby",
+            expl: "Junções alternadas entre linhas grossas e finas com paleta de âmbar e ciano.",
+            cmd: "pipes.sh -p 4 -t 9 -c 3 5 6 -s 12 -f 80 -R"
+          },
+          {
             title: "Traçado Retilíneo Monocromático",
             expl: "Alta probabilidade de linhas retas com cor única uniforme.",
             cmd: "pipes.sh -p 4 -t 0 -c 2 -s 15 -f 75 -R -K"
+          },
+          {
+            title: "Linhas Finas com Reset a 3000 Caracteres",
+            expl: "Desenho leve em vermelho e branco renovando automaticamente o buffer.",
+            cmd: "pipes.sh -p 5 -t 2 -c 1 7 -f 65 -s 9 -r 3000"
           }
         ],
         shortcuts: [
@@ -2354,6 +2414,21 @@
             title: "Modo Screensaver com Ricochete Contínuo",
             expl: "O relógio flutua pela tela rebatendo suavemente nas extremidades da janela.",
             cmd: "tty-clock -S -r -C 5 -s -B -b"
+          },
+          {
+            title: "Data Extensa Customizada em Branco Puro",
+            expl: "Formatação avançada strftime com dia da semana e data completa por extenso.",
+            cmd: "tty-clock -c -C 7 -s -f \"%A, %d de %B de %Y\" -b"
+          },
+          {
+            title: "Formato 12 Horas AM/PM em Azul Safira",
+            expl: "Exibição no padrão civil com marcador de período e separadores dinâmicos.",
+            cmd: "tty-clock -c -t -C 4 -s -B"
+          },
+          {
+            title: "Horário Universal Coordenado (UTC)",
+            expl: "Sincronização estrita com o fuso GMT/UTC em vermelho dentro de moldura.",
+            cmd: "tty-clock -c -u -C 1 -s -x"
           },
           {
             title: "Foco Estrito na Hora (Sem Barra de Data)",
@@ -2385,19 +2460,34 @@
             cmd: "donut"
           },
           {
-            title: "Modo Turbo Acelerado",
+            title: "Modo Turbo Acelerado (10ms)",
             expl: "Rotação rápida com 10ms de intervalo para telas de alto framerate.",
             cmd: "donut 10"
           },
           {
-            title: "Modo Contemplativo Suave",
+            title: "Modo Contemplativo Suave (60ms)",
             expl: "Velocidade lenta a 60ms para segundo plano com consumo mínimo de CPU.",
             cmd: "donut 60"
           },
           {
-            title: "Canalização de Cores Lolcat",
+            title: "Modo Ultra-Zen em Segundo Plano (100ms)",
+            expl: "Atualização a 10 quadros por segundo com impacto nulo na bateria.",
+            cmd: "donut 100"
+          },
+          {
+            title: "Cinemático Fluido (60 FPS)",
+            expl: "Interpolação contínua a 15ms otimizada para terminais modernos acelerados.",
+            cmd: "donut 15"
+          },
+          {
+            title: "Canalização de Cores Lolcat Estática",
             expl: "Integração do fluxo de saída através do filtro lolcat para gradiente contínuo.",
             cmd: "donut | lolcat"
+          },
+          {
+            title: "Animação Cromática Dinâmica com Lolcat",
+            expl: "Ondas de cores em tempo real percorrendo a geometria do toroide rotativo.",
+            cmd: "donut 20 | lolcat -a -d 1"
           }
         ],
         shortcuts: [
@@ -2411,7 +2501,28 @@
         repo: "https://github.com/levirs565/tarts",
         desc: "Suíte de screensavers em Rust de alta performance com renderização de alta densidade gráfica em caracteres Braille.",
         invoke: "tarts <efeito>",
-        examples: [],
+        examples: [
+          {
+            title: "Chuva de Dados Hacker em Rust",
+            expl: "Zero-cost abstractions com caracteres Braille em altíssima taxa de atualização.",
+            cmd: "tarts matrix"
+          },
+          {
+            title: "Voo Contínuo sobre Relevo Perlin 3D",
+            expl: "Geração procedural infinita de paisagem montanhosa em relevo topográfico.",
+            cmd: "tarts terrain"
+          },
+          {
+            title: "Observatório Cósmico em Segundo Plano",
+            expl: "Estrelas que calculam proximidade euclidiana e traçam linhas de constelação.",
+            cmd: "tarts constellation"
+          },
+          {
+            title: "Física Emergente de Bandos Biológicos",
+            expl: "Simulação de cardume e revoada com vetores de atração e velocidade angular.",
+            cmd: "tarts boids"
+          }
+        ],
         effectsList: [
           { name: "Matrix Rain", cmd: "tarts matrix", desc: "Chuva digital de caracteres de alto rendimento." },
           { name: "3D Cube", cmd: "tarts cube", desc: "Cubo tridimensional rotatório com perspectiva vetorial em Braille." },
@@ -2458,6 +2569,21 @@
             title: "Alta Velocidade e Aceleração Inicial",
             expl: "Foguetes de alta propulsão com aceleração contínua em voo.",
             cmd: "fireworks --speed 2.0 --delta-v 4.5"
+          },
+          {
+            title: "Tempestade Pirotécnica Caótica a 60 FPS",
+            expl: "Frequência frenética com quedas rápidas de faíscas incandescentes.",
+            cmd: "fireworks --gap 0.2 --framerate 60 --gravity 0.4"
+          },
+          {
+            title: "Zero Gravidade / Órbita Espacial",
+            expl: "Fagulhas flutuam por 1.5 segundos em expansão esférica lenta e graciosa.",
+            cmd: "fireworks --gravity 0.03 --decay-time 1.5 --gap 1.0"
+          },
+          {
+            title: "Detonação Central Suave e Contemplativa",
+            expl: "Show relaxante com explosões no centro geométrico da tela.",
+            cmd: "fireworks --explosion-height 0.5 --speed 0.8 --gap 1.5"
           }
         ],
         shortcuts: [
@@ -2496,6 +2622,16 @@
             cmd: "nyancat -n -s"
           },
           {
+            title: "Resolução Clássica Fixa 80x24 Colunas",
+            expl: "Limita a viewport da animação para manter o formato original de terminais VT100.",
+            cmd: "nyancat -w 80 -h 24"
+          },
+          {
+            title: "Vinheta Curta com Encerramento Automático",
+            expl: "Executa exatamente 300 quadros (~10 segundos) e encerra sem intervenção.",
+            cmd: "nyancat -f 300 -n -s"
+          },
+          {
             title: "Execução Limitada a 500 Quadros",
             expl: "Para automaticamente e retorna ao prompt após 500 frames renderizados.",
             cmd: "nyancat -f 500"
@@ -2524,9 +2660,24 @@
             cmd: "btop --preset 1"
           },
           {
+            title: "Carregamento com Preset 2 (Foco em Discos & Rede)",
+            expl: "Prioriza os gráficos de tráfego de rede e I/O de armazenamento.",
+            cmd: "btop --preset 2"
+          },
+          {
+            title: "Taxa de Atualização Rápida de 500ms",
+            expl: "Monitoramento de alta sensibilidade para picos e gargalos transitórios.",
+            cmd: "btop --update 500"
+          },
+          {
             title: "Forçar Renderização UTF-8",
             expl: "Assegura gráficos de contorno de alta fidelidade em terminais estritos.",
             cmd: "btop --utf-force"
+          },
+          {
+            title: "Modo 16 Cores para Conexões Remotas",
+            expl: "Reduz o payload de sequências ANSI para sessões SSH de baixa largura de banda.",
+            cmd: "btop --low-color"
           }
         ],
         shortcuts: [
@@ -2569,6 +2720,30 @@
               { name: "Painel Superior Esquerdo", cmd: "nyancat -n" },
               { name: "Painel Superior Direito", cmd: "pipes.sh -p 5 -t 1 -c 1 2 3 4 5 6 -f 85 -R -K" },
               { name: "Painel Inferior", cmd: "lavat -g -G -c FF007F -k 00F0FF -s 5 -r 6 -b 14" }
+            ]
+          },
+          {
+            title: "Setup 4: Minimalista Monocromático Hacker",
+            panels: [
+              { name: "Painel Superior", cmd: "tty-clock -c -C 7 -s -x -b" },
+              { name: "Painel Inferior Esquerdo", cmd: "lavat -g -c FFFFFF -k 555555 -s 3 -r 8 -b 8 -C" },
+              { name: "Painel Inferior Direito", cmd: "btm --basic" }
+            ]
+          },
+          {
+            title: "Setup 5: Observatório Cósmico & Gravidade Zero",
+            panels: [
+              { name: "Painel Superior", cmd: "tarts constellation" },
+              { name: "Painel Inferior Esquerdo", cmd: "fireworks --gravity 0.03 --decay-time 1.5 --gap 1.0" },
+              { name: "Painel Inferior Direito", cmd: "weathr -s clear -n --hide-hud" }
+            ]
+          },
+          {
+            title: "Setup 6: Suíte de Alta Performance Rust",
+            panels: [
+              { name: "Painel Superior", cmd: "btm --tree -d proc" },
+              { name: "Painel Inferior Esquerdo", cmd: "tarts plasma" },
+              { name: "Painel Inferior Direito", cmd: "tarts terrain" }
             ]
           }
         ],
@@ -2695,7 +2870,7 @@
       const examplesBlock = (topic.examples && topic.examples.length > 0) ? `
         <div>
           <div class="doc-block-title">
-            <span>Exemplos de Comandos & Variações Visuais</span>
+            <span>Exemplos de Comandos & Variações Visuais (${topic.examples.length})</span>
           </div>
           <div class="doc-presets-stack">
             ${topic.examples.map(ex => `
