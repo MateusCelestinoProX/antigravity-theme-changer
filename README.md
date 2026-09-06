@@ -217,6 +217,28 @@ Para detalhes aprofundados sobre a injeção via WebSocket, consulte a documenta
 
 ---
 
+## 💻 Central de Documentação Shell macOS Integrada
+
+A interface frontend do **Theme Studio** integra uma seção dedicada no padrão **Apple Minimalist**, com layout de dois painéis (índice lateral navegável e painel central de conteúdo isolado), contendo guias de comandos, variações visuais e links oficiais dos utilitários de terminal instalados no macOS:
+
+| Utilitário | Categoria | Repositório Oficial | Invocação Base |
+| :--- | :--- | :--- | :--- |
+| **bottom** | Monitor Gráfico em Rust | [ClementTsang/bottom](https://github.com/ClementTsang/bottom) | `btm` |
+| **weathr** | Clima Procedural em ASCII | [veirt/weathr](https://github.com/veirt/weathr) | `weathr` |
+| **lavat** | Simulador de Lâmpada de Lava | [AngelJumbo/lavat](https://github.com/AngelJumbo/lavat) | `lavat` |
+| **pipes.sh** | Tubulações Animadas 3D | [pipeseroni/pipes.sh](https://github.com/pipeseroni/pipes.sh) | `pipes.sh` |
+| **tty-clock** | Relógio Digital ncurses | [xorg62/tty-clock](https://github.com/xorg62/tty-clock) | `tty-clock` |
+| **donut.c** | Toroide 3D Matemático | [a1k0n/donut](https://github.com/a1k0n/donut) | `donut` |
+| **tarts** | Suíte de Screensavers em Rust | [levirs565/tarts](https://github.com/levirs565/tarts) | `tarts <efeito>` |
+| **terminal-fireworks** | Física Balística de Partículas | [faeb/terminal-fireworks](https://github.com/faeb/terminal-fireworks) | `fireworks` |
+| **nyancat** | Animação ANSI em Loop Cósmico | [klange/nyancat](https://github.com/klange/nyancat) | `nyancat` |
+| **btop** | Monitor de Recursos Clássico | [aristocratos/btop](https://github.com/aristocratos/btop) | `btop` |
+| **Combos Shell** | Setups Multi-Painel | [antigravity-theme-changer](https://github.com/MateusCelestinoProX/antigravity-theme-changer) | Multiplexing |
+
+Todos os comandos possuem botão de **cópia em 1 clique** com feedback visual imediato e preservam integralmente as funções do customizador.
+
+---
+
 ## 📄 Licença
 
 Distribuído sob a licença MIT. Livre para uso pessoal e modificação.  
