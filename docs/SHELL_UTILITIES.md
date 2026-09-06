@@ -15,7 +15,7 @@ Guia técnico aprofundado dos 10 utilitários de linha de comando e suítes visu
 7. [tarts — Suíte de Screensavers em Rust (Braille Canvas)](#7-tarts--suíte-de-screensavers-em-rust-braille-canvas)
 8. [terminal-fireworks — Simulador Pirotécnico Balístico](#8-terminal-fireworks--simulador-pirotécnico-balístico)
 9. [nyancat — Animação ANSI Clássica com Telemetria](#9-nyancat--animação-ansi-clássica-com-telemetria)
-10. [btop — Monitor de Recursos Clássico Modular](#10-btop--monitor-de-recursos-clássico-modular)
+10. [fastfetch — Utilitário de Telemetria de Sistema em C](#10-fastfetch--utilitário-de-telemetria-de-sistema-em-c)
 11. [Setups Multi-Painel Recomendados](#11-setups-multi-painel-recomendados)
 
 ---
@@ -367,33 +367,47 @@ nyancat -f 500
 
 ---
 
-## 10. btop — Monitor de Recursos Clássico Modular
+## 10. fastfetch — Utilitário de Telemetria de Sistema em C
 
-- **Repositório Oficial**: [aristocratos/btop](https://github.com/aristocratos/btop)
-- **Linguagem**: C++
-- **Invocação Base**: `btop`
-- **Descrição**: Monitor de recursos do sistema com interface modular altamente estilizada, gráficos vetoriais de curvas e telemetria de hardware em tempo real.
+- **Repositório Oficial**: [fastfetch-cli/fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- **Linguagem**: C (Alta Performance)
+- **Invocação Base**: `fastfetch`
+- **Descrição**: Utilitário moderno e ultra-rápido de telemetria em C para exibição estética de informações do sistema operacional e hardware, sucessor veloz do Neofetch com suporte a logos ASCII nativos e presets estruturados em JSONC.
 
 ### Exemplos Práticos de Linha de Comando:
 ```bash
-# Inicialização padrão completa com todos os módulos ativos
-btop
+# Execução padrão completa com logotipo oficial do macOS e resumo de hardware
+fastfetch
 
-# Inicialização direta aplicando o preset 1 (modo compacto)
-btop --preset 1
+# Preset clássico no consagrado formato Neofetch com blocos de paleta cromática
+fastfetch -c neofetch
 
-# Inicialização com preset 2 focado em discos e tráfego de rede
-btop --preset 2
+# Modo Paleofetch ultra-limpo focado na telemetria essencial de CPU, GPU, Uptime e Bateria
+fastfetch -c paleofetch
 
-# Taxa de atualização rápida de 500ms para análise de picos transitórios
-btop --update 500
+# Telemetria profunda de engenharia com todos os módulos de hardware ativos
+fastfetch -c all
 
-# Forçar renderização de caracteres UTF-8 para gráficos suaves
-btop --utf-force
+# Versão compacta com logo ASCII reduzido (ideal para janelas de terminal menores ou sidebars)
+fastfetch --logo-type small
 
-# Modo 16 cores de baixo consumo para conexões SSH remotas
-btop --low-color
+# Seleção customizada em linha única focando apenas nos componentes essenciais
+fastfetch --structure OS:Host:Kernel:Uptime:CPU:GPU:Memory:Disk
+
+# Modo minimalista sem logotipo gráfico (puramente os dados alinhados à esquerda)
+fastfetch --logo none
+
+# Exportação completa de todos os dados do computador em formato JSON estruturado
+fastfetch --format json
 ```
+
+### Comandos de Inspeção & Ajuda:
+| Comando | Descrição |
+| :--- | :--- |
+| `fastfetch -h` | Exibe todas as opções de linha de comando e módulos suportados |
+| `fastfetch --list-presets` | Lista todos os presets oficiais integrados (paleofetch, neofetch, all, ci, etc.) |
+| `fastfetch --list-logos` | Lista todos os logotipos de sistemas operacionais e distribuições suportados |
+| `fastfetch --gen-config` | Gera o arquivo de configuração customizável em `~/.config/fastfetch/config.jsonc` |
 
 ---
 
