@@ -9,11 +9,24 @@ description: >
 
 # Skill: Theme Changer — Google Antigravity
 
-### 🚀 Inicialização Completa em 1 Comando:
-```bash
-python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py init
-```
-Inicia o servidor interno multithread e abre automaticamente o **Theme Studio & Font Center** no navegador padrão.
+### 🚀 Comandos Rápidos do CLI & Agente:
+- **Inicialização Automática (`init`)**:
+  ```bash
+  python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py init
+  ```
+  Inicia o servidor interno multithread na porta 48123 (se inativo) e abre o **Theme Studio & Font Center** no navegador padrão.
+
+- **Consulta de Estado em Tempo Real (`status`)**:
+  ```bash
+  python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py status
+  ```
+  Exibe instantaneamente no terminal o tema ativo, sementes de cor (background/primary), fonte ativa, modo tipográfico (full/code) e status da interface web.
+
+- **Catálogo Geral (`list`)**:
+  ```bash
+  python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py list
+  ```
+  Imprime a lista detalhada e categorizada de todos os 31 temas e 13 fontes de código com ligaduras.
 
 Permite alternar instantaneamente entre a suíte completa de temas e fontes no Google Antigravity:
 
