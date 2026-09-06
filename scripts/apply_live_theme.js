@@ -135,7 +135,7 @@ const FONTS = {
 };
 
 const THEMES_CSS = {
-  // === CATEGORIA 1: FULL MONOCROMÁTICO ===
+  // === CATEGORIA 1: FULL MONOCROMÁTICO (CYBERPUNK / HIGH CONTRAST) ===
   green: {
     name: "Matrix Phosphor Green",
     category: "full",
@@ -143,9 +143,9 @@ const THEMES_CSS = {
     fg: "#00FF41",
     primary: "#00FF41",
     primaryFg: "#000000",
-    sidebar: "#030703",
-    card: "#081208",
-    border: "#00FF41",
+    sidebar: "#081208",
+    card: "#0A170A",
+    border: "rgba(0, 255, 65, 0.35)",
     tint: "#00FF41"
   },
   red: {
@@ -155,9 +155,9 @@ const THEMES_CSS = {
     fg: "#FF2A55",
     primary: "#FF003C",
     primaryFg: "#FFFFFF",
-    sidebar: "#060001",
-    card: "#120004",
-    border: "#FF003C",
+    sidebar: "#140105",
+    card: "#1B0207",
+    border: "rgba(255, 0, 60, 0.35)",
     tint: "#FF003C"
   },
   cyan: {
@@ -167,9 +167,9 @@ const THEMES_CSS = {
     fg: "#00F0FF",
     primary: "#00F0FF",
     primaryFg: "#020B0E",
-    sidebar: "#010608",
-    card: "#04141A",
-    border: "#00F0FF",
+    sidebar: "#04141A",
+    card: "#061A22",
+    border: "rgba(0, 240, 255, 0.35)",
     tint: "#00F0FF"
   },
   yellow: {
@@ -179,9 +179,9 @@ const THEMES_CSS = {
     fg: "#FFE600",
     primary: "#FFE600",
     primaryFg: "#0D0C02",
-    sidebar: "#080701",
-    card: "#171504",
-    border: "#FFE600",
+    sidebar: "#171504",
+    card: "#1F1C05",
+    border: "rgba(255, 230, 0, 0.35)",
     tint: "#FFE600"
   },
   magenta: {
@@ -191,9 +191,9 @@ const THEMES_CSS = {
     fg: "#FF007F",
     primary: "#FF007F",
     primaryFg: "#FFFFFF",
-    sidebar: "#080106",
-    card: "#1A0413",
-    border: "#FF007F",
+    sidebar: "#190412",
+    card: "#220519",
+    border: "rgba(255, 0, 127, 0.35)",
     tint: "#FF007F"
   },
   monochrome: {
@@ -203,13 +203,13 @@ const THEMES_CSS = {
     fg: "#FFFFFF",
     primary: "#FFFFFF",
     primaryFg: "#000000",
-    sidebar: "#000000",
-    card: "#0D0D0D",
-    border: "#FFFFFF",
+    sidebar: "#0D0D0D",
+    card: "#141414",
+    border: "rgba(255, 255, 255, 0.35)",
     tint: "#FFFFFF"
   },
 
-  // === CATEGORIA 2: DARK VELVET TINTED ===
+  // === CATEGORIA 2: MODO ESCURO (DARK COM FILTRO TINTED AVELUDADO) ===
   cappuccino: {
     name: "Dark Cappuccino",
     category: "dark",
@@ -217,9 +217,9 @@ const THEMES_CSS = {
     fg: "#EDE0D4",
     primary: "#D4A373",
     primaryFg: "#181311",
-    sidebar: "#130E0D",
-    card: "#211A17",
-    border: "rgba(212, 163, 115, 0.25)",
+    sidebar: "#15100E",
+    card: "#221B17",
+    border: "rgba(212, 163, 115, 0.32)",
     tint: "#D4A373"
   },
   wine: {
@@ -229,9 +229,9 @@ const THEMES_CSS = {
     fg: "#FCE7EA",
     primary: "#E63946",
     primaryFg: "#FFFFFF",
-    sidebar: "#0D0305",
-    card: "#1C0A0D",
-    border: "rgba(230, 57, 70, 0.25)",
+    sidebar: "#0F0406",
+    card: "#1C0A0E",
+    border: "rgba(230, 57, 70, 0.32)",
     tint: "#E63946"
   },
   midnight: {
@@ -241,9 +241,9 @@ const THEMES_CSS = {
     fg: "#E0F2FE",
     primary: "#38BDF8",
     primaryFg: "#090D16",
-    sidebar: "#060910",
-    card: "#0F1624",
-    border: "rgba(56, 189, 248, 0.25)",
+    sidebar: "#070B13",
+    card: "#111827",
+    border: "rgba(56, 189, 248, 0.32)",
     tint: "#38BDF8"
   },
   dracula: {
@@ -253,9 +253,9 @@ const THEMES_CSS = {
     fg: "#F3E8FF",
     primary: "#BD93F9",
     primaryFg: "#120D1C",
-    sidebar: "#0C0813",
-    card: "#1B132B",
-    border: "rgba(189, 147, 249, 0.25)",
+    sidebar: "#0E0A16",
+    card: "#191227",
+    border: "rgba(189, 147, 249, 0.32)",
     tint: "#BD93F9"
   },
   amber: {
@@ -265,9 +265,9 @@ const THEMES_CSS = {
     fg: "#FEF3C7",
     primary: "#F59E0B",
     primaryFg: "#14110A",
-    sidebar: "#0E0C06",
+    sidebar: "#100D07",
     card: "#1D190E",
-    border: "rgba(245, 158, 11, 0.25)",
+    border: "rgba(245, 158, 11, 0.32)",
     tint: "#F59E0B"
   },
   "dark-emerald": {
@@ -277,9 +277,9 @@ const THEMES_CSS = {
     fg: "#D1FAE5",
     primary: "#10B981",
     primaryFg: "#06120B",
-    sidebar: "#040D07",
-    card: "#0C1D13",
-    border: "rgba(16, 185, 129, 0.25)",
+    sidebar: "#040E08",
+    card: "#0B1D12",
+    border: "rgba(16, 185, 129, 0.32)",
     tint: "#10B981"
   },
   nordic: {
@@ -289,9 +289,9 @@ const THEMES_CSS = {
     fg: "#E2E8F0",
     primary: "#38BDF8",
     primaryFg: "#0B1117",
-    sidebar: "#070C10",
-    card: "#121A22",
-    border: "rgba(56, 189, 248, 0.25)",
+    sidebar: "#080E13",
+    card: "#111A23",
+    border: "rgba(56, 189, 248, 0.32)",
     tint: "#38BDF8"
   },
   tokyo: {
@@ -301,9 +301,9 @@ const THEMES_CSS = {
     fg: "#FFE4E6",
     primary: "#FB7185",
     primaryFg: "#130D14",
-    sidebar: "#0D080E",
-    card: "#1C131D",
-    border: "rgba(251, 113, 133, 0.25)",
+    sidebar: "#0F0910",
+    card: "#1D141F",
+    border: "rgba(251, 113, 133, 0.32)",
     tint: "#FB7185"
   },
   "dark-matcha": {
@@ -313,9 +313,9 @@ const THEMES_CSS = {
     fg: "#F0FDF4",
     primary: "#84CC16",
     primaryFg: "#0C100B",
-    sidebar: "#080B07",
-    card: "#131A11",
-    border: "rgba(132, 204, 22, 0.26)",
+    sidebar: "#090C08",
+    card: "#141B12",
+    border: "rgba(132, 204, 22, 0.32)",
     tint: "#84CC16"
   },
   "dark-copper": {
@@ -325,9 +325,9 @@ const THEMES_CSS = {
     fg: "#FFF7ED",
     primary: "#FB923C",
     primaryFg: "#120E0A",
-    sidebar: "#0D0A07",
-    card: "#1B150F",
-    border: "rgba(251, 146, 60, 0.26)",
+    sidebar: "#0E0B07",
+    card: "#1D1610",
+    border: "rgba(251, 146, 60, 0.32)",
     tint: "#FB923C"
   },
   "dark-ultraviolet": {
@@ -337,13 +337,13 @@ const THEMES_CSS = {
     fg: "#EEF2FF",
     primary: "#818CF8",
     primaryFg: "#080616",
-    sidebar: "#050410",
-    card: "#100D26",
-    border: "rgba(129, 140, 248, 0.28)",
+    sidebar: "#060411",
+    card: "#110D27",
+    border: "rgba(129, 140, 248, 0.32)",
     tint: "#818CF8"
   },
 
-  // === CATEGORIA 3: LIGHT LUMINARY ===
+  // === CATEGORIA 3: MODO CLARO (LIGHT + COR SECUNDÁRIA INTENSIFICADA) ===
   "light-emerald": {
     name: "Light Emerald",
     category: "light",
@@ -351,9 +351,9 @@ const THEMES_CSS = {
     fg: "#064E3B",
     primary: "#059669",
     primaryFg: "#FFFFFF",
-    sidebar: "#EAF8EF",
+    sidebar: "#ECFDF5",
     card: "#FFFFFF",
-    border: "rgba(5, 150, 105, 0.25)",
+    border: "rgba(5, 150, 105, 0.28)",
     tint: "#059669"
   },
   "light-sapphire": {
@@ -363,9 +363,9 @@ const THEMES_CSS = {
     fg: "#0F172A",
     primary: "#0284C7",
     primaryFg: "#FFFFFF",
-    sidebar: "#EFF6FF",
+    sidebar: "#F0F9FF",
     card: "#FFFFFF",
-    border: "rgba(2, 132, 199, 0.25)",
+    border: "rgba(2, 132, 199, 0.28)",
     tint: "#0284C7"
   },
   "light-ruby": {
@@ -375,9 +375,9 @@ const THEMES_CSS = {
     fg: "#1E293B",
     primary: "#E11D48",
     primaryFg: "#FFFFFF",
-    sidebar: "#FFE4E8",
+    sidebar: "#FFE4E6",
     card: "#FFFFFF",
-    border: "rgba(225, 29, 72, 0.25)",
+    border: "rgba(225, 29, 72, 0.28)",
     tint: "#E11D48"
   },
   "light-lavender": {
@@ -387,9 +387,9 @@ const THEMES_CSS = {
     fg: "#1E1B4B",
     primary: "#7C3AED",
     primaryFg: "#FFFFFF",
-    sidebar: "#F3EEFF",
+    sidebar: "#F5F3FF",
     card: "#FFFFFF",
-    border: "rgba(124, 58, 237, 0.25)",
+    border: "rgba(124, 58, 237, 0.28)",
     tint: "#7C3AED"
   },
   "light-amber": {
@@ -399,9 +399,9 @@ const THEMES_CSS = {
     fg: "#1C1917",
     primary: "#D97706",
     primaryFg: "#FFFFFF",
-    sidebar: "#FEF9E7",
+    sidebar: "#FFFBEB",
     card: "#FFFFFF",
-    border: "rgba(217, 119, 6, 0.25)",
+    border: "rgba(217, 119, 6, 0.28)",
     tint: "#D97706"
   },
   "light-latte": {
@@ -411,9 +411,9 @@ const THEMES_CSS = {
     fg: "#291E1A",
     primary: "#9A3412",
     primaryFg: "#FFFFFF",
-    sidebar: "#F2EBE1",
+    sidebar: "#F5EFEB",
     card: "#FFFFFF",
-    border: "rgba(154, 52, 18, 0.25)",
+    border: "rgba(154, 52, 18, 0.28)",
     tint: "#9A3412"
   },
   "light-rose": {
@@ -423,9 +423,9 @@ const THEMES_CSS = {
     fg: "#1F1116",
     primary: "#BE123C",
     primaryFg: "#FFFFFF",
-    sidebar: "#FFE6EC",
+    sidebar: "#FFE4E6",
     card: "#FFFFFF",
-    border: "rgba(190, 18, 60, 0.25)",
+    border: "rgba(190, 18, 60, 0.28)",
     tint: "#BE123C"
   },
   "light-teal": {
@@ -435,9 +435,9 @@ const THEMES_CSS = {
     fg: "#0F172A",
     primary: "#0D9488",
     primaryFg: "#FFFFFF",
-    sidebar: "#E1F6F2",
+    sidebar: "#CCFBF1",
     card: "#FFFFFF",
-    border: "rgba(13, 148, 136, 0.25)",
+    border: "rgba(13, 148, 136, 0.28)",
     tint: "#0D9488"
   },
   "light-coral": {
@@ -447,9 +447,9 @@ const THEMES_CSS = {
     fg: "#1C1917",
     primary: "#EA580C",
     primaryFg: "#FFFFFF",
-    sidebar: "#FDEEE7",
+    sidebar: "#FFEDD5",
     card: "#FFFFFF",
-    border: "rgba(234, 88, 12, 0.25)",
+    border: "rgba(234, 88, 12, 0.28)",
     tint: "#EA580C"
   },
   "light-indigo": {
@@ -459,9 +459,9 @@ const THEMES_CSS = {
     fg: "#0F172A",
     primary: "#4F46E5",
     primaryFg: "#FFFFFF",
-    sidebar: "#EDEFFD",
+    sidebar: "#EEF2FF",
     card: "#FFFFFF",
-    border: "rgba(79, 70, 229, 0.25)",
+    border: "rgba(79, 70, 229, 0.28)",
     tint: "#4F46E5"
   },
   white: {
@@ -473,7 +473,7 @@ const THEMES_CSS = {
     primaryFg: "#FFFFFF",
     sidebar: "#F9FAFB",
     card: "#FFFFFF",
-    border: "#E5E7EB",
+    border: "rgba(17, 24, 39, 0.22)",
     tint: "#111827"
   },
   "light-pistachio": {
@@ -483,7 +483,7 @@ const THEMES_CSS = {
     fg: "#1A2E05",
     primary: "#65A30D",
     primaryFg: "#FFFFFF",
-    sidebar: "#EEF4DD",
+    sidebar: "#F1F5E4",
     card: "#FFFFFF",
     border: "rgba(101, 163, 13, 0.28)",
     tint: "#65A30D"
@@ -495,7 +495,7 @@ const THEMES_CSS = {
     fg: "#27140B",
     primary: "#C2410C",
     primaryFg: "#FFFFFF",
-    sidebar: "#FCEBE4",
+    sidebar: "#F7ECE6",
     card: "#FFFFFF",
     border: "rgba(194, 65, 12, 0.28)",
     tint: "#C2410C"
