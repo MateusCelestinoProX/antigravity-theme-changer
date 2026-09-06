@@ -3,15 +3,15 @@
 <div align="center">
 
 ![Antigravity Theme Studio](https://img.shields.io/badge/Google-Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![Themes](https://img.shields.io/badge/30-Elite_Themes-10B981?style=for-the-badge)
+![Themes](https://img.shields.io/badge/31-Elite_Themes-10B981?style=for-the-badge)
 ![Fonts](https://img.shields.io/badge/13-Dev_Fonts_w%2F_Ligatures-8B5CF6?style=for-the-badge)
 ![UI](https://img.shields.io/badge/Apple_Liquid_Glass-VisionOS_Design-0071E3?style=for-the-badge)
 ![Speed](https://img.shields.io/badge/Sub--150ms-Realtime_CDP-EC4899?style=for-the-badge)
 
 **A suíte definitiva de customização visual, paletas cromáticas e tipografia para o Google Antigravity.**  
-Alterne instantaneamente entre 30 temas de alto padrão e 13 fontes de programação com ligaduras nativas, com injeção em tempo real via Chrome DevTools Protocol e interface Apple Liquid Glass.
+Alterne instantaneamente entre 31 temas de alto padrão e 13 fontes de programação com ligaduras nativas, com injeção em tempo real via Chrome DevTools Protocol e interface Apple Liquid Glass.
 
-[🚀 Início Rápido](#-início-rápido) • [🎨 Catálogo de Temas](#-catálogo-de-30-temas-de-elite) • [🔤 Catálogo de Fontes](#-catálogo-de-13-fontes-com-ligaduras) • [🏛️ Arquitetura](#️-arquitetura-técnica) • [📦 Instalação](#-instalação-automatizada)
+[🚀 Início Rápido](#-início-rápido) • [🎨 Catálogo de Temas](#-catálogo-de-31-temas-de-elite) • [🔤 Catálogo de Fontes](#-catálogo-de-13-fontes-com-ligaduras) • [🏛️ Arquitetura](#️-arquitetura-técnica) • [📦 Instalação](#-instalação-automatizada)
 
 </div>
 
@@ -19,10 +19,10 @@ Alterne instantaneamente entre 30 temas de alto padrão e 13 fontes de programa�
 
 ## ✨ Destaques & Diferenciais
 
-- **⚡ 30 Temas de Elite em 3 Categorias**:
+- **⚡ 31 Temas de Elite em 3 Categorias**:
   - **Full Monocromáticos (6)**: Alto contraste, saturação vibrante e estética Cyberpunk/CRT.
   - **Dark Velvet Tinted (11)**: Bases escuras aveludadas (`#080616` a `#181311`) com filtros de cor refinados (Matcha, Basalt Copper, Ultraviolet, Tokyo Coral, etc.).
-  - **Light Luminary (13)**: Bases claras suaves e frescas com cores secundárias intensificadas e legibilidade cristalina (Pistachio Gelato, Tuscan Terracotta, Alpine Azure, etc.).
+  - **Light Luminary (14)**: Bases claras suaves e frescas com cores secundárias intensificadas e legibilidade cristalina (Pistachio Gelato, Tuscan Terracotta, Alpine Azure, etc.).
 - **🔤 13 Fontes de Programação com Ligaduras Nativas**:
   - JetBrains Mono, Fira Code, Cascadia Code, Victor Mono (itálico cursivo), Source Code Pro, Hack, Inconsolata, Geist Mono, IBM Plex Mono, Space Mono, Ubuntu Mono, DM Mono e SF Pro Apple.
   - Suporte a dois modos: **Total** (aplica na interface completa, chat e prompts) e **Código & Terminal** (mantém a interface sans-serif).
@@ -75,7 +75,7 @@ O instalador configura:
 
 ---
 
-## 🎨 Catálogo de 30 Temas de Elite
+## 🎨 Catálogo de 31 Temas de Elite
 
 ### ⚡ 1. Temas Full Monocromáticos (6 Opções)
 | Flag | Nome | Background | Primary | Destaque |
@@ -83,26 +83,26 @@ O instalador configura:
 | `-green` | **Matrix Phosphor Green** | `#050B05` | `#00FF41` | Terminal hacker clássico CRT |
 | `-red` | **Glowing Cyberpunk Red** | `#0A0002` | `#FF003C` | Laser neon vermelho puro |
 | `-cyan` | **Full Tron Electric Cyan** | `#040B14` | `#00F0FF` | Neon azul elétrico de alta energia |
-| `-yellow` | **Full Acid Cyber Yellow** | `#0E0D03` | `#FFE600` | Amarelo ácido industrial de alerta |
-| `-magenta` | **Full Synthwave Magenta** | `#100312` | `#FF007F` | Retrowave anos 80 neon fúcsia |
-| `-monochrome`| **Full OLED Pure Mono** | `#000000` | `#FFFFFF` | Preto absoluto com branco puro |
+| `-amber` | **Vintage Amber Phosphor** | `#0D0B02` | `#FFB000` | Terminal IBM/DEC monocromático |
+| `-magenta` | **Vaporwave Hot Magenta** | `#0D030C` | `#FF007F` | Laser sintetizador anos 80 |
+| `-pureblack` | **OLED True Pure Black** | `#000000` | `#22C55E` | Preto absoluto com acentos esmeralda |
 
 ### 🌙 2. Temas Dark Velvet Tinted (11 Opções)
 | Flag | Nome | Background | Primary | Destaque |
 | :--- | :--- | :--- | :--- | :--- |
-| `-cappuccino` | **Dark Cappuccino** | `#181311` | `#D4A373` | Café expresso torrado e caramelo |
-| `-wine` | **Dark Avermelhado Velvet**| `#120608` | `#E63946` | Vinho tinto aveludado e carmesim |
-| `-midnight` | **Midnight Sapphire Blue** | `#090D16` | `#38BDF8` | Safira abissal e azul celeste |
-| `-dracula` | **Cyber Amethyst Twilight**| `#120D1C` | `#BD93F9` | Ametista néon e violeta místico |
-| `-amber` | **Amber Warm Dusk** | `#14110A` | `#F59E0B` | Crepúsculo dourado acolhedor |
-| `-dark-emerald`| **Forest Emerald Night** | `#07140E` | `#10B981` | Floresta profunda e esmeralda |
-| `-nordic` | **Nordic Arctic Slate** | `#0B1017` | `#22D3EE` | Frio polar com azul glacial |
+| `-emerald` | **Dark Velvet Emerald** | `#0D1410` | `#10B981` | Verde floresta profundo e aveludado |
+| `-sapphire` | **Dark Velvet Sapphire** | `#0D1117` | `#38BDF8` | Azul marinho estelar refinado |
+| `-ruby` | **Dark Velvet Ruby** | `#140C0E` | `#F43F5E` | Vermelho carmim e vinho aveludado |
+| `-lavender` | **Dark Velvet Lavender** | `#130F1A` | `#A855F7` | Roxo ametista crepuscular |
+| `-sunburst` | **Dark Velvet Sunburst** | `#16130B` | `#FBBF24` | Dourado âmbar sofisticado |
+| `-latte` | **Dark Velvet Latte** | `#14100E` | `#FB923C` | Tons terrosos de café expresso |
+| `-rose` | **Dark Velvet Rosé** | `#140D10` | `#FB7185` | Rosé refinado e aveludado |
 | `-tokyo` | **Tokyo Sunset Coral** | `#130D14` | `#FB7185` | Crepúsculo metropolitano e coral |
 | `-matcha` | **Dark Matcha Obsidian** | `#0C100B` | `#84CC16` | Chá-verde matcha e obsidiana |
 | `-copper` | **Dark Basalt Copper** | `#120E0A` | `#FB923C` | Basalto vulcânico e cobre metálico |
 | `-ultraviolet` | **Dark Cosmic Ultraviolet**| `#080616` | `#818CF8` | Espaço cósmico e radiação UV |
 
-### ☀️ 3. Temas Light Luminary (13 Opções)
+### ☀️ 3. Temas Light Luminary (14 Opções)
 | Flag | Nome | Background | Primary | Destaque |
 | :--- | :--- | :--- | :--- | :--- |
 | `-white` | **Pure Clean White** | `#FFFFFF` | `#111827` | Branco minimalista puro e nítido |
@@ -125,7 +125,7 @@ O instalador configura:
 ## 🔤 Catálogo de 13 Fontes com Ligaduras
 
 | Flag | Fonte | Autor / Fundição | Ligaduras | Badge |
-| :--- | :--- | :--- | :---: | :--- |
+| :--- | :--- | :--- | :--- | :--- |
 | `-jetbrains` | **JetBrains Mono** | JetBrains | Sim | `LIGADURAS PRO` |
 | `-fira` | **Fira Code** | Nikita Prokopov | Sim | `CLÁSSICA` |
 | `-cascadia` | **Cascadia Code** | Microsoft | Sim | `MODERNA` |
