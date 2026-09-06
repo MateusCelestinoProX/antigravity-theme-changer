@@ -815,10 +815,10 @@ def main():
         print("Uso:")
         print("  Trocar Tema:  python3 theme_changer.py theme -[FLAG]")
         print("  Trocar Fonte: python3 theme_changer.py font -[NOME]")
-        print("\n🎨 Categorias de Temas (30 Opções de Elite):")
+        print("\n🎨 Categorias de Temas (31 Opções de Elite):")
         print("  - Full Monocromático (6): -green, -red, -cyan, -yellow, -magenta, -monochrome")
         print("  - Dark Velvet Tinted (11): -cappuccino, -wine, -midnight, -dracula, -amber, -dark-emerald, -nordic, -tokyo, -matcha, -copper, -ultraviolet")
-        print("  - Light Luminary (13):   -emerald, -sapphire, -ruby, -lavender, -sunburst, -latte, -rose, -teal, -coral, -indigo, -pistachio, -terracotta, -azure, -white")
+        print("  - Light Luminary (14):   -emerald, -sapphire, -ruby, -lavender, -sunburst, -latte, -rose, -teal, -coral, -indigo, -pistachio, -terracotta, -azure, -white")
         print("\n🔤 Fontes Disponíveis (13 Fontes de Elite):")
         for k, v in FONTS.items():
             print(f"  - {v['tag']:<14} {v['name']:<28} [{v['badge']}] ({v['author']})")
