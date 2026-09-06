@@ -710,9 +710,21 @@ def is_server_running(port=PORT):
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.settimeout(0.3)
-            return s.connect_ex(("127.0.0.1", port)) == 0
+            if s.connect_ex(("127.0.0.1", port)) == 0:
+                return True
     except Exception:
-        return False
+        pass
+    # Em ambientes sandboxed onde connect local pode sofrer EPERM,
+    # verificamos se a porta já está ocupada por bind:
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(("127.0.0.1", port))
+            return False
+    except OSError as err:
+        if err.errno in (48, 98):  # EADDRINUSE
+            return True
+    return False
+
 
 def handle_init():
     print("━" * 60)
@@ -766,7 +778,7 @@ def handle_init():
     print(f"[*] Abrindo Theme Studio no seu navegador padrão...")
     try:
         if sys.platform == "darwin":
-            subprocess.run(["open", APP_URL], check=False)
+            subprocess.run(["open", APP_URL], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
         else:
             webbrowser.open(APP_URL)
         print(f"[✓] Painel web aberto com sucesso!")
