@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+.DS_Store
+DevToolsActivePort
+node_modules/
+.vscode/
+.idea/
+.tempmediaStorage/
+scratch/
