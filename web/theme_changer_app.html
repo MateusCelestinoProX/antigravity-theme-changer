@@ -803,6 +803,561 @@
       .nav-dock { flex-direction: column; border-radius: var(--radius-xl); }
       .fonts-grid, .themes-grid { grid-template-columns: 1fr; }
     }
+
+    /* Apple Dock Segmented Control */
+    .dock-segmented {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .dock-seg-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 5px 13px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition-spring);
+      outline: none;
+    }
+
+    .dock-seg-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dock-seg-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Apple Minimalist Documentation Section */
+    .docs-section {
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
+    .docs-counter-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    .apple-doc-wrapper {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 24px;
+      background: rgba(18, 20, 24, 0.5);
+      backdrop-filter: blur(36px) saturate(190%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-top);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 
+        0 30px 60px -15px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      min-height: 680px;
+    }
+
+    /* Sidebar Topics Panel */
+    .apple-doc-sidebar {
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      padding-right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+    }
+
+    .doc-search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 9px 12px 9px 34px;
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      letter-spacing: -0.01em;
+      outline: none;
+      transition: var(--transition-spring);
+    }
+
+    .doc-search-input:focus {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .doc-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      fill: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .doc-topics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow-y: auto;
+      max-height: 600px;
+      padding-right: 4px;
+    }
+
+    .doc-topics-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .doc-topics-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .doc-topic-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .doc-topic-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .doc-topic-item.active {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .doc-topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .doc-topic-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+    }
+
+    .doc-topic-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 500;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+
+    .doc-topic-desc {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Main Central Content Panel */
+    .apple-doc-content {
+      padding: 6px 8px 12px 12px;
+      overflow-y: auto;
+      max-height: 740px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .apple-doc-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .apple-doc-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+    }
+
+    /* App Header Card */
+    .doc-app-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      flex-wrap: wrap;
+    }
+
+    .doc-app-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 640px;
+    }
+
+    .doc-app-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .doc-app-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .doc-app-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .doc-app-desc {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      letter-spacing: -0.01em;
+    }
+
+    /* Apple Minimalist GitHub Button */
+    .apple-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: var(--transition-spring);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+      white-space: nowrap;
+    }
+
+    .apple-github-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .apple-github-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* Block Titles */
+    .doc-block-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Apple Command Box */
+    .apple-cmd-box {
+      background: rgba(10, 12, 16, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 11px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition-spring);
+      position: relative;
+    }
+
+    .apple-cmd-box:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(12, 14, 20, 0.85);
+    }
+
+    .apple-cmd-code {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: #E2E8F0;
+      letter-spacing: 0.01em;
+      word-break: break-all;
+      line-height: 1.4;
+    }
+
+    /* Apple 1-Click Copy Button */
+    .apple-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 7px;
+      padding: 6px 11px;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      flex-shrink: 0;
+      outline: none;
+    }
+
+    .apple-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .apple-copy-btn.copied {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .apple-copy-btn svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Presets Stack */
+    .doc-presets-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .doc-preset-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: var(--transition-spring);
+    }
+
+    .doc-preset-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .doc-preset-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .doc-preset-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .doc-preset-expl {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Shortcuts Grid */
+    .doc-shortcuts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .doc-shortcut-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 9px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .doc-kbd {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .doc-shortcut-label {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    /* Tarts Grid Special */
+    .tarts-doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .tarts-doc-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 11px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      justify-content: space-between;
+    }
+
+    .tarts-doc-item:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tarts-doc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tarts-doc-desc {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    /* Combos Setups Layout */
+    .combos-doc-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .combo-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .combo-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .combo-panels-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .combo-panel-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(10, 12, 16, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 7px 12px;
+    }
+
+    .combo-panel-name {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      min-width: 140px;
+    }
+
+    @media (max-width: 900px) {
+      .apple-doc-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .apple-doc-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-right: 0;
+        padding-bottom: 18px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -830,9 +1385,14 @@
       </div>
 
       <div class="dock-center">
+        <div class="dock-segmented">
+          <button class="dock-seg-btn active" id="segBtnThemes" onclick="switchMainSection('themes', this)">Temas</button>
+          <button class="dock-seg-btn" id="segBtnFonts" onclick="switchMainSection('fonts', this)">Tipografia</button>
+          <button class="dock-seg-btn" id="segBtnDocs" onclick="switchMainSection('docs', this)">Documentação Shell</button>
+        </div>
         <div class="status-capsule">
           <div class="status-dot"></div>
-          <span>Antigravity Online • Porta 51897</span>
+          <span>Online • 51897</span>
         </div>
       </div>
 
@@ -867,11 +1427,11 @@
         <!-- Scope Toggle Capsule -->
         <div class="segmented-control">
           <button class="segmented-btn active" id="scopeFullBtn" onclick="setScope('full')">
-            <span>🌟 Modo Total</span>
+            <span>Modo Total</span>
             <span class="segmented-badge">Toda a UI</span>
           </button>
           <button class="segmented-btn" id="scopeCodeBtn" onclick="setScope('code')">
-            <span>⚡ Modo Híbrido</span>
+            <span>Modo Híbrido</span>
             <span class="segmented-badge">Apenas Código</span>
           </button>
         </div>
@@ -909,6 +1469,38 @@
 
       <div class="themes-grid" id="themesGrid">
         <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- SHELL DOCUMENTATION SECTION (APPLE MINIMALISM) -->
+    <section id="docsSection" class="docs-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Documentação Shell</span>
+          <h2 class="section-title">Utilitários de Terminal do macOS</h2>
+        </div>
+        <div class="docs-counter-pill" id="docTopicsCounter">11 Tópicos de Terminal</div>
+      </div>
+
+      <div class="apple-doc-wrapper">
+        <!-- Sidebar Topics / Index List -->
+        <aside class="apple-doc-sidebar">
+          <div class="sidebar-search-box">
+            <input type="text" id="docSearchInput" class="doc-search-input" placeholder="Buscar utilitário shell..." oninput="filterDocTopics()">
+            <svg class="doc-search-icon" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/>
+            </svg>
+          </div>
+
+          <div class="doc-topics-list" id="docTopicsList">
+            <!-- Rendered dynamically -->
+          </div>
+        </aside>
+
+        <!-- Main Central Content Panel -->
+        <main class="apple-doc-content" id="docMainContent">
+          <!-- Rendered dynamically -->
+        </main>
       </div>
     </section>
 
@@ -1575,6 +2167,669 @@
       }
     }
 
+
+    // DATA: 11 SHELL APPS & SUITES DOCUMENTATION
+    const DOCS_DATA = [
+      {
+        id: "bottom",
+        name: "bottom (btm)",
+        badge: "Rust Utility",
+        repo: "https://github.com/ClementTsang/bottom",
+        desc: "Monitor gráfico de recursos do sistema em Rust com foco em baixa latência e consumo mínimo de memória. Substituto de alta performance para btop e htop.",
+        invoke: "btm",
+        examples: [
+          {
+            title: "Alta Performance & Status de Bateria",
+            expl: "Atualização a cada 500ms com widget de bateria para MacBook e linha média de núcleos de CPU.",
+            cmd: "btm --battery -a -r 500"
+          },
+          {
+            title: "Modo Básico Minimalista",
+            expl: "Interface compacta sem curvas contínuas, ideal para conexões remotas de baixo consumo.",
+            cmd: "btm --basic"
+          },
+          {
+            title: "Foco Direto em Árvore de Processos",
+            expl: "Inicia o monitor com o cursor posicionado diretamente na visualização hierárquica.",
+            cmd: "btm --tree -d proc"
+          },
+          {
+            title: "Paleta Térmica Gruvbox com Unidade Celsius",
+            expl: "Atualização padrão de 1 segundo com tema quente e leituras métricas.",
+            cmd: "btm -c -r 1000 --color gruvbox"
+          }
+        ],
+        shortcuts: [
+          { key: "Tab / Shift+Tab", action: "Alternar foco sequencial entre os painéis (CPU, RAM, Rede, Processos)" },
+          { key: "e", action: "Expandir o widget selecionado para tela inteira / Restaurar" },
+          { key: "t", action: "Alternar visualização da tabela em modo Árvore (Tree)" },
+          { key: "/", action: "Abrir barra de pesquisa e filtro de processos em tempo real" },
+          { key: "+ / -", action: "Zoom in / Zoom out na escala horizontal de tempo dos gráficos" },
+          { key: "dd", action: "Enviar sinal SIGKILL para encerrar o processo selecionado" },
+          { key: "?", action: "Exibir painel integrado de ajuda e atalhos" },
+          { key: "q", action: "Encerrar o utilitário e retornar ao shell" }
+        ]
+      },
+      {
+        id: "weathr",
+        name: "weathr",
+        badge: "ASCII Weather",
+        repo: "https://github.com/veirt/weathr",
+        desc: "Previsão meteorológica em tempo real baseada na API Open-Meteo com simulações procedurais em arte ASCII animada.",
+        invoke: "weathr",
+        examples: [
+          {
+            title: "Noite de Tempestade Elétrica",
+            expl: "Simulação noturna com relâmpagos intermitentes, chuva densa e céu estrelado.",
+            cmd: "weathr -s thunderstorm -n"
+          },
+          {
+            title: "Inverno Noturno Zen (Sem HUD)",
+            expl: "Queda suave de neve contínua ocultando elementos de interface e dados de texto.",
+            cmd: "weathr -s snow -n --hide-hud"
+          },
+          {
+            title: "Tarde de Outono com Folhas ao Vento",
+            expl: "Céu limpo com partículas de folhagem caindo proceduralmente na tela.",
+            cmd: "weathr -s clear -l"
+          },
+          {
+            title: "Chuva Suave com Dados Métricos",
+            expl: "Simulação de chuva com temperatura em Celsius e velocidade do vento em km/h.",
+            cmd: "weathr -s rain --metric"
+          },
+          {
+            title: "Clima Real da Sua Região Atual",
+            expl: "Consulta automática de coordenadas via IP e dados meteorológicos da cidade.",
+            cmd: "weathr --auto-location --metric"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Q", action: "Encerrar o aplicativo" },
+          { key: "Ctrl + C", action: "Interromper execução imediata" }
+        ]
+      },
+      {
+        id: "lavat",
+        name: "lavat",
+        badge: "Metaballs Fluid",
+        repo: "https://github.com/AngelJumbo/lavat",
+        desc: "Simulador físico de lâmpada de lava com dinâmica de fluidos via metaballs, cálculo de campo escalar e convecção térmica Truecolor.",
+        invoke: "lavat",
+        examples: [
+          {
+            title: "Gradiente Violeta e Ciano com Gravidade",
+            expl: "Convecção física onde as gotas aquecem na base, sobem e resfriam no topo.",
+            cmd: "lavat -g -G -c 8A2BE2 -k 00FFFF -s 6 -r 6 -b 14"
+          },
+          {
+            title: "Fósforo Verde com Caracteres Sustenido",
+            expl: "Estética monocromática clássica com caracteres hash e contorno duplo reforçado.",
+            cmd: "lavat -g -c 00FF41 -k 003B00 -F \"#\" -s 7 -b 15 -R 2"
+          },
+          {
+            title: "Magma Vulcânico Térmico",
+            expl: "Transição de tons de vermelho brasa e amarelo fogo com partículas de raio expandido.",
+            cmd: "lavat -g -G -c FF3300 -k FFCC00 -s 4 -r 7 -b 12 -R 3"
+          },
+          {
+            title: "Transição Suave Magenta e Azul Celeste",
+            expl: "Gradiente de alta resolução espacial com dezesseis bolhas ativas no ambiente.",
+            cmd: "lavat -g -c FF007F -k 00F0FF -s 5 -r 5 -b 16"
+          },
+          {
+            title: "Ciclo Contínuo de Paletas",
+            expl: "Alternância automática e dinâmica de estilos de cor em velocidade acelerada.",
+            cmd: "lavat -p 1 -s 8 -r 6 -b 18"
+          }
+        ],
+        shortcuts: [
+          { key: "+ / -", action: "Aumentar ou diminuir velocidade de cálculo físico" },
+          { key: "i / d", action: "Aumentar ou reduzir o raio das metaballs" },
+          { key: "Shift + I / D", action: "Ajustar espessura da borda de contorno" },
+          { key: "m / l", action: "Incrementar ou reduzir o número de bolhas simultâneas" },
+          { key: "c", action: "Alternar dinamicamente a cor da lava" },
+          { key: "k", action: "Alternar a cor do contorno da borda" },
+          { key: "p", action: "Ligar ou alternar o modo de ciclo de cores" },
+          { key: "q / Ctrl + C", action: "Encerrar a simulação" }
+        ]
+      },
+      {
+        id: "pipes",
+        name: "pipes.sh",
+        badge: "Procedural 3D",
+        repo: "https://github.com/pipeseroni/pipes.sh",
+        desc: "Protetor de tela para terminal com tubulações tridimensionais animadas, curvas procedurais e junções suaves.",
+        invoke: "pipes.sh",
+        examples: [
+          {
+            title: "Cinco Fluxos com Origem Aleatória a 85 FPS",
+            expl: "Geração procedural contínua com taxas fluidas e spawn independente de canos.",
+            cmd: "pipes.sh -p 5 -t 1 -c 1 2 3 4 5 6 -f 85 -R -K"
+          },
+          {
+            title: "Tubulações Espessas Retrô",
+            expl: "Estilo arcade geométrico clássico com canos grossos e curvas amplas.",
+            cmd: "pipes.sh -p 3 -t 3 -c 2 3 6 -s 10 -f 70 -R"
+          },
+          {
+            title: "Tubos Finos sem Reset de Tela",
+            expl: "Preenchimento contínuo da janela sem limpeza de buffer em tons azuis e violetas.",
+            cmd: "pipes.sh -p 6 -t 0 -c 4 5 6 -f 90 -s 14 -r 0 -R -K"
+          },
+          {
+            title: "Densidade Máxima a 100 FPS",
+            expl: "Oito tubos em alta taxa de quadros e rotações constantes.",
+            cmd: "pipes.sh -p 8 -t 4 -f 100 -s 8 -R"
+          },
+          {
+            title: "Traçado Retilíneo Monocromático",
+            expl: "Alta probabilidade de linhas retas com cor única uniforme.",
+            cmd: "pipes.sh -p 4 -t 0 -c 2 -s 15 -f 75 -R -K"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Ctrl + C", action: "Interromper a animação e retornar ao prompt" }
+        ]
+      },
+      {
+        id: "ttyclock",
+        name: "tty-clock",
+        badge: "Ncurses Digital",
+        repo: "https://github.com/xorg62/tty-clock",
+        desc: "Relógio digital em arte ASCII ncurses de alta precisão com suporte a centralização, bounce e modo screensaver.",
+        invoke: "tty-clock",
+        examples: [
+          {
+            title: "Centralizado com Segundos e Separador Pulsante",
+            expl: "Posicionamento central em ciano com contador de segundos e dois pontos piscantes.",
+            cmd: "tty-clock -c -C 6 -s -B -b"
+          },
+          {
+            title: "Painel com Moldura Retangular Sólida",
+            expl: "Contorno estilizado em tom âmbar com dígitos de alto brilho.",
+            cmd: "tty-clock -c -x -C 3 -s -b"
+          },
+          {
+            title: "Modo Screensaver com Ricochete Contínuo",
+            expl: "O relógio flutua pela tela rebatendo suavemente nas extremidades da janela.",
+            cmd: "tty-clock -S -r -C 5 -s -B -b"
+          },
+          {
+            title: "Foco Estrito na Hora (Sem Barra de Data)",
+            expl: "Exibição minimalista ocultando o rodapé com dia da semana e calendário.",
+            cmd: "tty-clock -c -C 2 -s -D -B -b"
+          }
+        ],
+        shortcuts: [
+          { key: "c", action: "Alternar centralização na janela" },
+          { key: "s", action: "Exibir ou ocultar contador de segundos" },
+          { key: "t", action: "Alternar entre formato militar 24h e 12h AM/PM" },
+          { key: "b", action: "Alternar intensidade de brilho (Bold)" },
+          { key: "r", action: "Ligar/desligar modo ricochete (Bounce)" },
+          { key: "0 a 7", action: "Alterar a cor do relógio instantaneamente" },
+          { key: "q", action: "Fechar o aplicativo" }
+        ]
+      },
+      {
+        id: "donut",
+        name: "donut.c",
+        badge: "Math Torus 3D",
+        repo: "https://github.com/a1k0n/donut",
+        desc: "Renderizador matemático em ASCII de um toroide tridimensional rotatório por Andy Sloane, com iluminação vetorial e projeção em tempo real.",
+        invoke: "donut",
+        examples: [
+          {
+            title: "Rotação Estável Padrão (~33 FPS)",
+            expl: "Execução equilibrada a 30ms de intervalo entre quadros.",
+            cmd: "donut"
+          },
+          {
+            title: "Modo Turbo Acelerado",
+            expl: "Rotação rápida com 10ms de intervalo para telas de alto framerate.",
+            cmd: "donut 10"
+          },
+          {
+            title: "Modo Contemplativo Suave",
+            expl: "Velocidade lenta a 60ms para segundo plano com consumo mínimo de CPU.",
+            cmd: "donut 60"
+          },
+          {
+            title: "Canalização de Cores Lolcat",
+            expl: "Integração do fluxo de saída através do filtro lolcat para gradiente contínuo.",
+            cmd: "donut | lolcat"
+          }
+        ],
+        shortcuts: [
+          { key: "Ctrl + C", action: "Encerrar a rotação e restaurar o cursor do terminal com segurança" }
+        ]
+      },
+      {
+        id: "tarts",
+        name: "tarts (Terminal Arts)",
+        badge: "Rust Screensaver Suite",
+        repo: "https://github.com/levirs565/tarts",
+        desc: "Suíte de screensavers em Rust de alta performance com renderização de alta densidade gráfica em caracteres Braille.",
+        invoke: "tarts <efeito>",
+        examples: [],
+        effectsList: [
+          { name: "Matrix Rain", cmd: "tarts matrix", desc: "Chuva digital de caracteres de alto rendimento." },
+          { name: "3D Cube", cmd: "tarts cube", desc: "Cubo tridimensional rotatório com perspectiva vetorial em Braille." },
+          { name: "Boids (Revoada)", cmd: "tarts boids", desc: "Simulação biológica de revoada de pássaros com forças de coesão e repulsão." },
+          { name: "Constelações", cmd: "tarts constellation", desc: "Céu estrelado móvel com traçados geométricos ao se aproximar." },
+          { name: "Ondas de Plasma", cmd: "tarts plasma", desc: "Campo de energia oscilante com gradientes fluidos em tempo real." },
+          { name: "Lareira Digital", cmd: "tarts fire", desc: "Simulação de fogo com calor vertical e convecção de brasas." },
+          { name: "Tubulações Procedurais", cmd: "tarts pipes", desc: "Crescimento contínuo de canos ramificados procedurais." },
+          { name: "Jogo da Vida", cmd: "tarts life", desc: "Autômato celular com regras de sobrevivência de John Conway." },
+          { name: "Terreno 3D Perlin", cmd: "tarts terrain", desc: "Voo rasante sobre relevo montanhoso gerado proceduralmente." },
+          { name: "Caranguejos ASCII", cmd: "tarts crab", desc: "Animação de crustáceos caminhando pela tela e interagindo com limites." },
+          { name: "Toroide Rust", cmd: "tarts donut", desc: "Versão nativa acelerada do toroide tridimensional em Rust." },
+          { name: "Labirinto Autônomo", cmd: "tarts maze", desc: "Geração e resolução procedural de labirintos complexos." }
+        ],
+        shortcuts: [
+          { key: "q / Esc", action: "Sair do protetor de tela e retornar ao terminal" },
+          { key: "Ctrl + C", action: "Interromper execução" }
+        ]
+      },
+      {
+        id: "fireworks",
+        name: "terminal-fireworks",
+        badge: "Particle Physics",
+        repo: "https://github.com/faeb/terminal-fireworks",
+        desc: "Simulador balístico de fogos de artifício com física parabólica, detonação aérea e dispersão gravitacional de partículas coloridas.",
+        invoke: "fireworks",
+        examples: [
+          {
+            title: "Disparos Sucessivos de Alta Densidade",
+            expl: "Intervalo reduzido de 0.4s entre foguetes a 35 quadros por segundo.",
+            cmd: "fireworks --gap 0.4 --framerate 35"
+          },
+          {
+            title: "Gravidade Reduzida com Fagulhas Prolongadas",
+            expl: "Partículas leves com tempo de vida de 0.8s simulando baixa atração física.",
+            cmd: "fireworks --gravity 0.06 --decay-time 0.8 --gap 0.8"
+          },
+          {
+            title: "Detonação em Grande Altitude",
+            expl: "Foguetes impulsionados até o topo superior da janela antes de explodir.",
+            cmd: "fireworks --explosion-height 0.15 --speed 1.3"
+          },
+          {
+            title: "Alta Velocidade e Aceleração Inicial",
+            expl: "Foguetes de alta propulsão com aceleração contínua em voo.",
+            cmd: "fireworks --speed 2.0 --delta-v 4.5"
+          }
+        ],
+        shortcuts: [
+          { key: "] / [", action: "Aumentar ou diminuir frequência de disparos" },
+          { key: "Seta Cima / Baixo", action: "Ajustar a potência e impulso de decolagem" },
+          { key: "u", action: "Alternar visibilidade do HUD de telemetria física" },
+          { key: "q / Ctrl + C", action: "Encerrar a simulação" }
+        ]
+      },
+      {
+        id: "nyancat",
+        name: "nyancat",
+        badge: "ANSI Loop",
+        repo: "https://github.com/klange/nyancat",
+        desc: "A clássica animação do gato cósmico correndo no espaço infinito em sequências de escape ANSI com cronômetro integrado de tempo de voo.",
+        invoke: "nyancat",
+        examples: [
+          {
+            title: "Voo Cósmico Completo com Cronômetro",
+            expl: "Execução clássica contínua com medição de tempo de permanência.",
+            cmd: "nyancat"
+          },
+          {
+            title: "Vinheta Retrô de Abertura",
+            expl: "Exibição prévia da clássica tela de introdução antes do voo.",
+            cmd: "nyancat -i"
+          },
+          {
+            title: "Modo Minimalista sem Contador",
+            expl: "Oculta a barra de contagem para visualização puramente estética.",
+            cmd: "nyancat -n"
+          },
+          {
+            title: "Modo Silencioso Absoluto",
+            expl: "Desativa avisos e sons no terminal durante a execução.",
+            cmd: "nyancat -n -s"
+          },
+          {
+            title: "Execução Limitada a 500 Quadros",
+            expl: "Para automaticamente e retorna ao prompt após 500 frames renderizados.",
+            cmd: "nyancat -f 500"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Ctrl + C", action: "Encerrar animação e voltar ao prompt" }
+        ]
+      },
+      {
+        id: "btop",
+        name: "btop",
+        badge: "C++ Classic Monitor",
+        repo: "https://github.com/aristocratos/btop",
+        desc: "Monitor clássico de recursos do sistema com interface modular, suporte a temas visuais e gráficos dinâmicos.",
+        invoke: "btop",
+        examples: [
+          {
+            title: "Inicialização Padrão Completa",
+            expl: "Painel modular com CPU, memória, atividade de disco e processos.",
+            cmd: "btop"
+          },
+          {
+            title: "Carregamento Direto com Preset 1",
+            expl: "Inicia a interface aplicando o layout compacto pré-definido.",
+            cmd: "btop --preset 1"
+          },
+          {
+            title: "Forçar Renderização UTF-8",
+            expl: "Assegura gráficos de contorno de alta fidelidade em terminais estritos.",
+            cmd: "btop --utf-force"
+          }
+        ],
+        shortcuts: [
+          { key: "m", action: "Abrir menu de configurações e temas" },
+          { key: "p", action: "Alternar presets visuais de 0 a 9" },
+          { key: "f", action: "Abrir barra de filtro e busca de processos" },
+          { key: "e", action: "Alternar exibição de processos em árvore hierárquica" },
+          { key: "1 a 4", action: "Focar nos módulos de CPU, Memória, Rede e Processos" },
+          { key: "dd", action: "Enviar comando de encerramento forçado ao processo selecionado" },
+          { key: "q", action: "Fechar o aplicativo" }
+        ]
+      },
+      {
+        id: "combos",
+        name: "Combos Shell Multi-Painel",
+        badge: "Multiplex Layouts",
+        repo: "https://github.com/MateusCelestinoProX/antigravity-theme-changer",
+        desc: "Configurações prontas para janelas divididas em emuladores de terminal (iTerm2, Tmux, Kitty, Alacritty, WezTerm) para máxima harmonia visual.",
+        invoke: "Múltiplos painéis no terminal",
+        setups: [
+          {
+            title: "Setup 1: Telemetria de Sistema & Clima Noturno",
+            panels: [
+              { name: "Painel Superior", cmd: "btm --battery -r 500" },
+              { name: "Painel Inferior Esquerdo", cmd: "weathr -s thunderstorm -n" },
+              { name: "Painel Inferior Direito", cmd: "tty-clock -c -C 6 -s -B -b" }
+            ]
+          },
+          {
+            title: "Setup 2: Partículas Físicas & Geometria Tridimensional",
+            panels: [
+              { name: "Painel Superior Esquerdo", cmd: "tarts matrix" },
+              { name: "Painel Superior Direito", cmd: "donut" },
+              { name: "Painel Inferior", cmd: "fireworks --gap 0.5" }
+            ]
+          },
+          {
+            title: "Setup 3: Retrô Nostálgico & Dinâmica de Fluidos",
+            panels: [
+              { name: "Painel Superior Esquerdo", cmd: "nyancat -n" },
+              { name: "Painel Superior Direito", cmd: "pipes.sh -p 5 -t 1 -c 1 2 3 4 5 6 -f 85 -R -K" },
+              { name: "Painel Inferior", cmd: "lavat -g -G -c FF007F -k 00F0FF -s 5 -r 6 -b 14" }
+            ]
+          }
+        ],
+        shortcuts: [
+          { key: "Cmd + D / Cmd + Shift + D", action: "Dividir painel vertical ou horizontal no iTerm2 / Terminal" },
+          { key: 'Ctrl + b % / Ctrl + b \"', action: "Dividir painel vertical ou horizontal no Tmux" }
+        ]
+      }
+    ];
+
+    let currentDocTopic = "bottom";
+
+    // RENDER DOC TOPICS IN SIDEBAR
+    function renderDocTopics() {
+      const list = document.getElementById("docTopicsList");
+      if (!list) return;
+      list.innerHTML = "";
+
+      const query = (document.getElementById("docSearchInput")?.value || "").toLowerCase().trim();
+
+      const filtered = DOCS_DATA.filter(t => {
+        if (!query) return true;
+        return t.name.toLowerCase().includes(query) || 
+               t.badge.toLowerCase().includes(query) || 
+               t.desc.toLowerCase().includes(query) ||
+               t.invoke.toLowerCase().includes(query);
+      });
+
+      filtered.forEach(t => {
+        const item = document.createElement("div");
+        item.className = `doc-topic-item ${t.id === currentDocTopic ? "active" : ""}`;
+        item.onclick = () => selectDocTopic(t.id);
+
+        item.innerHTML = `
+          <div class="doc-topic-header">
+            <span class="doc-topic-title">${t.name}</span>
+            <span class="doc-topic-tag">${t.badge.split(" ")[0]}</span>
+          </div>
+          <div class="doc-topic-desc">${t.desc}</div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    // FILTER DOC TOPICS
+    function filterDocTopics() {
+      renderDocTopics();
+    }
+
+    // SELECT TOPIC AND RENDER CENTRAL PANEL
+    function selectDocTopic(topicId) {
+      currentDocTopic = topicId;
+      renderDocTopics();
+
+      const topic = DOCS_DATA.find(t => t.id === topicId) || DOCS_DATA[0];
+      const panel = document.getElementById("docMainContent");
+      if (!panel) return;
+
+      let extraContent = "";
+
+      // Specific renderer for tarts screensavers
+      if (topic.effectsList) {
+        extraContent = `
+          <div>
+            <div class="doc-block-title">
+              <span>Catálogo dos 12 Screensavers em Rust</span>
+            </div>
+            <div class="tarts-doc-grid">
+              ${topic.effectsList.map(e => `
+                <div class="tarts-doc-item">
+                  <div>
+                    <div class="tarts-doc-name">
+                      <span>${e.name}</span>
+                    </div>
+                    <p class="tarts-doc-desc">${e.desc}</p>
+                  </div>
+                  <div class="apple-cmd-box" style="padding: 7px 10px;">
+                    <span class="apple-cmd-code">${escapeHtml(e.cmd)}</span>
+                    <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(e.cmd)}', this)">
+                      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copiar</span>
+                    </button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      // Specific renderer for multi-panel combos
+      if (topic.setups) {
+        extraContent = `
+          <div>
+            <div class="doc-block-title">
+              <span>Layouts Prontos para Terminal Dividido</span>
+            </div>
+            <div class="combos-doc-stack">
+              ${topic.setups.map(s => `
+                <div class="combo-card">
+                  <span class="combo-title">${s.title}</span>
+                  <div class="combo-panels-list">
+                    ${s.panels.map(p => `
+                      <div class="combo-panel-row">
+                        <span class="combo-panel-name">${p.name}</span>
+                        <div class="apple-cmd-box" style="flex: 1; padding: 6px 10px;">
+                          <span class="apple-cmd-code">${escapeHtml(p.cmd)}</span>
+                          <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(p.cmd)}', this)">
+                            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copiar</span>
+                          </button>
+                        </div>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      // Standard examples renderer
+      const examplesBlock = (topic.examples && topic.examples.length > 0) ? `
+        <div>
+          <div class="doc-block-title">
+            <span>Exemplos de Comandos & Variações Visuais</span>
+          </div>
+          <div class="doc-presets-stack">
+            ${topic.examples.map(ex => `
+              <div class="doc-preset-card">
+                <div class="doc-preset-head">
+                  <span class="doc-preset-title">${ex.title}</span>
+                </div>
+                <p class="doc-preset-expl">${ex.expl}</p>
+                <div class="apple-cmd-box">
+                  <span class="apple-cmd-code">${escapeHtml(ex.cmd)}</span>
+                  <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(ex.cmd)}', this)">
+                    <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>Copiar</span>
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      ` : "";
+
+      // Shortcuts block
+      const shortcutsBlock = (topic.shortcuts && topic.shortcuts.length > 0) ? `
+        <div>
+          <div class="doc-block-title">
+            <span>Controles e Atalhos em Tempo Real</span>
+          </div>
+          <div class="doc-shortcuts-grid">
+            ${topic.shortcuts.map(sc => `
+              <div class="doc-shortcut-item">
+                <span class="doc-kbd">${escapeHtml(sc.key)}</span>
+                <span class="doc-shortcut-label">${escapeHtml(sc.action)}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      ` : "";
+
+      panel.innerHTML = `
+        <div class="doc-app-header">
+          <div class="doc-app-meta">
+            <div class="doc-app-title-row">
+              <h3 class="doc-app-name">${topic.name}</h3>
+              <span class="doc-app-badge">${topic.badge}</span>
+            </div>
+            <p class="doc-app-desc">${topic.desc}</p>
+          </div>
+
+          <a href="${topic.repo}" target="_blank" rel="noopener noreferrer" class="apple-github-btn" title="Ver código-fonte oficial no GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>Repositório GitHub</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div>
+          <div class="doc-block-title">
+            <span>Comando de Invocação Base</span>
+          </div>
+          <div class="apple-cmd-box">
+            <span class="apple-cmd-code">${escapeHtml(topic.invoke)}</span>
+            <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(topic.invoke)}', this)">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        ${extraContent}
+        ${examplesBlock}
+        ${shortcutsBlock}
+      `;
+    }
+
+    // 1-CLICK COPY FUNCTION
+    function copyCommand(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        triggerCopyFeedback(text, btnElement);
+      }).catch(() => {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        triggerCopyFeedback(text, btnElement);
+      });
+    }
+
+    function triggerCopyFeedback(text, btnElement) {
+      if (btnElement) {
+        const originalHTML = btnElement.innerHTML;
+        btnElement.innerHTML = `
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" style="width:12px;height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Copiado</span>
+        `;
+        btnElement.classList.add("copied");
+        setTimeout(() => {
+          btnElement.innerHTML = originalHTML;
+          btnElement.classList.remove("copied");
+        }, 1800);
+      }
+      showToast(`Comando copiado: ${text}`);
+    }
+
+    // NAVIGATION SWITCHER
+    function switchMainSection(target, btnElement) {
+      document.querySelectorAll(".dock-seg-btn").forEach(b => b.classList.remove("active"));
+      if (btnElement) {
+        btnElement.classList.add("active");
+      }
+
+      let elId = "themesSection";
+      if (target === "fonts") elId = "fontsSection";
+      else if (target === "docs") elId = "docsSection";
+
+      const targetEl = document.getElementById(elId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
     // INITIAL FETCH OF ACTIVE STATE
     async function fetchCurrentState() {
       try {
@@ -1618,6 +2873,8 @@
     // INIT ON LOAD
     window.addEventListener("DOMContentLoaded", () => {
       fetchCurrentState();
+      renderDocTopics();
+      selectDocTopic('bottom');
     });
   </script>
 </body>
