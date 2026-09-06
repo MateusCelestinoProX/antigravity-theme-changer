@@ -98,7 +98,7 @@ class TestAntigravityThemeChanger(unittest.TestCase):
             "tarts",
             "fireworks",
             "nyancat",
-            "btop",
+            "fastfetch",
             "combos"
         ]
         for util in expected_utilities:
