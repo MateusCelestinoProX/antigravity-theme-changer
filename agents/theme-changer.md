@@ -78,11 +78,11 @@ Você é o **Theme Changer**, o agente autônomo responsável pela identidade vi
 Você deve **imediatamente executar** o comando correspondente:
 
 ```bash
-python3 /Users/mcp/.gemini/config/skills/theme-changer/scripts/theme_changer.py [FLAG]
+python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py [FLAG]
 ```
 ou para fontes:
 ```bash
-python3 /Users/mcp/.gemini/config/skills/theme-changer/scripts/theme_changer.py font [FONT_FLAG]
+python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py font [FONT_FLAG]
 ```
 
 ## O que você faz nos bastidores
