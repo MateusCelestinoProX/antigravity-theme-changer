@@ -777,6 +777,73 @@ def handle_init():
     print(f"👉 {APP_URL}")
     print("━" * 60)
 
+def handle_status():
+    print("━" * 60)
+    print("🍏 GOOGLE ANTIGRAVITY — THEME & FONT STATUS")
+    print("━" * 60)
+    # Server status
+    server_on = is_server_running()
+    print(f"📡 Servidor Web:  {'🟢 ONLINE (Porta 48123)' if server_on else '🔴 OFFLINE'}")
+    print(f"🌐 Dashboard URL:  {APP_URL}")
+
+    # Active font
+    font_file = Path.home() / ".gemini/config/active_font.json"
+    font_id = "jetbrains"
+    font_scope = "full"
+    if font_file.exists():
+        try:
+            with open(font_file, "r", encoding="utf-8") as f:
+                d = json.load(f)
+                font_id = d.get("font", "jetbrains")
+                font_scope = d.get("scope", "full")
+        except Exception:
+            pass
+    f_info = FONTS.get(font_id, {"name": font_id, "badge": "PRO", "author": ""})
+    print(f"🔤 Fonte Ativa:   {f_info['name']} [{f_info.get('badge', '')}] (Modo: {font_scope.upper()})")
+
+    # Active theme
+    config_file = Path.home() / ".gemini/config/config.json"
+    theme_name = "Dracula"
+    theme_mode = "THEME_MODE_DARK"
+    bg = ""
+    pri = ""
+    if config_file.exists():
+        try:
+            with open(config_file, "r", encoding="utf-8") as f:
+                cfg = json.load(f)
+                theme_mode = cfg.get("userSettings", {}).get("themeMode", "THEME_MODE_DARK")
+                seeds = cfg.get("userSettings", {}).get("customThemeSeedsDark" if "DARK" in theme_mode else "customThemeSeedsLight", {})
+                bg = seeds.get("background", "")
+                pri = seeds.get("primary", "")
+                for tid, tobj in THEMES.items():
+                    if tobj["seeds"]["primary"].lower() == pri.lower() and tobj["seeds"]["background"].lower() == bg.lower():
+                        theme_name = tobj["name"]
+                        break
+        except Exception:
+            pass
+    print(f"🎨 Tema Ativo:    {theme_name} ({theme_mode})")
+    if bg and pri:
+        print(f"   - Fundo:       {bg}")
+        print(f"   - Primária:    {pri}")
+    print("━" * 60)
+
+def handle_list():
+    print("━" * 60)
+    print("🎨 CATÁLOGO COMPLETO DE 31 TEMAS DO GOOGLE ANTIGRAVITY")
+    print("━" * 60)
+    cats = {"full": "⚡ 1. Full Monocromático (6)", "dark": "🌙 2. Dark Velvet Tinted (11)", "light": "☀️ 3. Light Luminary (14)"}
+    for cat_key, cat_title in cats.items():
+        print(f"\n{cat_title}:")
+        for tid, t in THEMES.items():
+            if t.get("category") == cat_key:
+                print(f"  - {t['seeds']['primary']:<9} -{tid:<16} {t['name']:<28} (BG: {t['seeds']['background']})")
+    print("\n" + "━" * 60)
+    print("🔤 CATÁLOGO COMPLETO DE 13 FONTES COM LIGADURAS NATIVAS")
+    print("━" * 60)
+    for fid, f in FONTS.items():
+        print(f"  - {f['tag']:<15} {f['name']:<24} [{f['badge']:<14}] ({f['author']})")
+    print("━" * 60)
+
 def main():
     args = sys.argv[1:]
     raw_args = " ".join(args).lower().strip()
@@ -784,6 +851,16 @@ def main():
     # Special command: init
     if "init" in raw_args or (args and args[0].lower() in ["init", "--init", "-init"]):
         handle_init()
+        return
+
+    # Special command: status
+    if "status" in raw_args or (args and args[0].lower() in ["status", "--status", "-s"]):
+        handle_status()
+        return
+
+    # Special command: list
+    if "list" in raw_args or (args and args[0].lower() in ["list", "--list", "-l"]):
+        handle_list()
         return
 
     # Scope detection
