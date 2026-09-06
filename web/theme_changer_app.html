@@ -2175,7 +2175,7 @@
         name: "bottom (btm)",
         badge: "Rust Utility",
         repo: "https://github.com/ClementTsang/bottom",
-        desc: "Monitor gráfico de recursos do sistema em Rust com foco em baixa latência e consumo mínimo de memória. Substituto de alta performance para btop e htop.",
+        desc: "Monitor gráfico de recursos do sistema em Rust com foco em baixa latência e consumo mínimo de memória. Substituto de alta performance para monitores de recursos tradicionais.",
         invoke: "btm",
         examples: [
           {
@@ -2642,52 +2642,59 @@
         ]
       },
       {
-        id: "btop",
-        name: "btop",
-        badge: "C++ Classic Monitor",
-        repo: "https://github.com/aristocratos/btop",
-        desc: "Monitor clássico de recursos do sistema com interface modular, suporte a temas visuais e gráficos dinâmicos.",
-        invoke: "btop",
+        id: "fastfetch",
+        name: "fastfetch",
+        badge: "C Performance",
+        repo: "https://github.com/fastfetch-cli/fastfetch",
+        desc: "Utilitário ultra-rápido em C para exibição estética de informações e telemetria do hardware e sistema operacional com logos ASCII e layouts modulares.",
+        invoke: "fastfetch",
         examples: [
           {
-            title: "Inicialização Padrão Completa",
-            expl: "Painel modular com CPU, memória, atividade de disco e processos.",
-            cmd: "btop"
+            title: "Execução Padrão com Logo Apple",
+            expl: "Exibição clássica completa com logotipo oficial do sistema e resumo de hardware e software.",
+            cmd: "fastfetch"
           },
           {
-            title: "Carregamento Direto com Preset 1",
-            expl: "Inicia a interface aplicando o layout compacto pré-definido.",
-            cmd: "btop --preset 1"
+            title: "Preset Estilo Neofetch Clássico",
+            expl: "Layout consagrado com blocos de paleta de cores cromáticas no rodapé.",
+            cmd: "fastfetch -c neofetch"
           },
           {
-            title: "Carregamento com Preset 2 (Foco em Discos & Rede)",
-            expl: "Prioriza os gráficos de tráfego de rede e I/O de armazenamento.",
-            cmd: "btop --preset 2"
+            title: "Modo Paleofetch Ultra-Limpo",
+            expl: "Configuração de alta performance com telemetria essencial de CPU, GPU, Uptime e Bateria.",
+            cmd: "fastfetch -c paleofetch"
           },
           {
-            title: "Taxa de Atualização Rápida de 500ms",
-            expl: "Monitoramento de alta sensibilidade para picos e gargalos transitórios.",
-            cmd: "btop --update 500"
+            title: "Telemetria de Engenharia Completa (All)",
+            expl: "Todos os módulos disponíveis ativos incluindo telas, discos, sensores e arquitetura.",
+            cmd: "fastfetch -c all"
           },
           {
-            title: "Forçar Renderização UTF-8",
-            expl: "Assegura gráficos de contorno de alta fidelidade em terminais estritos.",
-            cmd: "btop --utf-force"
+            title: "Logo Reduzido para Painéis Estreitos",
+            expl: "Logo ASCII em versão compacta ideal para terminais divididos ou janelas laterais.",
+            cmd: "fastfetch --logo-type small"
           },
           {
-            title: "Modo 16 Cores para Conexões Remotas",
-            expl: "Reduz o payload de sequências ANSI para sessões SSH de baixa largura de banda.",
-            cmd: "btop --low-color"
+            title: "Seleção Específica de Módulos",
+            expl: "Filtro em linha única focando apenas nos componentes essenciais de computação.",
+            cmd: "fastfetch --structure OS:Host:Kernel:Uptime:CPU:GPU:Memory:Disk"
+          },
+          {
+            title: "Modo Minimalista sem Logo Gráfico",
+            expl: "Oculta a arte ASCII exibindo puramente os dados de telemetria alinhados à esquerda.",
+            cmd: "fastfetch --logo none"
+          },
+          {
+            title: "Exportação Estruturada em JSON",
+            expl: "Gera a árvore completa de dados da máquina em formato JSON para automações e scripts.",
+            cmd: "fastfetch --format json"
           }
         ],
         shortcuts: [
-          { key: "m", action: "Abrir menu de configurações e temas" },
-          { key: "p", action: "Alternar presets visuais de 0 a 9" },
-          { key: "f", action: "Abrir barra de filtro e busca de processos" },
-          { key: "e", action: "Alternar exibição de processos em árvore hierárquica" },
-          { key: "1 a 4", action: "Focar nos módulos de CPU, Memória, Rede e Processos" },
-          { key: "dd", action: "Enviar comando de encerramento forçado ao processo selecionado" },
-          { key: "q", action: "Fechar o aplicativo" }
+          { key: "fastfetch -h", action: "Exibir todas as opções de linha de comando e módulos suportados" },
+          { key: "fastfetch --list-presets", action: "Listar todos os presets oficiais e exemplos integrados" },
+          { key: "fastfetch --list-logos", action: "Listar todos os logotipos suportados de sistemas e distros" },
+          { key: "fastfetch --gen-config", action: "Gerar arquivo de configuração customizado em jsonc" }
         ]
       },
       {
