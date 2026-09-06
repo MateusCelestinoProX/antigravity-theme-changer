@@ -25,6 +25,7 @@ Para um mergulho profundo em cada faceta da solução, consulte nossos manuais d
 - 🤖 **[Guia do Agente Autônomo (AGENT_GUIDE.md)](docs/AGENT_GUIDE.md)**: Documentação completa do agente `@theme-changer`, gramática de comandos, políticas de execução, manifesto YAML e integração com o Antigravity 2.0.
 - 🏛️ **[Arquitetura do Sistema (ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: Detalhamento do motor Tri-Sync, protocolo CDP WebSocket, injeção de CSS em <150ms, busca dinâmica de portas e doutrina de design Apple Liquid Glass.
 - 📡 **[Referência da API REST (API_REFERENCE.md)](docs/API_REFERENCE.md)**: Especificação completa de todas as rotas HTTP locais da porta 48123 (`/api/status`, `/api/list`, `/api/set-theme`, `/api/set-font`), schemas JSON e exemplos com cURL e JavaScript.
+- 💻 **[Catálogo de Utilitários Shell macOS (SHELL_UTILITIES.md)](docs/SHELL_UTILITIES.md)**: Guia completo dos 10 utilitários de terminal e screensavers estéticos para macOS, 70+ presets e exemplos de comandos pesquisados na comunidade, atalhos em tempo real e setups multi-painel para iTerm2 e Tmux.
 
 ---
 
