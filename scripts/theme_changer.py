@@ -662,15 +662,21 @@ def get_script_path(name):
     return p1
 
 def get_server_script():
-    p1 = Path(__file__).resolve().parent.parent / "theme_server.py"
+    # 1. Mesma pasta scripts
+    p1 = Path(__file__).resolve().parent / "theme_server.py"
     if p1.exists():
         return p1
-    p2 = Path(__file__).resolve().parent / "theme_server.py"
+    # 2. Pasta raiz do projeto/skill
+    p2 = Path(__file__).resolve().parent.parent / "theme_server.py"
     if p2.exists():
         return p2
-    p3 = Path("/Users/mcp/.gemini/antigravity/brain/38c03376-3545-4755-a269-82bc20b62dbc/theme_server.py")
+    # 3. Pasta padrão global de scripts do Antigravity
+    p3 = Path.home() / ".gemini/config/skills/theme-changer/scripts/theme_server.py"
     if p3.exists():
         return p3
+    p4 = Path.home() / ".gemini/config/skills/theme-changer/theme_server.py"
+    if p4.exists():
+        return p4
     return p1
 
 def apply_live(theme_key):
@@ -717,18 +723,32 @@ def handle_init():
     if is_server_running():
         print(f"[✓] Servidor interno multithread já está ativo na porta {PORT}.")
     else:
-        print(f"[*] Iniciando servidor interno multithread na porta {PORT}...")
-        log_file = Path.home() / ".gemini/antigravity/theme_server.log"
-        log_file.parent.mkdir(parents=True, exist_ok=True)
+        log_candidates = [
+            Path.home() / ".gemini/antigravity/theme_server.log",
+            Path.home() / ".gemini/config/skills/theme-changer/theme_server.log",
+            Path("/tmp/antigravity_theme_server.log")
+        ]
+        f_out = None
+        for cand in log_candidates:
+            try:
+                cand.parent.mkdir(parents=True, exist_ok=True)
+                f_out = open(cand, "a", encoding="utf-8")
+                break
+            except Exception:
+                continue
+
         server_path = get_server_script()
-        with open(log_file, "a", encoding="utf-8") as f_out:
+        stdout_target = f_out if f_out is not None else subprocess.DEVNULL
+        try:
             subprocess.Popen(
                 [sys.executable, str(server_path)],
-                stdout=f_out,
+                stdout=stdout_target,
                 stderr=subprocess.STDOUT,
                 cwd=str(server_path.parent),
                 start_new_session=True
             )
+        except Exception as err:
+            print(f"[!] Erro ao iniciar processo do servidor: {err}")
 
         started = False
         for _ in range(25):
