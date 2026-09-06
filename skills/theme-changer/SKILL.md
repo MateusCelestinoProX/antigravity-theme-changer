@@ -11,7 +11,7 @@ description: >
 
 ### 🚀 Inicialização Completa em 1 Comando:
 ```bash
-python3 /Users/mcp/.gemini/config/skills/theme-changer/scripts/theme_changer.py init
+python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py init
 ```
 Inicia o servidor interno multithread e abre automaticamente o **Theme Studio & Font Center** no navegador padrão.
 
@@ -38,7 +38,7 @@ Permite alternar instantaneamente entre a suíte completa de temas e fontes no G
 16. **Dark Basalt Copper (`-copper`)**: Fundo basalto vulcânico (#120E0A) com cobre incandescente (#FB923C).
 17. **Dark Cosmic Ultraviolet (`-ultraviolet`)**: Fundo espaço cósmico (#080616) com luz ultravioleta & índigo (#818CF8).
 
-### ☀️ Modo Claro Luminary + Cor Secundária (13 Opções):
+### ☀️ Modo Claro Luminary + Cor Secundária (14 Opções):
 18. **Pure Clean White (`-white`)**: Fundo puro branco (#FFFFFF) com tipografia cinza ardósia (#111827).
 19. **Light Emerald (`-emerald`)**: Base clara refrescante com cor secundária em verde esmeralda (#059669).
 20. **Light Sapphire (`-sapphire`)**: Base clara cristalina com cor secundária em azul safira executivo (#0284C7).
@@ -74,13 +74,13 @@ Permite alternar instantaneamente entre a suíte completa de temas e fontes no G
 Para trocar o tema imediatamente, execute via terminal:
 
 ```bash
-python3 /Users/mcp/.gemini/config/skills/theme-changer/scripts/theme_changer.py theme -emerald
+python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py theme -emerald
 ```
 
 Para trocar a fonte imediatamente:
 
 ```bash
-python3 /Users/mcp/.gemini/config/skills/theme-changer/scripts/theme_changer.py font -victor
+python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py font -victor
 ```
 
 ## Como a Mágica Acontece (Arquitetura)
