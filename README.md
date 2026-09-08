@@ -45,6 +45,9 @@ Para um mergulho profundo em cada faceta da solução, consulte nossos manuais d
 - **⚡ Injeção Sub-150ms em Tempo Real**:
   - Sem necessidade de recarregar a janela do Antigravity.
   - Conexão direta via Chrome DevTools Protocol (CDP) com sincronização bidirecional em `config.json` e `antigravity_state.pbtxt`.
+- **🌐 Servidor Dual-Stack & Persistente (macOS LaunchAgent)**:
+  - Suporte simultâneo a IPv6 (`::1`) e IPv4 (`127.0.0.1`) com cabeçalhos PNA para navegadores Brave e Chrome.
+  - Inicialização contínua em segundo plano via comando `service install`.
 - **🚀 Ativação em 1 Comando (`init`)**:
   - Inicializa o servidor interno multithread e abre a página no navegador com apenas uma instrução.
 
@@ -78,6 +81,7 @@ Você pode invocar o agente autônomo `@theme-changer` no chat do Antigravity pa
 | `@theme-changer init` | Inicia o servidor interno e abre o painel web | `@theme-changer init` |
 | `@theme-changer status` | Exibe tema ativo, fonte ativa, modo e status do servidor | `@theme-changer status` |
 | `@theme-changer list` | Lista todos os 31 temas e 13 fontes disponíveis | `@theme-changer list` |
+| `@theme-changer service status` | Consulta o status do LaunchAgent persistente | `@theme-changer service status` |
 | `@theme-changer theme -[FLAG]` | Altera o tema instantaneamente em tempo real | `@theme-changer theme -matcha` |
 | `@theme-changer font -[FLAG]` | Altera a tipografia globalmente com ligaduras | `@theme-changer font -victor` |
 | `@theme-changer font -[FLAG] -code-only` | Aplica a fonte apenas no editor e terminais | `@theme-changer font -fira -code-only` |
