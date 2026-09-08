@@ -4,15 +4,25 @@ Antigravity Theme & Font Changer Engine
 Full, Dark & Light Mode themes + 13 Coding Fonts with Ligatures.
 """
 
+import os
 import sys
 import json
 import re
-import subprocess
 import socket
 import time
 import webbrowser
-import os
+import subprocess
+import urllib.request
+import urllib.parse
 from pathlib import Path
+
+# Garantir PATH para Homebrew e Node.js no macOS
+default_paths = ["/opt/homebrew/bin", "/opt/homebrew/sbin", "/usr/local/bin"]
+cur_path = os.environ.get("PATH", "")
+for p in default_paths:
+    if p not in cur_path and os.path.exists(p):
+        cur_path = f"{p}:{cur_path}"
+os.environ["PATH"] = cur_path
 
 FONTS = {
     "jetbrains": {
@@ -707,22 +717,38 @@ APP_URL = "http://localhost:48123/theme_changer_app.html"
 PORT = 48123
 
 def is_server_running(port=PORT):
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.settimeout(0.3)
-            if s.connect_ex(("127.0.0.1", port)) == 0:
+    # 1. Teste HTTP real com handshake em /api/ping
+    for url in [f"http://localhost:{port}/api/ping", f"http://127.0.0.1:{port}/api/ping"]:
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "ThemeChangerCli"})
+            with urllib.request.urlopen(req, timeout=0.6) as r:
+                if r.status == 200:
+                    return True
+        except Exception:
+            pass
+
+    # 2. Teste via socket connect (IPv6 ::1 e IPv4 127.0.0.1)
+    for host, fam in [("::1", socket.AF_INET6), ("127.0.0.1", socket.AF_INET)]:
+        try:
+            with socket.socket(fam, socket.SOCK_STREAM) as s:
+                s.settimeout(0.3)
+                if s.connect_ex((host, port)) == 0:
+                    return True
+        except Exception:
+            pass
+
+    # 3. Em ambientes restritos/sandboxed, checagem via bind
+    for host, fam in [("::", socket.AF_INET6), ("127.0.0.1", socket.AF_INET)]:
+        try:
+            with socket.socket(fam, socket.SOCK_STREAM) as s:
+                s.bind((host, port))
+                return False
+        except OSError as err:
+            if err.errno in (48, 98):  # EADDRINUSE
                 return True
-    except Exception:
-        pass
-    # Em ambientes sandboxed onde connect local pode sofrer EPERM,
-    # verificamos se a porta já está ocupada por bind:
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind(("127.0.0.1", port))
-            return False
-    except OSError as err:
-        if err.errno in (48, 98):  # EADDRINUSE
-            return True
+        except Exception:
+            pass
+
     return False
 
 
@@ -735,6 +761,11 @@ def handle_init():
     if is_server_running():
         print(f"[✓] Servidor interno multithread já está ativo na porta {PORT}.")
     else:
+        # Se houver serviço do macOS LaunchAgent, tenta via launchctl
+        plist_file = Path.home() / "Library/LaunchAgents/com.antigravity.theme-changer.plist"
+        if plist_file.exists():
+            subprocess.run(["launchctl", "start", "com.antigravity.theme-changer"], capture_output=True)
+
         log_candidates = [
             Path.home() / ".gemini/antigravity/theme_server.log",
             Path.home() / ".gemini/config/skills/theme-changer/theme_server.log",
@@ -763,7 +794,7 @@ def handle_init():
             print(f"[!] Erro ao iniciar processo do servidor: {err}")
 
         started = False
-        for _ in range(25):
+        for _ in range(40):
             time.sleep(0.1)
             if is_server_running():
                 started = True
@@ -788,6 +819,7 @@ def handle_init():
     print("\n✨ Tudo pronto! Acesse o painel pelo link abaixo com apenas 1 clique:")
     print(f"👉 {APP_URL}")
     print("━" * 60)
+
 
 def handle_status():
     print("━" * 60)
@@ -856,9 +888,88 @@ def handle_list():
         print(f"  - {f['tag']:<15} {f['name']:<24} [{f['badge']:<14}] ({f['author']})")
     print("━" * 60)
 
+def handle_service(args):
+    """Gerencia o LaunchAgent do macOS para persistência automática."""
+    action = args[0].lower() if args else "status"
+    plist_dir = Path.home() / "Library/LaunchAgents"
+    plist_file = plist_dir / "com.antigravity.theme-changer.plist"
+    server_script = get_server_script()
+    log_file = Path.home() / ".gemini/antigravity/theme_server.log"
+
+    if action == "install":
+        print("[*] Instalando serviço de inicialização automática no macOS (LaunchAgent)...")
+        plist_dir.mkdir(parents=True, exist_ok=True)
+        log_file.parent.mkdir(parents=True, exist_ok=True)
+
+        plist_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.antigravity.theme-changer</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{sys.executable}</string>
+        <string>{server_script}</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>{log_file}</string>
+    <key>StandardErrorPath</key>
+    <string>{log_file}</string>
+</dict>
+</plist>
+"""
+        with open(plist_file, "w", encoding="utf-8") as f:
+            f.write(plist_content)
+
+        subprocess.run(["launchctl", "unload", str(plist_file)], capture_output=True)
+        res = subprocess.run(["launchctl", "load", "-w", str(plist_file)], capture_output=True, text=True)
+        if res.returncode == 0:
+            print("[✓] Serviço instalado e ativado! O Theme Changer rodará automaticamente em background.")
+        else:
+            print("[!] Aviso ao carregar serviço via launchctl:", res.stderr.strip())
+
+    elif action == "uninstall":
+        print("[*] Removendo serviço do LaunchAgent...")
+        if plist_file.exists():
+            subprocess.run(["launchctl", "unload", str(plist_file)], capture_output=True)
+            plist_file.unlink()
+            print("[✓] Serviço removido com sucesso.")
+        else:
+            print("[i] O serviço não estava instalado.")
+
+    elif action == "start":
+        if plist_file.exists():
+            subprocess.run(["launchctl", "start", "com.antigravity.theme-changer"], capture_output=True)
+            print("[✓] Sinal de início enviado via launchctl.")
+        else:
+            handle_init()
+
+    elif action == "stop":
+        if plist_file.exists():
+            subprocess.run(["launchctl", "stop", "com.antigravity.theme-changer"], capture_output=True)
+        subprocess.run(["pkill", "-f", "theme_server.py"], capture_output=True)
+        print("[✓] Servidor parado.")
+
+    else:
+        installed = plist_file.exists()
+        running = is_server_running()
+        print(f"Status do LaunchAgent: {'Instalado' if installed else 'Não instalado'}")
+        print(f"Status do Servidor:    {'🟢 ONLINE' if running else '🔴 OFFLINE'}")
+
 def main():
     args = sys.argv[1:]
     raw_args = " ".join(args).lower().strip()
+
+    # Special command: service
+    if "service" in raw_args or (args and args[0].lower() in ["service", "--service"]):
+        subargs = [a for a in args if not a.startswith("-") and a.lower() != "service"]
+        handle_service(subargs)
+        return
 
     # Special command: init
     if "init" in raw_args or (args and args[0].lower() in ["init", "--init", "-init"]):
