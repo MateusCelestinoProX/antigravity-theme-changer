@@ -219,6 +219,14 @@
       font-size: 12px;
       color: var(--text-secondary);
       transition: var(--transition-spring);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .status-capsule.offline {
+      background: rgba(255, 59, 48, 0.08);
+      border-color: rgba(255, 59, 48, 0.3);
+      color: #ff6b6b;
     }
 
     .status-dot {
@@ -228,6 +236,12 @@
       background: var(--system-emerald);
       box-shadow: 0 0 10px var(--system-emerald);
       animation: pulseDot 2.4s infinite;
+    }
+
+    .status-dot.offline {
+      background: #ff3b30;
+      box-shadow: 0 0 10px rgba(255, 59, 48, 0.6);
+      animation: none;
     }
 
     @keyframes pulseDot {
@@ -1390,9 +1404,9 @@
           <button class="dock-seg-btn" id="segBtnFonts" onclick="switchMainSection('fonts', this)">Tipografia</button>
           <button class="dock-seg-btn" id="segBtnDocs" onclick="switchMainSection('docs', this)">Documentação Shell</button>
         </div>
-        <div class="status-capsule">
-          <div class="status-dot"></div>
-          <span>Online • 51897</span>
+        <div class="status-capsule" id="serverStatusCapsule" onclick="checkServerHealth(true)" title="Status do Servidor Antigravity. Clique para testar conexao.">
+          <div class="status-dot" id="serverStatusDot"></div>
+          <span id="serverStatusText">Conectando...</span>
         </div>
       </div>
 
@@ -2138,32 +2152,42 @@
     // APPLY THEME
     async function applyTheme(themeKey) {
       const t0 = performance.now();
-      currentActiveTheme = themeKey;
+      const targetCard = document.getElementById(`themeCard-${themeKey}`);
+      const btn = targetCard ? targetCard.querySelector(".btn-apply") : null;
+      const originalBtnText = btn ? btn.textContent : "Aplicar Tema";
 
-      document.querySelectorAll(".themes-grid .glass-card").forEach(c => c.classList.remove("is-active"));
-      const activeCard = document.getElementById(`themeCard-${themeKey}`);
-      if (activeCard) {
-        activeCard.classList.add("is-active");
-        const btn = activeCard.querySelector(".btn-apply");
-        if (btn) btn.textContent = "✓ Ativo no Antigravity";
-      }
+      if (btn) btn.textContent = "Aplicando...";
 
       const themeObj = THEMES_DATA.find(t => t.id === themeKey);
       const themeName = themeObj ? themeObj.name : themeKey;
-      document.getElementById("dockActiveTheme").innerHTML = `<span>Tema:</span> <strong>${themeName}</strong>`;
 
       try {
-        const res = await fetch(`/api/set-theme?theme=${themeKey}`);
+        const apiBase = getApiBaseUrl();
+        const res = await fetch(`${apiBase}/api/set-theme?theme=${themeKey}`);
         const data = await res.json();
         const duration = Math.round(performance.now() - t0);
 
         if (data.success) {
+          currentActiveTheme = themeKey;
+          document.querySelectorAll(".themes-grid .glass-card").forEach(c => c.classList.remove("is-active"));
+          document.querySelectorAll(".themes-grid .btn-apply").forEach(b => {
+            if (b.textContent.includes("Ativo")) b.textContent = "Aplicar Tema";
+          });
+          if (targetCard) {
+            targetCard.classList.add("is-active");
+            if (btn) btn.textContent = "✓ Ativo no Antigravity";
+          }
+          document.getElementById("dockActiveTheme").innerHTML = `<span>Tema:</span> <strong>${themeName}</strong>`;
           showToast(`Tema ${themeName} aplicado em tempo real (${duration}ms)`);
+          updateServerStatus(true, 48123);
         } else {
+          if (btn) btn.textContent = originalBtnText;
           showToast(`Erro ao aplicar tema: ${data.error || "Desconhecido"}`, true);
         }
       } catch (err) {
-        showToast(`Falha de conexão com o servidor local: ${err.message}`, true);
+        if (btn) btn.textContent = originalBtnText;
+        updateServerStatus(false);
+        showToast(`Falha de conexao com o servidor local. Execute 'python3 theme_changer.py init' no terminal (${err.message})`, true);
       }
     }
 
@@ -3012,13 +3036,76 @@
         .replace(/'/g, "&#039;");
     }
 
+    // API BASE RESOLVER & HEALTH HEARTBEAT
+    function getApiBaseUrl() {
+      if (window.location.protocol === "file:") {
+        return "http://localhost:48123";
+      }
+      return "";
+    }
+
+    function updateServerStatus(online, port = 48123) {
+      const capsule = document.getElementById("serverStatusCapsule");
+      const dot = document.getElementById("serverStatusDot");
+      const text = document.getElementById("serverStatusText");
+      if (!capsule || !dot || !text) return;
+
+      if (online) {
+        capsule.classList.remove("offline");
+        dot.classList.remove("offline");
+        text.textContent = `Online • ${port}`;
+      } else {
+        capsule.classList.add("offline");
+        dot.classList.add("offline");
+        text.textContent = "Servidor Offline";
+      }
+    }
+
+    let isCheckingHealth = false;
+    async function checkServerHealth(userTriggered = false) {
+      if (isCheckingHealth) return;
+      isCheckingHealth = true;
+      try {
+        const apiBase = getApiBaseUrl();
+        const res = await fetch(`${apiBase}/api/status`, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          updateServerStatus(true, data.port || 48123);
+          if (userTriggered) {
+            showToast(`Servidor conectado na porta ${data.port || 48123}`);
+          }
+        } else {
+          updateServerStatus(false);
+          if (userTriggered) {
+            showToast("Servidor retornou erro HTTP", true);
+          }
+        }
+      } catch (err) {
+        updateServerStatus(false);
+        if (userTriggered) {
+          showToast("Servidor offline. Execute 'python3 theme_changer.py init'", true);
+        }
+      } finally {
+        isCheckingHealth = false;
+      }
+    }
+
     // INITIAL FETCH OF ACTIVE STATE
     async function fetchCurrentState() {
+      const apiBase = getApiBaseUrl();
       try {
-        const [fontRes, themeRes] = await Promise.allSettled([
-          fetch("/api/current-font"),
-          fetch("/api/current-theme")
+        const [statusRes, fontRes, themeRes] = await Promise.allSettled([
+          fetch(`${apiBase}/api/status`, { cache: "no-store" }),
+          fetch(`${apiBase}/api/current-font`, { cache: "no-store" }),
+          fetch(`${apiBase}/api/current-theme`, { cache: "no-store" })
         ]);
+
+        if (statusRes.status === "fulfilled" && statusRes.value.ok) {
+          const statusData = await statusRes.value.json();
+          updateServerStatus(true, statusData.port || 48123);
+        } else {
+          updateServerStatus(false);
+        }
 
         if (fontRes.status === "fulfilled" && fontRes.value.ok) {
           const fontData = await fontRes.value.json();
@@ -3045,7 +3132,8 @@
           }
         }
       } catch (e) {
-        console.warn("Estado inicial carregado com padrões locais:", e);
+        updateServerStatus(false);
+        console.warn("Estado inicial carregado com padroes locais:", e);
       }
 
       renderFonts();
@@ -3057,6 +3145,9 @@
       fetchCurrentState();
       renderDocTopics();
       selectDocTopic('bottom');
+      setInterval(() => {
+        checkServerHealth(false);
+      }, 3000);
     });
   </script>
 </body>
