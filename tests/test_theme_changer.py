@@ -84,6 +84,14 @@ class TestAntigravityThemeChanger(unittest.TestCase):
         finally:
             sys.path.pop(0)
 
+    def test_dual_stack_and_ping_route(self):
+        """Valida que o servidor possui suporte Dual-Stack e rota /api/ping."""
+        server_file = BASE_DIR / "scripts" / "theme_server.py"
+        content = server_file.read_text(encoding="utf-8")
+        self.assertIn("/api/ping", content, "Rota /api/ping não encontrada no theme_server.py")
+        self.assertIn("DualStackServer", content, "Classe DualStackServer não encontrada no theme_server.py")
+        self.assertIn("Access-Control-Allow-Private-Network", content, "Cabeçalho PNA não encontrado")
+
     def test_shell_utilities_catalog_in_html(self):
         """Valida que todos os 11 tópicos e utilitários shell estão no HTML."""
         html_file = BASE_DIR / "web" / "theme_changer_app.html"
