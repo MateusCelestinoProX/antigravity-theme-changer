@@ -1,0 +1,3154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Studio & Font Center — Apple Liquid Glass</title>
+  
+  <!-- Preconnect & Google Fonts Master Bundle (13 Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,300..700;1,300..700&family=DM+Mono:ital,wght@0,300..500;1,300..500&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@300..800&family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inconsolata:wght@300..800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300..800;1,300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Code+Pro:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Victor+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/hack.min.css">
+
+  <style>
+    :root {
+      --bg: #060709;
+      --canvas: #060709;
+      --text: #F5F5F7;
+      --text-secondary: rgba(245, 245, 247, 0.65);
+      --text-tertiary: rgba(245, 245, 247, 0.4);
+      --glass-bg: rgba(255, 255, 255, 0.035);
+      --glass-bg-hover: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-top: rgba(255, 255, 255, 0.18);
+      --glass-glow: rgba(255, 255, 255, 0.04);
+      --accent: #FFFFFF;
+      --system-blue: #0A84FF;
+      --system-emerald: #30D158;
+      --system-purple: #BF5AF2;
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 9999px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      --transition-spring: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+      position: relative;
+    }
+
+    /* Ambient Liquid Light Orbs (VisionOS / Apple Depth) */
+    .ambient-mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.14;
+      will-change: transform;
+      animation: floatOrb 24s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, #38BDF8 0%, #4F46E5 70%);
+      top: -150px;
+      left: 15%;
+      animation-duration: 28s;
+    }
+
+    .orb-2 {
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, #BD93F9 0%, #BE123C 70%);
+      top: 30%;
+      right: -100px;
+      animation-duration: 32s;
+      animation-delay: -7s;
+    }
+
+    .orb-3 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #10B981 0%, #0D9488 70%);
+      bottom: 5%;
+      left: 5%;
+      animation-duration: 25s;
+      animation-delay: -12s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 40px) scale(1.08); }
+      100% { transform: translate(-40px, 80px) scale(0.95); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Apple Floating Glass Navigation Dock */
+    .nav-dock-wrapper {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      margin-bottom: 40px;
+      padding: 0 8px;
+    }
+
+    .nav-dock {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(20, 20, 24, 0.65);
+      backdrop-filter: blur(36px) saturate(190%) contrast(105%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%) contrast(105%);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-top);
+      border-radius: var(--radius-pill);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 
+        0 20px 40px -10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
+      transition: var(--transition-spring);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
+    }
+
+    .brand-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #FFFFFF;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .dock-center {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: var(--text-secondary);
+      transition: var(--transition-spring);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .status-capsule.offline {
+      background: rgba(255, 59, 48, 0.08);
+      border-color: rgba(255, 59, 48, 0.3);
+      color: #ff6b6b;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--system-emerald);
+      box-shadow: 0 0 10px var(--system-emerald);
+      animation: pulseDot 2.4s infinite;
+    }
+
+    .status-dot.offline {
+      background: #ff3b30;
+      box-shadow: 0 0 10px rgba(255, 59, 48, 0.6);
+      animation: none;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    .dock-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .current-state-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: #FFFFFF;
+    }
+
+    .current-state-pill span {
+      color: var(--text-tertiary);
+      font-family: var(--font-sans);
+    }
+
+    /* Hero Title Section */
+    .hero {
+      text-align: center;
+      padding: 20px 0 44px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 52px;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      color: #FFFFFF;
+    }
+
+    .hero-title span {
+      background: linear-gradient(180deg, #FFFFFF 20%, rgba(255, 255, 255, 0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 640px;
+      margin: 0 auto;
+      letter-spacing: -0.01em;
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .section-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    /* Apple Segmented Control (Capsule Pickers) */
+    .segmented-control {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      gap: 2px;
+    }
+
+    .segmented-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 7px 16px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition-spring);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      outline: none;
+    }
+
+    .segmented-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .segmented-btn.active {
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .segmented-badge {
+      font-size: 10.5px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+    }
+
+    /* Search Bar (Apple Liquid Input) */
+    .search-box-wrapper {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-top);
+      border-radius: var(--radius-lg);
+      padding: 15px 20px 15px 48px;
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      letter-spacing: -0.01em;
+      outline: none;
+      transition: var(--transition-spring);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .search-input::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    .search-input:focus {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 
+        0 0 0 4px rgba(255, 255, 255, 0.06),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      fill: var(--text-tertiary);
+      pointer-events: none;
+      transition: var(--transition-spring);
+    }
+
+    .search-input:focus + .search-icon {
+      fill: #FFFFFF;
+    }
+
+    /* Grid Layouts */
+    .fonts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    /* Apple Liquid Glass Cards */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(32px) saturate(180%) contrast(105%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%) contrast(105%);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-top);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: 
+        0 16px 36px -12px rgba(0, 0, 0, 0.5),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+      transition: var(--transition-spring);
+      cursor: pointer;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent 60%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .glass-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255, 255, 255, 0.16);
+      border-top-color: rgba(255, 255, 255, 0.32);
+      transform: translateY(-4px) scale(1.008);
+      box-shadow: 
+        0 28px 56px -16px rgba(0, 0, 0, 0.65),
+        0 0 30px rgba(255, 255, 255, 0.04),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-card.is-active {
+      background: rgba(255, 255, 255, 0.065);
+      border-color: rgba(255, 255, 255, 0.28);
+      border-top-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 
+        0 24px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 35px var(--card-glow, rgba(255, 255, 255, 0.1)),
+        inset 0 1px 2px rgba(255, 255, 255, 0.35);
+    }
+
+    /* Font Card Specifics */
+    .font-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .font-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .font-name {
+      font-size: 19px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .font-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+    }
+
+    .font-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .font-code-preview {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      overflow-x: auto;
+      letter-spacing: 0px;
+      white-space: pre;
+    }
+
+    .token-keyword { color: #FF79C6; }
+    .token-function { color: #50FA7B; }
+    .token-string { color: #F1FA8C; }
+    .token-comment { color: rgba(255, 255, 255, 0.35); font-style: italic; }
+    .token-op { color: #8BE9FD; }
+
+    /* Action Buttons (Apple Pill Style) */
+    .btn-apply {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 10px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-spring);
+    }
+
+    .btn-apply:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-card.is-active .btn-apply {
+      background: #FFFFFF;
+      color: #000000;
+      border-color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Theme Card Specifics */
+    .theme-preview-window {
+      height: 110px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: var(--theme-bg, #0B1117);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .window-header {
+      height: 24px;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .window-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .window-body {
+      flex: 1;
+      display: flex;
+      padding: 10px;
+      gap: 8px;
+    }
+
+    .mock-sidebar {
+      width: 44px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .mock-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mock-line {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mock-line.accent {
+      width: 65%;
+      background: var(--theme-accent, #00FF41);
+      box-shadow: 0 0 10px var(--theme-accent, #00FF41);
+    }
+
+    .mock-orb-glow {
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--theme-accent, #00FF41);
+      filter: blur(28px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .theme-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .theme-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .theme-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .cat-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .cat-tag.full { border-color: rgba(0, 255, 65, 0.35); color: #00FF41; background: rgba(0, 255, 65, 0.08); }
+    .cat-tag.dark { border-color: rgba(189, 147, 249, 0.35); color: #BD93F9; background: rgba(189, 147, 249, 0.08); }
+    .cat-tag.light { border-color: rgba(56, 189, 248, 0.35); color: #38BDF8; background: rgba(56, 189, 248, 0.08); }
+
+    .theme-desc {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    .palette-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 4px;
+    }
+
+    .swatch-capsule {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 3px 8px 3px 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .swatch-disc {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Floating Liquid Toast */
+    .toast-container {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      z-index: 1000;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .toast-container.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast-pill {
+      background: rgba(25, 25, 30, 0.85);
+      backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 
+        0 24px 60px -12px rgba(0, 0, 0, 0.8),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      font-size: 13.5px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .toast-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--system-emerald);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 38px; }
+      .nav-dock { flex-direction: column; border-radius: var(--radius-xl); }
+      .fonts-grid, .themes-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Apple Dock Segmented Control */
+    .dock-segmented {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .dock-seg-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 5px 13px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: var(--transition-spring);
+      outline: none;
+    }
+
+    .dock-seg-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .dock-seg-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    /* Apple Minimalist Documentation Section */
+    .docs-section {
+      margin-top: 60px;
+      margin-bottom: 80px;
+    }
+
+    .docs-counter-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+    }
+
+    .apple-doc-wrapper {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 24px;
+      background: rgba(18, 20, 24, 0.5);
+      backdrop-filter: blur(36px) saturate(190%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-top);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: 
+        0 30px 60px -15px rgba(0, 0, 0, 0.6),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      min-height: 700px;
+    }
+
+    /* Sidebar Topics Panel */
+    .apple-doc-sidebar {
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      padding-right: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+    }
+
+    .doc-search-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 9px 12px 9px 34px;
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      letter-spacing: -0.01em;
+      outline: none;
+      transition: var(--transition-spring);
+    }
+
+    .doc-search-input:focus {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .doc-search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      fill: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    .doc-topics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow-y: auto;
+      max-height: 620px;
+      padding-right: 4px;
+    }
+
+    .doc-topics-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .doc-topics-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .doc-topic-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .doc-topic-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .doc-topic-item.active {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.16);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .doc-topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .doc-topic-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+    }
+
+    .doc-topic-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 500;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+
+    .doc-topic-desc {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Main Central Content Panel */
+    .apple-doc-content {
+      padding: 6px 8px 12px 12px;
+      overflow-y: auto;
+      max-height: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .apple-doc-content::-webkit-scrollbar {
+      width: 6px;
+    }
+    .apple-doc-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+    }
+
+    /* App Header Card */
+    .doc-app-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      flex-wrap: wrap;
+    }
+
+    .doc-app-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 640px;
+    }
+
+    .doc-app-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .doc-app-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .doc-app-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .doc-app-desc {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      letter-spacing: -0.01em;
+    }
+
+    /* Apple Minimalist GitHub Button */
+    .apple-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: var(--transition-spring);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+      white-space: nowrap;
+    }
+
+    .apple-github-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .apple-github-btn svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* Block Titles */
+    .doc-block-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Apple Command Box */
+    .apple-cmd-box {
+      background: rgba(10, 12, 16, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 11px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition-spring);
+      position: relative;
+    }
+
+    .apple-cmd-box:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(12, 14, 20, 0.85);
+    }
+
+    .apple-cmd-code {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: #E2E8F0;
+      letter-spacing: 0.01em;
+      word-break: break-all;
+      line-height: 1.4;
+    }
+
+    /* Apple 1-Click Copy Button */
+    .apple-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 7px;
+      padding: 6px 11px;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      flex-shrink: 0;
+      outline: none;
+    }
+
+    .apple-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .apple-copy-btn.copied {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .apple-copy-btn svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Presets Stack */
+    .doc-presets-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .doc-preset-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: var(--transition-spring);
+    }
+
+    .doc-preset-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .doc-preset-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .doc-preset-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .doc-preset-expl {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Shortcuts Grid */
+    .doc-shortcuts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+
+    .doc-shortcut-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 9px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .doc-kbd {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .doc-shortcut-label {
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      text-align: right;
+      line-height: 1.3;
+    }
+
+    /* Tarts Grid Special */
+    .tarts-doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .tarts-doc-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 11px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      justify-content: space-between;
+    }
+
+    .tarts-doc-item:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tarts-doc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tarts-doc-desc {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    /* Combos Setups Layout */
+    .combos-doc-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .combo-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .combo-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .combo-panels-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .combo-panel-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(10, 12, 16, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 7px 12px;
+    }
+
+    .combo-panel-name {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+      min-width: 140px;
+    }
+
+    @media (max-width: 900px) {
+      .apple-doc-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .apple-doc-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-right: 0;
+        padding-bottom: 18px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-mesh">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Apple Floating Glass Navigation Dock -->
+  <div class="nav-dock-wrapper">
+    <div class="nav-dock">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Theme Studio <span class="brand-badge">Apple Liquid 2.0</span></div>
+          <div class="brand-sub">Google Antigravity Customizer</div>
+        </div>
+      </div>
+
+      <div class="dock-center">
+        <div class="dock-segmented">
+          <button class="dock-seg-btn active" id="segBtnThemes" onclick="switchMainSection('themes', this)">Temas</button>
+          <button class="dock-seg-btn" id="segBtnFonts" onclick="switchMainSection('fonts', this)">Tipografia</button>
+          <button class="dock-seg-btn" id="segBtnDocs" onclick="switchMainSection('docs', this)">Documentação Shell</button>
+        </div>
+        <div class="status-capsule" id="serverStatusCapsule" onclick="checkServerHealth(true)" title="Status do Servidor Antigravity. Clique para testar conexao.">
+          <div class="status-dot" id="serverStatusDot"></div>
+          <span id="serverStatusText">Conectando...</span>
+        </div>
+      </div>
+
+      <div class="dock-right">
+        <div class="current-state-pill" id="dockActiveFont">
+          <span>Fonte:</span> <strong>JetBrains Mono</strong>
+        </div>
+        <div class="current-state-pill" id="dockActiveTheme">
+          <span>Tema:</span> <strong>Dracula</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-tagline">Controle Estético em Tempo Real</div>
+      <h1 class="hero-title">Estúdio Visual <span>Apple Liquid</span></h1>
+      <p class="hero-subtitle">Design ultra-minimalista, vidro líquido especular e alternância instantânea de fontes com ligaduras e temas em alta fidelidade.</p>
+    </header>
+
+    <!-- FONT CENTER SECTION -->
+    <section id="fontsSection">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Tipografia Pro</span>
+          <h2 class="section-title">13 Fontes de Código com Ligaduras Nativas</h2>
+        </div>
+        
+        <!-- Scope Toggle Capsule -->
+        <div class="segmented-control">
+          <button class="segmented-btn active" id="scopeFullBtn" onclick="setScope('full')">
+            <span>Modo Total</span>
+            <span class="segmented-badge">Toda a UI</span>
+          </button>
+          <button class="segmented-btn" id="scopeCodeBtn" onclick="setScope('code')">
+            <span>Modo Híbrido</span>
+            <span class="segmented-badge">Apenas Código</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="fonts-grid" id="fontsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- THEME GALLERY SECTION -->
+    <section id="themesSection">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Coleção Visual</span>
+          <h2 class="section-title">Galeria de 31 Temas do Antigravity</h2>
+        </div>
+
+        <!-- Theme Category Filter Capsule -->
+        <div class="segmented-control" id="themeFilterGroup">
+          <button class="segmented-btn active" onclick="filterThemes('all', this)">Todos <span class="segmented-badge">31</span></button>
+          <button class="segmented-btn" onclick="filterThemes('full', this)">Full Monocromático <span class="segmented-badge">6</span></button>
+          <button class="segmented-btn" onclick="filterThemes('dark', this)">Dark Velvet <span class="segmented-badge">11</span></button>
+          <button class="segmented-btn" onclick="filterThemes('light', this)">Light Luminary <span class="segmented-badge">14</span></button>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-box-wrapper">
+        <input type="text" class="search-input" id="themeSearchInput" placeholder="Filtrar por nome do tema, cor, tag ou autor..." oninput="handleSearch()">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+
+      <div class="themes-grid" id="themesGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- SHELL DOCUMENTATION SECTION (APPLE MINIMALISM) -->
+    <section id="docsSection" class="docs-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Documentação Shell</span>
+          <h2 class="section-title">Utilitários de Terminal do macOS</h2>
+        </div>
+        <div class="docs-counter-pill" id="docTopicsCounter">11 Tópicos de Terminal</div>
+      </div>
+
+      <div class="apple-doc-wrapper">
+        <!-- Sidebar Topics / Index List -->
+        <aside class="apple-doc-sidebar">
+          <div class="sidebar-search-box">
+            <input type="text" id="docSearchInput" class="doc-search-input" placeholder="Buscar utilitário shell..." oninput="filterDocTopics()">
+            <svg class="doc-search-icon" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+          </div>
+
+          <div class="doc-topics-list" id="docTopicsList">
+            <!-- Rendered dynamically -->
+          </div>
+        </aside>
+
+        <!-- Main Central Content Panel -->
+        <main class="apple-doc-content" id="docMainContent">
+          <!-- Rendered dynamically -->
+        </main>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Apple Liquid Toast Notification -->
+  <div class="toast-container" id="toastContainer">
+    <div class="toast-pill">
+      <div class="toast-icon">✓</div>
+      <span id="toastText">Configuração aplicada instantaneamente</span>
+    </div>
+  </div>
+
+  <script>
+    // DATA: 13 DEVELOPER CODING FONTS
+    const FONTS_DATA = [
+      {
+        id: "jetbrains",
+        name: "JetBrains Mono",
+        author: "JetBrains",
+        badge: "LIGADURAS PRO",
+        family: "'JetBrains Mono', monospace",
+        sample: "const sum = (a, b) => a >= 0 && b !== null; // === !== =>"
+      },
+      {
+        id: "fira",
+        name: "Fira Code",
+        author: "Nikita Prokopov",
+        badge: "CLÁSSICA",
+        family: "'Fira Code', monospace",
+        sample: "if (x === 0 || y !== undefined) return x => x * 2;"
+      },
+      {
+        id: "cascadia",
+        name: "Cascadia Code",
+        author: "Microsoft",
+        badge: "MODERNA",
+        family: "'Cascadia Code', monospace",
+        sample: "const log = (msg) => console.log(`[OK] -> ${msg}`);"
+      },
+      {
+        id: "victor",
+        name: "Victor Mono",
+        author: "Ruben L. Blom",
+        badge: "CURSIVA & LIGS",
+        family: "'Victor Mono', monospace",
+        sample: "class AestheticEngine extends LiquidGlass { /* italic */ }"
+      },
+      {
+        id: "source",
+        name: "Source Code Pro",
+        author: "Adobe",
+        badge: "ALTA CLAREZA",
+        family: "'Source Code Pro', monospace",
+        sample: "func benchmark() -> Double { return CACurrentMediaTime() }"
+      },
+      {
+        id: "inconsolata",
+        name: "Inconsolata",
+        author: "Raph Levien",
+        badge: "CONDENSADA",
+        family: "'Inconsolata', monospace",
+        sample: "for (let i = 0; i < len; ++i) { buffer[i] = 0xAA; }"
+      },
+      {
+        id: "hack",
+        name: "Hack Font",
+        author: "Source Foundry",
+        badge: "DEV WORKHORSE",
+        family: "'Hack', monospace",
+        sample: "$ find . -name '*.py' | xargs grep -i 'antigravity'"
+      },
+      {
+        id: "ubuntu",
+        name: "Ubuntu Mono",
+        author: "Canonical",
+        badge: "LINUX VIBE",
+        family: "'Ubuntu Mono', monospace",
+        sample: "printf(\"Hello, Antigravity kernel! %d\\n\", pid);"
+      },
+      {
+        id: "space",
+        name: "Space Mono",
+        author: "Colophon / Google",
+        badge: "CYBERPUNK",
+        family: "'Space Mono', monospace",
+        sample: "SELECT * FROM matrix WHERE reality = false;"
+      },
+      {
+        id: "geist",
+        name: "Geist Mono",
+        author: "Vercel",
+        badge: "MINIMAL",
+        family: "'Geist Mono', monospace",
+        sample: "export default async function Page() { return <Fluid /> }"
+      },
+      {
+        id: "ibm",
+        name: "IBM Plex Mono",
+        author: "IBM Design",
+        badge: "RETRO INDUSTRIAL",
+        family: "'IBM Plex Mono', monospace",
+        sample: "SYSTEM.PROCESS.EVAL(PORT=51897, LATENCY=70ms);"
+      },
+      {
+        id: "dm",
+        name: "DM Mono",
+        author: "Colophon / Google",
+        badge: "GEOMÉTRICA",
+        family: "'DM Mono', monospace",
+        sample: "const fluid = Math.hypot(dx, dy) * 0.42;"
+      },
+      {
+        id: "system",
+        name: "System SF Pro",
+        author: "Apple macOS",
+        badge: "NATIVO",
+        family: "-apple-system, BlinkMacSystemFont, monospace",
+        sample: "import SwiftUI\nstruct LiquidGlassView: View { ... }"
+      }
+    ];
+
+    // DATA: 31 THEMES (3 CATEGORIES)
+    const THEMES_DATA = [
+      // === 1. FULL MONOCROMÁTICOS (6) ===
+      {
+        id: "green",
+        name: "Matrix Phosphor Green",
+        category: "full",
+        tag: "-green",
+        bg: "#050B05",
+        primary: "#00FF41",
+        fg: "#00FF41",
+        desc: "Fundo preto profundo com fósforo verde de alto contraste."
+      },
+      {
+        id: "red",
+        name: "Glowing Neon Red",
+        category: "full",
+        tag: "-red",
+        bg: "#0A0002",
+        primary: "#FF003C",
+        fg: "#FF2A55",
+        desc: "Vermelho brilhante cyberpunk de alto impacto e intensidade."
+      },
+      {
+        id: "cyan",
+        name: "Full Tron Electric Cyan",
+        category: "full",
+        tag: "-cyan",
+        bg: "#020B0E",
+        primary: "#00F0FF",
+        fg: "#00F0FF",
+        desc: "Ciano neon elétrico inspirado no circuito Tron abissal."
+      },
+      {
+        id: "yellow",
+        name: "Full Acid Cyber Yellow",
+        category: "full",
+        tag: "-yellow",
+        bg: "#0D0C02",
+        primary: "#FFE600",
+        fg: "#FFE600",
+        desc: "Amarelo ácido fluorescente puro de alta voltagem."
+      },
+      {
+        id: "magenta",
+        name: "Full Synthwave Magenta",
+        category: "full",
+        tag: "-magenta",
+        bg: "#0F020B",
+        primary: "#FF007F",
+        fg: "#FF007F",
+        desc: "Estética laser retrowave dos anos 80 em magenta profundo."
+      },
+      {
+        id: "monochrome",
+        name: "Full OLED Pure Mono",
+        category: "full",
+        tag: "-monochrome",
+        bg: "#000000",
+        primary: "#FFFFFF",
+        fg: "#FFFFFF",
+        desc: "Monocromático puro preto e branco para contraste absoluto."
+      },
+
+      // === 2. DARK VELVET (8) ===
+      {
+        id: "cappuccino",
+        name: "Dark Cappuccino",
+        category: "dark",
+        tag: "-cappuccino",
+        bg: "#181311",
+        primary: "#D4A373",
+        fg: "#EDE0D4",
+        desc: "Dark mode aveludado com filtro de café expresso e caramelo torrado."
+      },
+      {
+        id: "wine",
+        name: "Dark Avermelhado Velvet",
+        category: "dark",
+        tag: "-wine",
+        bg: "#120608",
+        primary: "#E63946",
+        fg: "#FCE7EA",
+        desc: "Dark mode com filtro relaxante de vinho carmesim profundo."
+      },
+      {
+        id: "midnight",
+        name: "Midnight Sapphire Blue",
+        category: "dark",
+        tag: "-midnight",
+        bg: "#090D16",
+        primary: "#38BDF8",
+        fg: "#E0F2FE",
+        desc: "Dark mode noturno com filtro azul safira oceânico refinado."
+      },
+      {
+        id: "dracula",
+        name: "Cyber Amethyst Twilight",
+        category: "dark",
+        tag: "-dracula",
+        bg: "#120D1C",
+        primary: "#BD93F9",
+        fg: "#F3E8FF",
+        desc: "Dark mode moderno com filtro violeta e ametista aveludada."
+      },
+      {
+        id: "amber",
+        name: "Amber Warm Dusk",
+        category: "dark",
+        tag: "-amber",
+        bg: "#14110A",
+        primary: "#F59E0B",
+        fg: "#FEF3C7",
+        desc: "Filtro âmbar dourado crepuscular para redução de fadiga visual."
+      },
+      {
+        id: "dark-emerald",
+        name: "Forest Emerald Night",
+        category: "dark",
+        tag: "-dark-emerald",
+        bg: "#06120B",
+        primary: "#10B981",
+        fg: "#D1FAE5",
+        desc: "Floresta noturna com base em esmeralda profundo e mentolado."
+      },
+      {
+        id: "nordic",
+        name: "Nordic Arctic Slate",
+        category: "dark",
+        tag: "-nordic",
+        bg: "#0B1117",
+        primary: "#38BDF8",
+        fg: "#E2E8F0",
+        desc: "Ardósia nórdica glacial com acentos em ciano polar ártico."
+      },
+      {
+        id: "tokyo",
+        name: "Tokyo Sunset Coral",
+        category: "dark",
+        tag: "-tokyo",
+        bg: "#130D14",
+        primary: "#FB7185",
+        fg: "#FFE4E6",
+        desc: "Crepúsculo de Tóquio com base berinjela e coral neon."
+      },
+      {
+        id: "dark-matcha",
+        name: "Dark Matcha Obsidian",
+        category: "dark",
+        tag: "-matcha",
+        bg: "#0C100B",
+        primary: "#84CC16",
+        fg: "#F0FDF4",
+        desc: "Dark mode com base obsidiana chá-verde e acentos vibrantes em matcha japonês."
+      },
+      {
+        id: "dark-copper",
+        name: "Dark Basalt Copper",
+        category: "dark",
+        tag: "-copper",
+        bg: "#120E0A",
+        primary: "#FB923C",
+        fg: "#FFF7ED",
+        desc: "Dark mode vulcânico com basalto preto e acentos metálicos em cobre forjado."
+      },
+      {
+        id: "dark-ultraviolet",
+        name: "Dark Cosmic Ultraviolet",
+        category: "dark",
+        tag: "-ultraviolet",
+        bg: "#080616",
+        primary: "#818CF8",
+        fg: "#EEF2FF",
+        desc: "Dark mode abissal cósmico com acentos fluorescentes em luz ultravioleta e índigo."
+      },
+
+      // === 3. LIGHT LUMINARY (13) ===
+      {
+        id: "white",
+        name: "Pure Clean White",
+        category: "light",
+        tag: "-white",
+        bg: "#FFFFFF",
+        primary: "#111827",
+        fg: "#111827",
+        desc: "Tema branco minimalista puro com nitidez e contraste cristalino."
+      },
+      {
+        id: "light-emerald",
+        name: "Light Emerald",
+        category: "light",
+        tag: "-emerald",
+        bg: "#F7FDF9",
+        primary: "#059669",
+        fg: "#064E3B",
+        desc: "Base clara refrescante com cor secundária esmeralda vibrante."
+      },
+      {
+        id: "light-sapphire",
+        name: "Light Sapphire",
+        category: "light",
+        tag: "-sapphire",
+        bg: "#F8FAFC",
+        primary: "#0284C7",
+        fg: "#0F172A",
+        desc: "Base cristalina executiva com acentos em azul safira nobre."
+      },
+      {
+        id: "light-ruby",
+        name: "Light Ruby",
+        category: "light",
+        tag: "-ruby",
+        bg: "#FFF8F8",
+        primary: "#E11D48",
+        fg: "#1E293B",
+        desc: "Base clara contemporânea com acentos vívidos em rubi escarlate."
+      },
+      {
+        id: "light-lavender",
+        name: "Light Lavender",
+        category: "light",
+        tag: "-lavender",
+        bg: "#FAF8FF",
+        primary: "#7C3AED",
+        fg: "#1E1B4B",
+        desc: "Harmonia moderna e suave com cor secundária em ametista."
+      },
+      {
+        id: "light-amber",
+        name: "Light Amber Sunburst",
+        category: "light",
+        tag: "-sunburst",
+        bg: "#FFFDF5",
+        primary: "#D97706",
+        fg: "#1C1917",
+        desc: "Modo claro acolhedor com cor secundária em âmbar solar dourado."
+      },
+      {
+        id: "light-latte",
+        name: "Light Coffee Latte",
+        category: "light",
+        tag: "-latte",
+        bg: "#FAF7F2",
+        primary: "#9A3412",
+        fg: "#291E1A",
+        desc: "Marfim suave refinado com acentos em café latte e caramelo."
+      },
+      {
+        id: "light-rose",
+        name: "Light Rosé Wine",
+        category: "light",
+        tag: "-rose",
+        bg: "#FFF5F7",
+        primary: "#BE123C",
+        fg: "#1F1116",
+        desc: "Base clara elegante com acentos em rosé champagne francês."
+      },
+      {
+        id: "light-teal",
+        name: "Light Ocean Teal",
+        category: "light",
+        tag: "-teal",
+        bg: "#F2FBF9",
+        primary: "#0D9488",
+        fg: "#0F172A",
+        desc: "Inspirado em águas marinhas com azul-turquesa oceânico límpido."
+      },
+      {
+        id: "light-coral",
+        name: "Light Coral Peach",
+        category: "light",
+        tag: "-coral",
+        bg: "#FFF9F6",
+        primary: "#EA580C",
+        fg: "#1C1917",
+        desc: "Acentos aquecidos em laranja coral e pêssego ensolarado."
+      },
+      {
+        id: "light-indigo",
+        name: "Light Electric Indigo",
+        category: "light",
+        tag: "-indigo",
+        bg: "#F8F9FE",
+        primary: "#4F46E5",
+        fg: "#0F172A",
+        desc: "Tinta azul índigo e violeta moderno de alto contraste."
+      },
+      {
+        id: "light-pistachio",
+        name: "Light Pistachio Gelato",
+        category: "light",
+        tag: "-pistachio",
+        bg: "#F8FAF0",
+        primary: "#65A30D",
+        fg: "#1A2E05",
+        desc: "Modo claro aveludado com base marfim suave e acentos gourmet em verde pistache siciliano."
+      },
+      {
+        id: "light-terracotta",
+        name: "Light Tuscan Terracotta",
+        category: "light",
+        tag: "-terracotta",
+        bg: "#FDF8F6",
+        primary: "#C2410C",
+        fg: "#27140B",
+        desc: "Modo claro toscano acolhedor com base linho e acentos artesanais em terracota queimada."
+      },
+      {
+        id: "light-azure",
+        name: "Light Alpine Sky Azure",
+        category: "light",
+        tag: "-azure",
+        bg: "#F0F9FF",
+        primary: "#00A3FF",
+        fg: "#082F49",
+        desc: "Modo claro alpino glacial cristalino com acentos em azul cerúleo e céu radiante."
+      }
+    ];
+
+    // STATE
+    let currentActiveFont = "jetbrains";
+    let currentActiveTheme = "dracula";
+    let currentScope = "full";
+    let currentThemeFilter = "all";
+    let toastTimeout = null;
+
+    // TOAST NOTIFICATION
+    function showToast(message, isError = false) {
+      const container = document.getElementById("toastContainer");
+      const text = document.getElementById("toastText");
+      const icon = container.querySelector(".toast-icon");
+      
+      text.textContent = message;
+      icon.textContent = isError ? "✕" : "✓";
+      icon.style.background = isError ? "#FF453A" : "#30D158";
+      icon.style.color = isError ? "#FFF" : "#000";
+
+      container.classList.add("show");
+
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        container.classList.remove("show");
+      }, 2800);
+    }
+
+    // SET SCOPE
+    function setScope(scope) {
+      currentScope = scope;
+      document.getElementById("scopeFullBtn").classList.toggle("active", scope === "full");
+      document.getElementById("scopeCodeBtn").classList.toggle("active", scope === "code");
+      applyFont(currentActiveFont, true);
+    }
+
+    // RENDER FONTS
+    function renderFonts() {
+      const grid = document.getElementById("fontsGrid");
+      grid.innerHTML = "";
+
+      FONTS_DATA.forEach(f => {
+        const card = document.createElement("div");
+        card.className = `glass-card ${f.id === currentActiveFont ? "is-active" : ""}`;
+        card.id = `fontCard-${f.id}`;
+        card.onclick = () => applyFont(f.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="font-card-header">
+              <div class="font-title-group">
+                <span class="font-name" style="font-family: ${f.family};">${f.name}</span>
+                <div class="font-meta">
+                  <span>${f.author}</span>
+                  <span>•</span>
+                  <span class="font-badge">${f.badge}</span>
+                </div>
+              </div>
+            </div>
+            <div class="font-code-preview" style="font-family: ${f.family}; margin-top: 14px;">
+              <span class="token-keyword">const</span> <span class="token-function">verify</span> = (a, b) =&gt; a === b &amp;&amp; a !== <span class="token-string">null</span>;
+              <span class="token-comment">// ligaduras nativas: === !== =&gt; &gt;= &lt;= ||</span>
+            </div>
+          </div>
+          <button class="btn-apply" onclick="event.stopPropagation(); applyFont('${f.id}')">
+            ${f.id === currentActiveFont ? "✓ Ativa no Antigravity" : "Ativar Fonte"}
+          </button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // APPLY FONT
+    async function applyFont(fontKey, isScopeChange = false) {
+      const t0 = performance.now();
+      currentActiveFont = fontKey;
+      
+      // Update UI selection immediately
+      document.querySelectorAll(".fonts-grid .glass-card").forEach(c => c.classList.remove("is-active"));
+      const activeCard = document.getElementById(`fontCard-${fontKey}`);
+      if (activeCard) {
+        activeCard.classList.add("is-active");
+        const btn = activeCard.querySelector(".btn-apply");
+        if (btn) btn.textContent = "✓ Ativa no Antigravity";
+      }
+
+      const fontObj = FONTS_DATA.find(f => f.id === fontKey);
+      const fontName = fontObj ? fontObj.name : fontKey;
+      document.getElementById("dockActiveFont").innerHTML = `<span>Fonte:</span> <strong>${fontName}</strong>`;
+
+      try {
+        const res = await fetch(`/api/set-font?font=${fontKey}&scope=${currentScope}`);
+        const data = await res.json();
+        const duration = Math.round(performance.now() - t0);
+
+        if (data.success) {
+          showToast(`Fonte ${fontName} ativada no Antigravity (${duration}ms)`);
+        } else {
+          showToast(`Erro ao aplicar fonte: ${data.error || "Desconhecido"}`, true);
+        }
+      } catch (err) {
+        showToast(`Falha de conexão com o servidor local: ${err.message}`, true);
+      }
+    }
+
+    // RENDER THEMES
+    function renderThemes() {
+      const grid = document.getElementById("themesGrid");
+      grid.innerHTML = "";
+
+      const query = (document.getElementById("themeSearchInput")?.value || "").toLowerCase().trim();
+
+      const filtered = THEMES_DATA.filter(t => {
+        const matchesCategory = currentThemeFilter === "all" || t.category === currentThemeFilter;
+        const matchesQuery = !query || 
+          t.name.toLowerCase().includes(query) || 
+          t.id.toLowerCase().includes(query) || 
+          t.desc.toLowerCase().includes(query) || 
+          t.tag.toLowerCase().includes(query);
+        return matchesCategory && matchesQuery;
+      });
+
+      filtered.forEach(t => {
+        const card = document.createElement("div");
+        card.className = `glass-card ${t.id === currentActiveTheme ? "is-active" : ""}`;
+        card.id = `themeCard-${t.id}`;
+        card.style.setProperty("--card-glow", t.primary + "33");
+        card.onclick = () => applyTheme(t.id);
+
+        const catLabel = t.category === "full" ? "FULL" : t.category === "dark" ? "DARK" : "LIGHT";
+
+        card.innerHTML = `
+          <div>
+            <div class="theme-preview-window" style="--theme-bg: ${t.bg}; --theme-accent: ${t.primary};">
+              <div class="window-header">
+                <div class="window-dot"></div>
+                <div class="window-dot"></div>
+                <div class="window-dot"></div>
+              </div>
+              <div class="window-body">
+                <div class="mock-sidebar"></div>
+                <div class="mock-content">
+                  <div class="mock-line accent"></div>
+                  <div class="mock-line" style="width: 80%;"></div>
+                  <div class="mock-line" style="width: 50%;"></div>
+                </div>
+              </div>
+              <div class="mock-orb-glow"></div>
+            </div>
+
+            <div class="theme-info" style="margin-top: 14px;">
+              <div class="theme-title-row">
+                <span class="theme-name">${t.name}</span>
+                <span class="cat-tag ${t.category}">${catLabel}</span>
+              </div>
+              <p class="theme-desc">${t.desc}</p>
+              
+              <div class="palette-row">
+                <div class="swatch-capsule" title="Fundo">
+                  <div class="swatch-disc" style="background: ${t.bg};"></div>
+                  <span>${t.bg}</span>
+                </div>
+                <div class="swatch-capsule" title="Primária">
+                  <div class="swatch-disc" style="background: ${t.primary};"></div>
+                  <span>${t.primary}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-apply" onclick="event.stopPropagation(); applyTheme('${t.id}')">
+            ${t.id === currentActiveTheme ? "✓ Ativo no Antigravity" : "Aplicar Tema"}
+          </button>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // FILTER THEMES
+    function filterThemes(category, btnElement) {
+      currentThemeFilter = category;
+      const group = document.getElementById("themeFilterGroup");
+      if (group) {
+        group.querySelectorAll(".segmented-btn").forEach(b => b.classList.remove("active"));
+      }
+      if (btnElement) btnElement.classList.add("active");
+      renderThemes();
+    }
+
+    // SEARCH HANDLER
+    function handleSearch() {
+      renderThemes();
+    }
+
+    // APPLY THEME
+    async function applyTheme(themeKey) {
+      const t0 = performance.now();
+      const targetCard = document.getElementById(`themeCard-${themeKey}`);
+      const btn = targetCard ? targetCard.querySelector(".btn-apply") : null;
+      const originalBtnText = btn ? btn.textContent : "Aplicar Tema";
+
+      if (btn) btn.textContent = "Aplicando...";
+
+      const themeObj = THEMES_DATA.find(t => t.id === themeKey);
+      const themeName = themeObj ? themeObj.name : themeKey;
+
+      try {
+        const apiBase = getApiBaseUrl();
+        const res = await fetch(`${apiBase}/api/set-theme?theme=${themeKey}`);
+        const data = await res.json();
+        const duration = Math.round(performance.now() - t0);
+
+        if (data.success) {
+          currentActiveTheme = themeKey;
+          document.querySelectorAll(".themes-grid .glass-card").forEach(c => c.classList.remove("is-active"));
+          document.querySelectorAll(".themes-grid .btn-apply").forEach(b => {
+            if (b.textContent.includes("Ativo")) b.textContent = "Aplicar Tema";
+          });
+          if (targetCard) {
+            targetCard.classList.add("is-active");
+            if (btn) btn.textContent = "✓ Ativo no Antigravity";
+          }
+          document.getElementById("dockActiveTheme").innerHTML = `<span>Tema:</span> <strong>${themeName}</strong>`;
+          showToast(`Tema ${themeName} aplicado em tempo real (${duration}ms)`);
+          updateServerStatus(true, 48123);
+        } else {
+          if (btn) btn.textContent = originalBtnText;
+          showToast(`Erro ao aplicar tema: ${data.error || "Desconhecido"}`, true);
+        }
+      } catch (err) {
+        if (btn) btn.textContent = originalBtnText;
+        updateServerStatus(false);
+        showToast(`Falha de conexao com o servidor local. Execute 'python3 theme_changer.py init' no terminal (${err.message})`, true);
+      }
+    }
+
+
+    // DATA: 11 SHELL APPS & SUITES DOCUMENTATION (EXPANDED COMMUNITY CATALOG)
+    const DOCS_DATA = [
+      {
+        id: "bottom",
+        name: "bottom (btm)",
+        badge: "Rust Utility",
+        repo: "https://github.com/ClementTsang/bottom",
+        desc: "Monitor gráfico de recursos do sistema em Rust com foco em baixa latência e consumo mínimo de memória. Substituto de alta performance para monitores de recursos tradicionais.",
+        invoke: "btm",
+        examples: [
+          {
+            title: "Alta Performance & Status de Bateria",
+            expl: "Atualização a cada 500ms com widget de bateria para MacBook e linha média de núcleos de CPU.",
+            cmd: "btm --battery -a -r 500"
+          },
+          {
+            title: "Modo Básico Minimalista",
+            expl: "Visualização ultra-compacta inspirada em htop sem curvas de gráficos contínuas.",
+            cmd: "btm --basic"
+          },
+          {
+            title: "Foco Direto em Árvore de Processos",
+            expl: "Inicia a interface com cursor posicionado diretamente na visualização hierárquica.",
+            cmd: "btm --tree -d proc"
+          },
+          {
+            title: "Agrupamento de Processos & Contagem de Threads",
+            expl: "Agrupa processos com mesmo executável exibindo o consumo agregado de threads.",
+            cmd: "btm --group_processes --get_threads"
+          },
+          {
+            title: "Análise de CPU em Tela Expandida",
+            expl: "Inicia com o módulo de processamento expandido em tela inteira para telemetria profunda.",
+            cmd: "btm --expanded -d cpu"
+          },
+          {
+            title: "Paleta Térmica Gruvbox com Unidade Celsius",
+            expl: "Atualização padrão de 1 segundo com paleta quente gruvbox e leituras métricas.",
+            cmd: "btm -c -r 1000 --color gruvbox"
+          },
+          {
+            title: "Estilo Ártico Nord com Escala Temporal Oculta",
+            expl: "Tons frios azuis do tema Nord com escala temporal auto-oculta para maior clareza visual.",
+            cmd: "btm -c -r 750 --color nord --autohide_time"
+          }
+        ],
+        shortcuts: [
+          { key: "Tab / Shift+Tab", action: "Alternar foco sequencial entre os painéis (CPU, RAM, Rede, Processos)" },
+          { key: "e", action: "Expandir o widget selecionado para tela inteira / Restaurar" },
+          { key: "t", action: "Alternar visualização da tabela em modo Árvore (Tree)" },
+          { key: "/", action: "Abrir barra de pesquisa e filtro de processos em tempo real" },
+          { key: "+ / -", action: "Zoom in / Zoom out na escala horizontal de tempo dos gráficos" },
+          { key: "dd", action: "Enviar sinal SIGKILL para encerrar o processo selecionado" },
+          { key: "?", action: "Exibir painel integrado de ajuda e atalhos" },
+          { key: "q", action: "Encerrar o utilitário e retornar ao shell" }
+        ]
+      },
+      {
+        id: "weathr",
+        name: "weathr",
+        badge: "ASCII Weather",
+        repo: "https://github.com/veirt/weathr",
+        desc: "Previsão meteorológica em tempo real baseada na API Open-Meteo com simulações procedurais em arte ASCII animada.",
+        invoke: "weathr",
+        examples: [
+          {
+            title: "Noite de Tempestade Elétrica",
+            expl: "Simulação noturna com relâmpagos intermitentes, chuva densa e céu estrelado.",
+            cmd: "weathr -s thunderstorm -n"
+          },
+          {
+            title: "Inverno Noturno Zen (Sem HUD)",
+            expl: "Queda suave de neve contínua ocultando elementos de interface e dados de texto.",
+            cmd: "weathr -s snow -n --hide-hud"
+          },
+          {
+            title: "Tarde de Outono com Folhas ao Vento",
+            expl: "Céu limpo com partículas de folhagem caindo proceduralmente na tela.",
+            cmd: "weathr -s clear -l"
+          },
+          {
+            title: "Chuva Suave com Dados Métricos",
+            expl: "Simulação de chuva com temperatura em Celsius e velocidade do vento em km/h.",
+            cmd: "weathr -s rain --metric"
+          },
+          {
+            title: "Tempestade Severa com Granizo Noturno",
+            expl: "Simulação avançada de intempérie com pedras de gelo e descargas atmosféricas.",
+            cmd: "weathr -s thunderstorm-hail -n"
+          },
+          {
+            title: "Neblina Suave sem Identificação Local",
+            expl: "Cenário de cerração atmosférica densa sem coordenadas no cabeçalho.",
+            cmd: "weathr -s fog --hide-location"
+          },
+          {
+            title: "Garoa Noturna Silenciosa",
+            expl: "Precipitação leve noturna sem avisos ou telemetria auxiliar.",
+            cmd: "weathr -s drizzle -n --silent"
+          },
+          {
+            title: "Clima Real da Sua Região Atual",
+            expl: "Consulta automática de coordenadas via IP e dados meteorológicos da cidade.",
+            cmd: "weathr --auto-location --metric"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Q", action: "Encerrar o aplicativo" },
+          { key: "Ctrl + C", action: "Interromper execução imediata" }
+        ]
+      },
+      {
+        id: "lavat",
+        name: "lavat",
+        badge: "Metaballs Fluid",
+        repo: "https://github.com/AngelJumbo/lavat",
+        desc: "Simulador físico de lâmpada de lava com dinâmica de fluidos via metaballs, cálculo de campo escalar e convecção térmica Truecolor.",
+        invoke: "lavat",
+        examples: [
+          {
+            title: "Gradiente Violeta e Ciano com Gravidade",
+            expl: "Convecção física onde as gotas aquecem na base, sobem e resfriam no topo.",
+            cmd: "lavat -g -G -c 8A2BE2 -k 00FFFF -s 6 -r 6 -b 14"
+          },
+          {
+            title: "Fósforo Verde com Caracteres Sustenido",
+            expl: "Estética monocromática clássica com caracteres hash e contorno duplo reforçado.",
+            cmd: "lavat -g -c 00FF41 -k 003B00 -F \"#\" -s 7 -b 15 -R 2"
+          },
+          {
+            title: "Magma Vulcânico Térmico",
+            expl: "Transição de tons de vermelho brasa e amarelo fogo com partículas de raio expandido.",
+            cmd: "lavat -g -G -c FF3300 -k FFCC00 -s 4 -r 7 -b 12 -R 3"
+          },
+          {
+            title: "Transição Suave Magenta e Azul Celeste",
+            expl: "Gradiente de alta resolução espacial com dezesseis bolhas ativas no ambiente.",
+            cmd: "lavat -g -c FF007F -k 00F0FF -s 5 -r 5 -b 16"
+          },
+          {
+            title: "Monocromático Puro com Contenção Total",
+            expl: "Bolhas brancas com contorno cinza carvão confinadas estritamente dentro da janela.",
+            cmd: "lavat -g -c FFFFFF -k 555555 -s 3 -r 8 -b 8 -C"
+          },
+          {
+            title: "Ciano Oceânico em Alta Velocidade",
+            expl: "Gotas menores e rápidas simulando efervescência de água cristalina.",
+            cmd: "lavat -g -c 00F0FF -k 003366 -s 8 -r 4 -b 18 -R 1"
+          },
+          {
+            title: "Veludo Carmesim e Azul Marinho",
+            expl: "Gradiente sofisticado entre vinho aveludado e azul marinho profundo.",
+            cmd: "lavat -g -G -c E63946 -k 1D3557 -s 5 -r 6 -b 12"
+          },
+          {
+            title: "Ciclo Contínuo de Paletas",
+            expl: "Alternância automática e dinâmica de estilos de cor em velocidade acelerada.",
+            cmd: "lavat -p 1 -s 8 -r 6 -b 18"
+          }
+        ],
+        shortcuts: [
+          { key: "+ / -", action: "Aumentar ou diminuir velocidade de cálculo físico" },
+          { key: "i / d", action: "Aumentar ou reduzir o raio das metaballs" },
+          { key: "Shift + I / D", action: "Ajustar espessura da borda de contorno" },
+          { key: "m / l", action: "Incrementar ou reduzir o número de bolhas simultâneas" },
+          { key: "c", action: "Alternar dinamicamente a cor da lava" },
+          { key: "k", action: "Alternar a cor do contorno da borda" },
+          { key: "p", action: "Ligar ou alternar o modo de ciclo de cores" },
+          { key: "q / Ctrl + C", action: "Encerrar a simulação" }
+        ]
+      },
+      {
+        id: "pipes",
+        name: "pipes.sh",
+        badge: "Procedural 3D",
+        repo: "https://github.com/pipeseroni/pipes.sh",
+        desc: "Protetor de tela para terminal com tubulações tridimensionais animadas, curvas procedurais e junções suaves.",
+        invoke: "pipes.sh",
+        examples: [
+          {
+            title: "Cinco Fluxos com Origem Aleatória a 85 FPS",
+            expl: "Geração procedural contínua com taxas fluidas e spawn independente de canos.",
+            cmd: "pipes.sh -p 5 -t 1 -c 1 2 3 4 5 6 -f 85 -R -K"
+          },
+          {
+            title: "Tubulações Espessas Retrô",
+            expl: "Estilo arcade geométrico clássico com canos grossos e curvas amplas.",
+            cmd: "pipes.sh -p 3 -t 3 -c 2 3 6 -s 10 -f 70 -R"
+          },
+          {
+            title: "Tubos Finos sem Reset de Tela",
+            expl: "Preenchimento contínuo da janela sem limpeza de buffer em tons azuis e violetas.",
+            cmd: "pipes.sh -p 6 -t 0 -c 4 5 6 -f 90 -s 14 -r 0 -R -K"
+          },
+          {
+            title: "Densidade Máxima a 100 FPS",
+            expl: "Oito tubos em alta taxa de quadros e rotações constantes.",
+            cmd: "pipes.sh -p 8 -t 4 -f 100 -s 8 -R"
+          },
+          {
+            title: "Estilo Trilhos de Ferrovia (Railway)",
+            expl: "Renderização procedural com glifos estilo trilhos em tom monocromático branco.",
+            cmd: "pipes.sh -p 2 -t 8 -c 7 -s 15 -f 60 -R"
+          },
+          {
+            title: "Estilo Articulado Knobby",
+            expl: "Junções alternadas entre linhas grossas e finas com paleta de âmbar e ciano.",
+            cmd: "pipes.sh -p 4 -t 9 -c 3 5 6 -s 12 -f 80 -R"
+          },
+          {
+            title: "Traçado Retilíneo Monocromático",
+            expl: "Alta probabilidade de linhas retas com cor única uniforme.",
+            cmd: "pipes.sh -p 4 -t 0 -c 2 -s 15 -f 75 -R -K"
+          },
+          {
+            title: "Linhas Finas com Reset a 3000 Caracteres",
+            expl: "Desenho leve em vermelho e branco renovando automaticamente o buffer.",
+            cmd: "pipes.sh -p 5 -t 2 -c 1 7 -f 65 -s 9 -r 3000"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Ctrl + C", action: "Interromper a animação e retornar ao prompt" }
+        ]
+      },
+      {
+        id: "ttyclock",
+        name: "tty-clock",
+        badge: "Ncurses Digital",
+        repo: "https://github.com/xorg62/tty-clock",
+        desc: "Relógio digital em arte ASCII ncurses de alta precisão com suporte a centralização, bounce e modo screensaver.",
+        invoke: "tty-clock",
+        examples: [
+          {
+            title: "Centralizado com Segundos e Separador Pulsante",
+            expl: "Posicionamento central em ciano com contador de segundos e dois pontos piscantes.",
+            cmd: "tty-clock -c -C 6 -s -B -b"
+          },
+          {
+            title: "Painel com Moldura Retangular Sólida",
+            expl: "Contorno estilizado em tom âmbar com dígitos de alto brilho.",
+            cmd: "tty-clock -c -x -C 3 -s -b"
+          },
+          {
+            title: "Modo Screensaver com Ricochete Contínuo",
+            expl: "O relógio flutua pela tela rebatendo suavemente nas extremidades da janela.",
+            cmd: "tty-clock -S -r -C 5 -s -B -b"
+          },
+          {
+            title: "Data Extensa Customizada em Branco Puro",
+            expl: "Formatação avançada strftime com dia da semana e data completa por extenso.",
+            cmd: "tty-clock -c -C 7 -s -f \"%A, %d de %B de %Y\" -b"
+          },
+          {
+            title: "Formato 12 Horas AM/PM em Azul Safira",
+            expl: "Exibição no padrão civil com marcador de período e separadores dinâmicos.",
+            cmd: "tty-clock -c -t -C 4 -s -B"
+          },
+          {
+            title: "Horário Universal Coordenado (UTC)",
+            expl: "Sincronização estrita com o fuso GMT/UTC em vermelho dentro de moldura.",
+            cmd: "tty-clock -c -u -C 1 -s -x"
+          },
+          {
+            title: "Foco Estrito na Hora (Sem Barra de Data)",
+            expl: "Exibição minimalista ocultando o rodapé com dia da semana e calendário.",
+            cmd: "tty-clock -c -C 2 -s -D -B -b"
+          }
+        ],
+        shortcuts: [
+          { key: "c", action: "Alternar centralização na janela" },
+          { key: "s", action: "Exibir ou ocultar contador de segundos" },
+          { key: "t", action: "Alternar entre formato militar 24h e 12h AM/PM" },
+          { key: "b", action: "Alternar intensidade de brilho (Bold)" },
+          { key: "r", action: "Ligar/desligar modo ricochete (Bounce)" },
+          { key: "0 a 7", action: "Alterar a cor do relógio instantaneamente" },
+          { key: "q", action: "Fechar o aplicativo" }
+        ]
+      },
+      {
+        id: "donut",
+        name: "donut.c",
+        badge: "Math Torus 3D",
+        repo: "https://github.com/a1k0n/donut",
+        desc: "Renderizador matemático em ASCII de um toroide tridimensional rotatório por Andy Sloane, com iluminação vetorial e projeção em tempo real.",
+        invoke: "donut",
+        examples: [
+          {
+            title: "Rotação Estável Padrão (~33 FPS)",
+            expl: "Execução equilibrada a 30ms de intervalo entre quadros.",
+            cmd: "donut"
+          },
+          {
+            title: "Modo Turbo Acelerado (10ms)",
+            expl: "Rotação rápida com 10ms de intervalo para telas de alto framerate.",
+            cmd: "donut 10"
+          },
+          {
+            title: "Modo Contemplativo Suave (60ms)",
+            expl: "Velocidade lenta a 60ms para segundo plano com consumo mínimo de CPU.",
+            cmd: "donut 60"
+          },
+          {
+            title: "Modo Ultra-Zen em Segundo Plano (100ms)",
+            expl: "Atualização a 10 quadros por segundo com impacto nulo na bateria.",
+            cmd: "donut 100"
+          },
+          {
+            title: "Cinemático Fluido (60 FPS)",
+            expl: "Interpolação contínua a 15ms otimizada para terminais modernos acelerados.",
+            cmd: "donut 15"
+          },
+          {
+            title: "Canalização de Cores Lolcat Estática",
+            expl: "Integração do fluxo de saída através do filtro lolcat para gradiente contínuo.",
+            cmd: "donut | lolcat"
+          },
+          {
+            title: "Animação Cromática Dinâmica com Lolcat",
+            expl: "Ondas de cores em tempo real percorrendo a geometria do toroide rotativo.",
+            cmd: "donut 20 | lolcat -a -d 1"
+          }
+        ],
+        shortcuts: [
+          { key: "Ctrl + C", action: "Encerrar a rotação e restaurar o cursor do terminal com segurança" }
+        ]
+      },
+      {
+        id: "tarts",
+        name: "tarts (Terminal Arts)",
+        badge: "Rust Screensaver Suite",
+        repo: "https://github.com/levirs565/tarts",
+        desc: "Suíte de screensavers em Rust de alta performance com renderização de alta densidade gráfica em caracteres Braille.",
+        invoke: "tarts <efeito>",
+        examples: [
+          {
+            title: "Chuva de Dados Hacker em Rust",
+            expl: "Zero-cost abstractions com caracteres Braille em altíssima taxa de atualização.",
+            cmd: "tarts matrix"
+          },
+          {
+            title: "Voo Contínuo sobre Relevo Perlin 3D",
+            expl: "Geração procedural infinita de paisagem montanhosa em relevo topográfico.",
+            cmd: "tarts terrain"
+          },
+          {
+            title: "Observatório Cósmico em Segundo Plano",
+            expl: "Estrelas que calculam proximidade euclidiana e traçam linhas de constelação.",
+            cmd: "tarts constellation"
+          },
+          {
+            title: "Física Emergente de Bandos Biológicos",
+            expl: "Simulação de cardume e revoada com vetores de atração e velocidade angular.",
+            cmd: "tarts boids"
+          }
+        ],
+        effectsList: [
+          { name: "Matrix Rain", cmd: "tarts matrix", desc: "Chuva digital de caracteres de alto rendimento." },
+          { name: "3D Cube", cmd: "tarts cube", desc: "Cubo tridimensional rotatório com perspectiva vetorial em Braille." },
+          { name: "Boids (Revoada)", cmd: "tarts boids", desc: "Simulação biológica de revoada de pássaros com forças de coesão e repulsão." },
+          { name: "Constelações", cmd: "tarts constellation", desc: "Céu estrelado móvel com traçados geométricos ao se aproximar." },
+          { name: "Ondas de Plasma", cmd: "tarts plasma", desc: "Campo de energia oscilante com gradientes fluidos em tempo real." },
+          { name: "Lareira Digital", cmd: "tarts fire", desc: "Simulação de fogo com calor vertical e convecção de brasas." },
+          { name: "Tubulações Procedurais", cmd: "tarts pipes", desc: "Crescimento contínuo de canos ramificados procedurais." },
+          { name: "Jogo da Vida", cmd: "tarts life", desc: "Autômato celular com regras de sobrevivência de John Conway." },
+          { name: "Terreno 3D Perlin", cmd: "tarts terrain", desc: "Voo rasante sobre relevo montanhoso gerado proceduralmente." },
+          { name: "Caranguejos ASCII", cmd: "tarts crab", desc: "Animação de crustáceos caminhando pela tela e interagindo com limites." },
+          { name: "Toroide Rust", cmd: "tarts donut", desc: "Versão nativa acelerada do toroide tridimensional em Rust." },
+          { name: "Labirinto Autônomo", cmd: "tarts maze", desc: "Geração e resolução procedural de labirintos complexos." }
+        ],
+        shortcuts: [
+          { key: "q / Esc", action: "Sair do protetor de tela e retornar ao terminal" },
+          { key: "Ctrl + C", action: "Interromper execução" }
+        ]
+      },
+      {
+        id: "fireworks",
+        name: "terminal-fireworks",
+        badge: "Particle Physics",
+        repo: "https://github.com/faeb/terminal-fireworks",
+        desc: "Simulador balístico de fogos de artifício com física parabólica, detonação aérea e dispersão gravitacional de partículas coloridas.",
+        invoke: "fireworks",
+        examples: [
+          {
+            title: "Disparos Sucessivos de Alta Densidade",
+            expl: "Intervalo reduzido de 0.4s entre foguetes a 35 quadros por segundo.",
+            cmd: "fireworks --gap 0.4 --framerate 35"
+          },
+          {
+            title: "Gravidade Reduzida com Fagulhas Prolongadas",
+            expl: "Partículas leves com tempo de vida de 0.8s simulando baixa atração física.",
+            cmd: "fireworks --gravity 0.06 --decay-time 0.8 --gap 0.8"
+          },
+          {
+            title: "Detonação em Grande Altitude",
+            expl: "Foguetes impulsionados até o topo superior da janela antes de explodir.",
+            cmd: "fireworks --explosion-height 0.15 --speed 1.3"
+          },
+          {
+            title: "Alta Velocidade e Aceleração Inicial",
+            expl: "Foguetes de alta propulsão com aceleração contínua em voo.",
+            cmd: "fireworks --speed 2.0 --delta-v 4.5"
+          },
+          {
+            title: "Tempestade Pirotécnica Caótica a 60 FPS",
+            expl: "Frequência frenética com quedas rápidas de faíscas incandescentes.",
+            cmd: "fireworks --gap 0.2 --framerate 60 --gravity 0.4"
+          },
+          {
+            title: "Zero Gravidade / Órbita Espacial",
+            expl: "Fagulhas flutuam por 1.5 segundos em expansão esférica lenta e graciosa.",
+            cmd: "fireworks --gravity 0.03 --decay-time 1.5 --gap 1.0"
+          },
+          {
+            title: "Detonação Central Suave e Contemplativa",
+            expl: "Show relaxante com explosões no centro geométrico da tela.",
+            cmd: "fireworks --explosion-height 0.5 --speed 0.8 --gap 1.5"
+          }
+        ],
+        shortcuts: [
+          { key: "] / [", action: "Aumentar ou diminuir frequência de disparos" },
+          { key: "Seta Cima / Baixo", action: "Ajustar a potência e impulso de decolagem" },
+          { key: "u", action: "Alternar visibilidade do HUD de telemetria física" },
+          { key: "q / Ctrl + C", action: "Encerrar a simulação" }
+        ]
+      },
+      {
+        id: "nyancat",
+        name: "nyancat",
+        badge: "ANSI Loop",
+        repo: "https://github.com/klange/nyancat",
+        desc: "A clássica animação do gato cósmico correndo no espaço infinito em sequências de escape ANSI com cronômetro integrado de tempo de voo.",
+        invoke: "nyancat",
+        examples: [
+          {
+            title: "Voo Cósmico Completo com Cronômetro",
+            expl: "Execução clássica contínua com medição de tempo de permanência.",
+            cmd: "nyancat"
+          },
+          {
+            title: "Vinheta Retrô de Abertura",
+            expl: "Exibição prévia da clássica tela de introdução antes do voo.",
+            cmd: "nyancat -i"
+          },
+          {
+            title: "Modo Minimalista sem Contador",
+            expl: "Oculta a barra de contagem para visualização puramente estética.",
+            cmd: "nyancat -n"
+          },
+          {
+            title: "Modo Silencioso Absoluto",
+            expl: "Desativa avisos e sons no terminal durante a execução.",
+            cmd: "nyancat -n -s"
+          },
+          {
+            title: "Resolução Clássica Fixa 80x24 Colunas",
+            expl: "Limita a viewport da animação para manter o formato original de terminais VT100.",
+            cmd: "nyancat -w 80 -h 24"
+          },
+          {
+            title: "Vinheta Curta com Encerramento Automático",
+            expl: "Executa exatamente 300 quadros (~10 segundos) e encerra sem intervenção.",
+            cmd: "nyancat -f 300 -n -s"
+          },
+          {
+            title: "Execução Limitada a 500 Quadros",
+            expl: "Para automaticamente e retorna ao prompt após 500 frames renderizados.",
+            cmd: "nyancat -f 500"
+          }
+        ],
+        shortcuts: [
+          { key: "q / Ctrl + C", action: "Encerrar animação e voltar ao prompt" }
+        ]
+      },
+      {
+        id: "fastfetch",
+        name: "fastfetch",
+        badge: "C Performance",
+        repo: "https://github.com/fastfetch-cli/fastfetch",
+        desc: "Utilitário ultra-rápido em C para exibição estética de informações e telemetria do hardware e sistema operacional com logos ASCII e layouts modulares.",
+        invoke: "fastfetch",
+        examples: [
+          {
+            title: "Execução Padrão com Logo Apple",
+            expl: "Exibição clássica completa com logotipo oficial do sistema e resumo de hardware e software.",
+            cmd: "fastfetch"
+          },
+          {
+            title: "Preset Estilo Neofetch Clássico",
+            expl: "Layout consagrado com blocos de paleta de cores cromáticas no rodapé.",
+            cmd: "fastfetch -c neofetch"
+          },
+          {
+            title: "Modo Paleofetch Ultra-Limpo",
+            expl: "Configuração de alta performance com telemetria essencial de CPU, GPU, Uptime e Bateria.",
+            cmd: "fastfetch -c paleofetch"
+          },
+          {
+            title: "Telemetria de Engenharia Completa (All)",
+            expl: "Todos os módulos disponíveis ativos incluindo telas, discos, sensores e arquitetura.",
+            cmd: "fastfetch -c all"
+          },
+          {
+            title: "Logo Reduzido para Painéis Estreitos",
+            expl: "Logo ASCII em versão compacta ideal para terminais divididos ou janelas laterais.",
+            cmd: "fastfetch --logo-type small"
+          },
+          {
+            title: "Seleção Específica de Módulos",
+            expl: "Filtro em linha única focando apenas nos componentes essenciais de computação.",
+            cmd: "fastfetch --structure OS:Host:Kernel:Uptime:CPU:GPU:Memory:Disk"
+          },
+          {
+            title: "Modo Minimalista sem Logo Gráfico",
+            expl: "Oculta a arte ASCII exibindo puramente os dados de telemetria alinhados à esquerda.",
+            cmd: "fastfetch --logo none"
+          },
+          {
+            title: "Exportação Estruturada em JSON",
+            expl: "Gera a árvore completa de dados da máquina em formato JSON para automações e scripts.",
+            cmd: "fastfetch --format json"
+          }
+        ],
+        shortcuts: [
+          { key: "fastfetch -h", action: "Exibir todas as opções de linha de comando e módulos suportados" },
+          { key: "fastfetch --list-presets", action: "Listar todos os presets oficiais e exemplos integrados" },
+          { key: "fastfetch --list-logos", action: "Listar todos os logotipos suportados de sistemas e distros" },
+          { key: "fastfetch --gen-config", action: "Gerar arquivo de configuração customizado em jsonc" }
+        ]
+      },
+      {
+        id: "combos",
+        name: "Combos Shell Multi-Painel",
+        badge: "Multiplex Layouts",
+        repo: "https://github.com/MateusCelestinoProX/antigravity-theme-changer",
+        desc: "Configurações prontas para janelas divididas em emuladores de terminal (iTerm2, Tmux, Kitty, Alacritty, WezTerm) para máxima harmonia visual.",
+        invoke: "Múltiplos painéis no terminal",
+        setups: [
+          {
+            title: "Setup 1: Telemetria de Sistema & Clima Noturno",
+            panels: [
+              { name: "Painel Superior", cmd: "btm --battery -r 500" },
+              { name: "Painel Inferior Esquerdo", cmd: "weathr -s thunderstorm -n" },
+              { name: "Painel Inferior Direito", cmd: "tty-clock -c -C 6 -s -B -b" }
+            ]
+          },
+          {
+            title: "Setup 2: Partículas Físicas & Geometria Tridimensional",
+            panels: [
+              { name: "Painel Superior Esquerdo", cmd: "tarts matrix" },
+              { name: "Painel Superior Direito", cmd: "donut" },
+              { name: "Painel Inferior", cmd: "fireworks --gap 0.5" }
+            ]
+          },
+          {
+            title: "Setup 3: Retrô Nostálgico & Dinâmica de Fluidos",
+            panels: [
+              { name: "Painel Superior Esquerdo", cmd: "nyancat -n" },
+              { name: "Painel Superior Direito", cmd: "pipes.sh -p 5 -t 1 -c 1 2 3 4 5 6 -f 85 -R -K" },
+              { name: "Painel Inferior", cmd: "lavat -g -G -c FF007F -k 00F0FF -s 5 -r 6 -b 14" }
+            ]
+          },
+          {
+            title: "Setup 4: Minimalista Monocromático Hacker",
+            panels: [
+              { name: "Painel Superior", cmd: "tty-clock -c -C 7 -s -x -b" },
+              { name: "Painel Inferior Esquerdo", cmd: "lavat -g -c FFFFFF -k 555555 -s 3 -r 8 -b 8 -C" },
+              { name: "Painel Inferior Direito", cmd: "btm --basic" }
+            ]
+          },
+          {
+            title: "Setup 5: Observatório Cósmico & Gravidade Zero",
+            panels: [
+              { name: "Painel Superior", cmd: "tarts constellation" },
+              { name: "Painel Inferior Esquerdo", cmd: "fireworks --gravity 0.03 --decay-time 1.5 --gap 1.0" },
+              { name: "Painel Inferior Direito", cmd: "weathr -s clear -n --hide-hud" }
+            ]
+          },
+          {
+            title: "Setup 6: Suíte de Alta Performance Rust",
+            panels: [
+              { name: "Painel Superior", cmd: "btm --tree -d proc" },
+              { name: "Painel Inferior Esquerdo", cmd: "tarts plasma" },
+              { name: "Painel Inferior Direito", cmd: "tarts terrain" }
+            ]
+          }
+        ],
+        shortcuts: [
+          { key: "Cmd + D / Cmd + Shift + D", action: "Dividir painel vertical ou horizontal no iTerm2 / Terminal" },
+          { key: 'Ctrl + b % / Ctrl + b \"', action: "Dividir painel vertical ou horizontal no Tmux" }
+        ]
+      }
+    ];
+
+    let currentDocTopic = "bottom";
+
+    // RENDER DOC TOPICS IN SIDEBAR
+    function renderDocTopics() {
+      const list = document.getElementById("docTopicsList");
+      if (!list) return;
+      list.innerHTML = "";
+
+      const query = (document.getElementById("docSearchInput")?.value || "").toLowerCase().trim();
+
+      const filtered = DOCS_DATA.filter(t => {
+        if (!query) return true;
+        return t.name.toLowerCase().includes(query) || 
+               t.badge.toLowerCase().includes(query) || 
+               t.desc.toLowerCase().includes(query) ||
+               t.invoke.toLowerCase().includes(query);
+      });
+
+      filtered.forEach(t => {
+        const item = document.createElement("div");
+        item.className = `doc-topic-item ${t.id === currentDocTopic ? "active" : ""}`;
+        item.onclick = () => selectDocTopic(t.id);
+
+        item.innerHTML = `
+          <div class="doc-topic-header">
+            <span class="doc-topic-title">${t.name}</span>
+            <span class="doc-topic-tag">${t.badge.split(" ")[0]}</span>
+          </div>
+          <div class="doc-topic-desc">${t.desc}</div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    // FILTER DOC TOPICS
+    function filterDocTopics() {
+      renderDocTopics();
+    }
+
+    // SELECT TOPIC AND RENDER CENTRAL PANEL
+    function selectDocTopic(topicId) {
+      currentDocTopic = topicId;
+      renderDocTopics();
+
+      const topic = DOCS_DATA.find(t => t.id === topicId) || DOCS_DATA[0];
+      const panel = document.getElementById("docMainContent");
+      if (!panel) return;
+
+      let extraContent = "";
+
+      // Specific renderer for tarts screensavers
+      if (topic.effectsList) {
+        extraContent = `
+          <div>
+            <div class="doc-block-title">
+              <span>Catálogo dos 12 Screensavers em Rust</span>
+            </div>
+            <div class="tarts-doc-grid">
+              ${topic.effectsList.map(e => `
+                <div class="tarts-doc-item">
+                  <div>
+                    <div class="tarts-doc-name">
+                      <span>${e.name}</span>
+                    </div>
+                    <p class="tarts-doc-desc">${e.desc}</p>
+                  </div>
+                  <div class="apple-cmd-box" style="padding: 7px 10px;">
+                    <span class="apple-cmd-code">${escapeHtml(e.cmd)}</span>
+                    <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(e.cmd)}', this)">
+                      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copiar</span>
+                    </button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      // Specific renderer for multi-panel combos
+      if (topic.setups) {
+        extraContent = `
+          <div>
+            <div class="doc-block-title">
+              <span>Layouts Prontos para Terminal Dividido</span>
+            </div>
+            <div class="combos-doc-stack">
+              ${topic.setups.map(s => `
+                <div class="combo-card">
+                  <span class="combo-title">${s.title}</span>
+                  <div class="combo-panels-list">
+                    ${s.panels.map(p => `
+                      <div class="combo-panel-row">
+                        <span class="combo-panel-name">${p.name}</span>
+                        <div class="apple-cmd-box" style="flex: 1; padding: 6px 10px;">
+                          <span class="apple-cmd-code">${escapeHtml(p.cmd)}</span>
+                          <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(p.cmd)}', this)">
+                            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span>Copiar</span>
+                          </button>
+                        </div>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        `;
+      }
+
+      // Standard examples renderer
+      const examplesBlock = (topic.examples && topic.examples.length > 0) ? `
+        <div>
+          <div class="doc-block-title">
+            <span>Exemplos de Comandos & Variações Visuais (${topic.examples.length})</span>
+          </div>
+          <div class="doc-presets-stack">
+            ${topic.examples.map(ex => `
+              <div class="doc-preset-card">
+                <div class="doc-preset-head">
+                  <span class="doc-preset-title">${ex.title}</span>
+                </div>
+                <p class="doc-preset-expl">${ex.expl}</p>
+                <div class="apple-cmd-box">
+                  <span class="apple-cmd-code">${escapeHtml(ex.cmd)}</span>
+                  <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(ex.cmd)}', this)">
+                    <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>Copiar</span>
+                  </button>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      ` : "";
+
+      // Shortcuts block
+      const shortcutsBlock = (topic.shortcuts && topic.shortcuts.length > 0) ? `
+        <div>
+          <div class="doc-block-title">
+            <span>Controles e Atalhos em Tempo Real</span>
+          </div>
+          <div class="doc-shortcuts-grid">
+            ${topic.shortcuts.map(sc => `
+              <div class="doc-shortcut-item">
+                <span class="doc-kbd">${escapeHtml(sc.key)}</span>
+                <span class="doc-shortcut-label">${escapeHtml(sc.action)}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      ` : "";
+
+      panel.innerHTML = `
+        <div class="doc-app-header">
+          <div class="doc-app-meta">
+            <div class="doc-app-title-row">
+              <h3 class="doc-app-name">${topic.name}</h3>
+              <span class="doc-app-badge">${topic.badge}</span>
+            </div>
+            <p class="doc-app-desc">${topic.desc}</p>
+          </div>
+
+          <a href="${topic.repo}" target="_blank" rel="noopener noreferrer" class="apple-github-btn" title="Ver código-fonte oficial no GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>Repositório GitHub</span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
+        </div>
+
+        <div>
+          <div class="doc-block-title">
+            <span>Comando de Invocação Base</span>
+          </div>
+          <div class="apple-cmd-box">
+            <span class="apple-cmd-code">${escapeHtml(topic.invoke)}</span>
+            <button class="apple-copy-btn" onclick="copyCommand('${escapeHtml(topic.invoke)}', this)">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        ${extraContent}
+        ${examplesBlock}
+        ${shortcutsBlock}
+      `;
+    }
+
+    // 1-CLICK COPY FUNCTION
+    function copyCommand(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        triggerCopyFeedback(text, btnElement);
+      }).catch(() => {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        triggerCopyFeedback(text, btnElement);
+      });
+    }
+
+    function triggerCopyFeedback(text, btnElement) {
+      if (btnElement) {
+        const originalHTML = btnElement.innerHTML;
+        btnElement.innerHTML = `
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" style="width:12px;height:12px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Copiado</span>
+        `;
+        btnElement.classList.add("copied");
+        setTimeout(() => {
+          btnElement.innerHTML = originalHTML;
+          btnElement.classList.remove("copied");
+        }, 1800);
+      }
+      showToast(`Comando copiado: ${text}`);
+    }
+
+    // NAVIGATION SWITCHER
+    function switchMainSection(target, btnElement) {
+      document.querySelectorAll(".dock-seg-btn").forEach(b => b.classList.remove("active"));
+      if (btnElement) {
+        btnElement.classList.add("active");
+      }
+
+      let elId = "themesSection";
+      if (target === "fonts") elId = "fontsSection";
+      else if (target === "docs") elId = "docsSection";
+
+      const targetEl = document.getElementById(elId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // API BASE RESOLVER & HEALTH HEARTBEAT
+    function getApiBaseUrl() {
+      if (window.location.protocol === "file:") {
+        return "http://localhost:48123";
+      }
+      return "";
+    }
+
+    function updateServerStatus(online, port = 48123) {
+      const capsule = document.getElementById("serverStatusCapsule");
+      const dot = document.getElementById("serverStatusDot");
+      const text = document.getElementById("serverStatusText");
+      if (!capsule || !dot || !text) return;
+
+      if (online) {
+        capsule.classList.remove("offline");
+        dot.classList.remove("offline");
+        text.textContent = `Online • ${port}`;
+      } else {
+        capsule.classList.add("offline");
+        dot.classList.add("offline");
+        text.textContent = "Servidor Offline";
+      }
+    }
+
+    let isCheckingHealth = false;
+    async function checkServerHealth(userTriggered = false) {
+      if (isCheckingHealth) return;
+      isCheckingHealth = true;
+      try {
+        const apiBase = getApiBaseUrl();
+        const res = await fetch(`${apiBase}/api/status`, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          updateServerStatus(true, data.port || 48123);
+          if (userTriggered) {
+            showToast(`Servidor conectado na porta ${data.port || 48123}`);
+          }
+        } else {
+          updateServerStatus(false);
+          if (userTriggered) {
+            showToast("Servidor retornou erro HTTP", true);
+          }
+        }
+      } catch (err) {
+        updateServerStatus(false);
+        if (userTriggered) {
+          showToast("Servidor offline. Execute 'python3 theme_changer.py init'", true);
+        }
+      } finally {
+        isCheckingHealth = false;
+      }
+    }
+
+    // INITIAL FETCH OF ACTIVE STATE
+    async function fetchCurrentState() {
+      const apiBase = getApiBaseUrl();
+      try {
+        const [statusRes, fontRes, themeRes] = await Promise.allSettled([
+          fetch(`${apiBase}/api/status`, { cache: "no-store" }),
+          fetch(`${apiBase}/api/current-font`, { cache: "no-store" }),
+          fetch(`${apiBase}/api/current-theme`, { cache: "no-store" })
+        ]);
+
+        if (statusRes.status === "fulfilled" && statusRes.value.ok) {
+          const statusData = await statusRes.value.json();
+          updateServerStatus(true, statusData.port || 48123);
+        } else {
+          updateServerStatus(false);
+        }
+
+        if (fontRes.status === "fulfilled" && fontRes.value.ok) {
+          const fontData = await fontRes.value.json();
+          if (fontData.current) {
+            currentActiveFont = fontData.current;
+            currentScope = fontData.scope || "full";
+            document.getElementById("scopeFullBtn").classList.toggle("active", currentScope === "full");
+            document.getElementById("scopeCodeBtn").classList.toggle("active", currentScope === "code");
+            const fObj = FONTS_DATA.find(f => f.id === currentActiveFont);
+            if (fObj) {
+              document.getElementById("dockActiveFont").innerHTML = `<span>Fonte:</span> <strong>${fObj.name}</strong>`;
+            }
+          }
+        }
+
+        if (themeRes.status === "fulfilled" && themeRes.value.ok) {
+          const themeData = await themeRes.value.json();
+          if (themeData.current) {
+            currentActiveTheme = themeData.current;
+            const tObj = THEMES_DATA.find(t => t.id === currentActiveTheme);
+            if (tObj) {
+              document.getElementById("dockActiveTheme").innerHTML = `<span>Tema:</span> <strong>${tObj.name}</strong>`;
+            }
+          }
+        }
+      } catch (e) {
+        updateServerStatus(false);
+        console.warn("Estado inicial carregado com padroes locais:", e);
+      }
+
+      renderFonts();
+      renderThemes();
+    }
+
+    // INIT ON LOAD
+    window.addEventListener("DOMContentLoaded", () => {
+      fetchCurrentState();
+      renderDocTopics();
+      selectDocTopic('bottom');
+      setInterval(() => {
+        checkServerHealth(false);
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
