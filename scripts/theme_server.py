@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
 Theme Changer & Font Center Server — Google Antigravity
-Servidor HTTP local multithread para controle em tempo real via Chrome DevTools Protocol.
+Servidor HTTP local multithread Dual-Stack (IPv4 + IPv6) com suporte a PNA e DevTools.
 """
 
 import http.server
+import socket
 import socketserver
 import urllib.parse
 import json
@@ -12,6 +13,13 @@ import os
 import sys
 import importlib
 import subprocess
+# Garantir PATH para Homebrew e Node.js no macOS
+default_paths = ["/opt/homebrew/bin", "/opt/homebrew/sbin", "/usr/local/bin"]
+cur_path = os.environ.get("PATH", "")
+for p in default_paths:
+    if p not in cur_path and os.path.exists(p):
+        cur_path = f"{p}:{cur_path}"
+os.environ["PATH"] = cur_path
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -19,6 +27,7 @@ SCRIPTS_DIR = BASE_DIR / "scripts"
 if not SCRIPTS_DIR.exists():
     SCRIPTS_DIR = Path.home() / ".gemini/config/skills/theme-changer/scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
+sys.path.insert(0, str(BASE_DIR))
 
 try:
     import theme_changer
@@ -31,11 +40,16 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(BASE_DIR), **kwargs)
 
-    def do_OPTIONS(self):
-        self.send_response(200)
+    def send_cors_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "*")
+        self.send_header("Access-Control-Allow-Private-Network", "true")
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_cors_headers()
         self.end_headers()
 
     def do_GET(self):
@@ -49,6 +63,15 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             return
 
+        # Rota Ping rápida para handshake e healthcheck
+        if parsed.path == "/api/ping":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_cors_headers()
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok", "port": PORT}).encode("utf-8"))
+            return
+
         # Servir a página da aplicação
         if parsed.path == "/theme_changer_app.html":
             candidate_paths = [
@@ -57,6 +80,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                 BASE_DIR / "theme_changer_app.html",
                 Path.home() / ".gemini/config/skills/theme-changer/web/theme_changer_app.html",
                 Path.home() / ".gemini/config/skills/theme-changer/theme_changer_app.html",
+                Path.home() / ".gemini/antigravity/scratch/antigravity-theme-changer/web/theme_changer_app.html",
             ]
             for p in candidate_paths:
                 if p.exists():
@@ -65,6 +89,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                         self.send_response(200)
                         self.send_header("Content-Type", "text/html; charset=utf-8")
                         self.send_header("Content-Length", str(len(content)))
+                        self.send_cors_headers()
                         self.end_headers()
                         self.wfile.write(content)
                         return
@@ -85,19 +110,22 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                 if not key:
                     self.send_response(400)
                     self.send_header("Content-Type", "application/json")
-                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.send_cors_headers()
                     self.end_headers()
                     self.wfile.write(json.dumps({"success": False, "error": f"Tema '{target}' não reconhecido"}).encode("utf-8"))
                     return
 
                 ok1 = theme_changer.update_config_json(key)
                 ok2 = theme_changer.update_pbtxt(key)
-                theme_changer.apply_live(key)
+                try:
+                    theme_changer.apply_live(key)
+                except Exception as live_err:
+                    print("[i] Aviso na sincronização ao vivo:", live_err)
                 t = theme_changer.THEMES.get(key, {})
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 resp = {
                     "success": True,
@@ -112,7 +140,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
                 return
@@ -142,7 +170,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 cur_theme = theme_changer.THEMES.get(cur_key, theme_changer.THEMES.get("green", {}))
                 self.wfile.write(json.dumps({"current": cur_key, "theme": cur_theme}).encode("utf-8"))
@@ -150,7 +178,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"current": "green", "error": str(e)}).encode("utf-8"))
                 return
@@ -187,18 +215,22 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                 candidate_scripts = [
                     SCRIPTS_DIR / "apply_font.js",
                     BASE_DIR / "scripts" / "apply_font.js",
-                    Path.home() / ".gemini/config/skills/theme-changer/scripts/apply_font.js"
+                    Path.home() / ".gemini/config/skills/theme-changer/scripts/apply_font.js",
+                    Path.home() / ".gemini/antigravity/scratch/antigravity-theme-changer/scripts/apply_font.js"
                 ]
                 output = ""
                 for s in candidate_scripts:
                     if s.exists():
-                        res = subprocess.run(["node", str(s), font_target, scope], capture_output=True, text=True, timeout=5)
-                        output = res.stdout.strip()
+                        try:
+                            res = subprocess.run(["node", str(s), font_target, scope], capture_output=True, text=True, timeout=5)
+                            output = res.stdout.strip()
+                        except Exception as font_err:
+                            output = str(font_err)
                         break
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 resp = {
                     "success": True,
@@ -213,7 +245,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
                 return
@@ -237,14 +269,14 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"current": cur_font, "name": cur_name, "scope": cur_scope}).encode("utf-8"))
                 return
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"current": "jetbrains", "name": "JetBrains Mono", "scope": "full", "error": str(e)}).encode("utf-8"))
                 return
@@ -296,7 +328,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 resp = {
                     "status": "online",
@@ -314,7 +346,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"status": "error", "error": str(e)}).encode("utf-8"))
                 return
@@ -329,7 +361,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
 
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 resp = {
                     "total_themes": len(theme_changer.THEMES),
@@ -342,7 +374,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 self.send_response(500)
                 self.send_header("Content-Type", "application/json")
-                self.send_header("Access-Control-Allow-Origin", "*")
+                self.send_cors_headers()
                 self.end_headers()
                 self.wfile.write(json.dumps({"success": False, "error": str(e)}).encode("utf-8"))
                 return
@@ -377,16 +409,38 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
         else:
             self.send_response(404)
             self.send_header("Content-Type", "application/json")
-            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_cors_headers()
             self.end_headers()
             self.wfile.write(json.dumps({"error": "Rota POST não encontrada"}).encode("utf-8"))
 
-class ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
-    daemon_threads = True
-    allow_reuse_address = True
+def create_server(port=PORT):
+    # 1. Tenta criar servidor Dual-Stack (IPv4 + IPv6 simultâneo com IPV6_V6ONLY=0)
+    try:
+        class DualStackServer(http.server.ThreadingHTTPServer):
+            daemon_threads = True
+            allow_reuse_address = True
+            address_family = socket.AF_INET6
+
+            def server_bind(self):
+                try:
+                    self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+                except Exception:
+                    pass
+                super().server_bind()
+
+        return DualStackServer(("::", port), ThemeHandler)
+    except Exception:
+        pass
+
+    # 2. Fallback resiliente para IPv4 padrão
+    class IPv4Server(http.server.ThreadingHTTPServer):
+        daemon_threads = True
+        allow_reuse_address = True
+
+    return IPv4Server(("", port), ThemeHandler)
 
 def run():
-    with ThreadedHTTPServer(("", PORT), ThemeHandler) as httpd:
+    with create_server(PORT) as httpd:
         print(f"🍏 Theme Studio Server running on http://localhost:{PORT}/theme_changer_app.html")
         httpd.serve_forever()
 
