@@ -157,9 +157,12 @@ O componente `theme_server.py` fornece a ponte entre interfaces externas (navega
 
 ### Características Técnicas:
 - **Tecnologia**: Python Standard Library puro (`http.server` + `socketserver.ThreadingMixIn`). Zero dependências externas pip.
+- **Dual-Stack Nativo (IPv4 + IPv6)**: Classe `DualStackServer` operando em `socket.AF_INET6` com `IPV6_V6ONLY = 0`, atendendo requisições simultâneas em `::1`, `127.0.0.1` e `localhost` sem delay de preflight.
+- **Persistência macOS LaunchAgent**: Serviço `com.antigravity.theme-changer.plist` em `~/Library/LaunchAgents` com `KeepAlive` para inicialização automática no boot.
 - **Porta**: `48123` com suporte a reuso imediato de porta (`SO_REUSEADDR`).
 - **Concorrência**: Processamento multithread em threads daemon (`daemon_threads = True`).
-- **CORS Completo**: Cabeçalhos `Access-Control-Allow-Origin: *` e suporte nativo a requisições preflight `OPTIONS`.
+- **CORS & PNA Completo**: Cabeçalhos `Access-Control-Allow-Origin: *`, `Access-Control-Allow-Private-Network: true` (compatível com Chromium/Brave) e preflight `OPTIONS`.
+- **Rota de Ping**: Endpoint `/api/ping` para validação instantânea de prontidão de socket.
 - **API Híbrida**: Aceita parâmetros via query string (GET) ou payloads JSON (POST).
 
 ---
