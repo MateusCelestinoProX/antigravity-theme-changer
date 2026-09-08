@@ -43,6 +43,10 @@ echo "🤖 Registrando Agente @theme-changer..."
 cp "$SCRIPT_DIR/agents/theme-changer.md" "$TARGET_AGENTS_DIR/theme-changer.md"
 cp "$SCRIPT_DIR/agents/theme-changer.md" "$TARGET_AGENT_AGENTS_DIR/theme-changer.md"
 
+# 6. Configurar serviço em segundo plano no macOS (LaunchAgent)
+echo "⚡ Configurando inicialização contínua via macOS LaunchAgent..."
+python3 "$TARGET_SCRIPTS_DIR/theme_changer.py" service install || true
+
 echo "────────────────────────────────────────────────────────────"
 echo "✨ Instalação concluída com sucesso na estrutura natural do Antigravity 2.0!"
 echo ""
