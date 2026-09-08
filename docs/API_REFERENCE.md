@@ -34,6 +34,7 @@ O **Theme Studio Server** opera localmente na porta `48123`, fornecendo uma API 
 | :--- | :--- | :--- |
 | `GET` | `/` | Redirecionamento 302 para o painel web |
 | `GET` | `/theme_changer_app.html` | Serve o painel web Apple Liquid Glass |
+| `GET` | `/api/ping` | Handshake e healthcheck ultra-leve (< 1ms) Dual-Stack |
 | `GET` | `/api/status` | Diagnóstico geral, porta, tema e fonte ativos |
 | `GET` | `/api/list` | Catálogo completo dos 31 temas e 13 fontes |
 | `GET` | `/api/current-theme` | Consulta o tema ativo e sementes de cor |
@@ -44,6 +45,19 @@ O **Theme Studio Server** opera localmente na porta `48123`, fornecendo uma API 
 ---
 
 ## 🔍 Detalhamento das Rotas
+
+### 0. `GET /api/ping`
+Verificação ultra-leve de conectividade HTTP (resposta < 1ms) para handshake de inicialização e healthchecks do navegador.
+
+**Exemplo de Resposta**:
+```json
+{
+  "status": "ok",
+  "port": 48123
+}
+```
+
+---
 
 ### 1. `GET /api/status`
 Retorna o estado de saúde do servidor, o tema atualmente carregado e a fonte em uso.
@@ -83,13 +97,13 @@ Retorna o catálogo completo de todos os temas e fontes cadastrados no motor.
   "total_themes": 31,
   "total_fonts": 13,
   "themes": {
-    "green": { "name": "Matrix Phosphor Green", "category": "full" },
-    "matcha": { "name": "Dark Matcha Obsidian", "category": "dark" },
-    "emerald": { "name": "Light Emerald", "category": "light" }
+    "green": { "name": "Matrix Phosphor Green", "category": "full", ... },
+    "matcha": { "name": "Dark Matcha Obsidian", "category": "dark", ... },
+    "emerald": { "name": "Light Emerald", "category": "light", ... }
   },
   "fonts": {
-    "jetbrains": { "name": "JetBrains Mono", "badge": "LIGADURAS" },
-    "victor": { "name": "Victor Mono", "badge": "CURSIVA & LIGS" }
+    "jetbrains": { "name": "JetBrains Mono", "badge": "LIGADURAS", ... },
+    "victor": { "name": "Victor Mono", "badge": "CURSIVA & LIGS", ... }
   }
 }
 ```
@@ -137,9 +151,7 @@ Aplica um novo tema no Antigravity. Aceita tanto query params quanto corpo JSON.
 
 **Via POST (Recomendado para APIs):**
 ```bash
-curl -X POST http://localhost:48123/api/set-theme \
-  -H "Content-Type: application/json" \
-  -d '{"theme": "matcha"}'
+curl -X POST http://localhost:48123/api/set-theme   -H "Content-Type: application/json"   -d '{"theme": "matcha"}'
 ```
 
 **Via GET (Ideal para links e tags `<a>`):**
@@ -175,9 +187,7 @@ Aplica uma fonte com ligaduras no Antigravity.
 
 **Via POST:**
 ```bash
-curl -X POST http://localhost:48123/api/set-font \
-  -H "Content-Type: application/json" \
-  -d '{"font": "victor", "scope": "full"}'
+curl -X POST http://localhost:48123/api/set-font   -H "Content-Type: application/json"   -d '{"font": "victor", "scope": "full"}'
 ```
 
 **Via GET:**
