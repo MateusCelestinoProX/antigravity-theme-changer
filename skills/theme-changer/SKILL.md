@@ -22,6 +22,13 @@ description: >
   ```
   Exibe instantaneamente no terminal o tema ativo, sementes de cor (background/primary), fonte ativa, modo tipográfico (full/code) e status da interface web.
 
+- **Serviço Contínuo macOS (`service`)**:
+  ```bash
+  python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py service install
+  python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py service status
+  ```
+  Registra o LaunchAgent no macOS para que o servidor Dual-Stack (IPv4 + IPv6) fique sempre online no boot.
+
 - **Catálogo Geral (`list`)**:
   ```bash
   python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py list
