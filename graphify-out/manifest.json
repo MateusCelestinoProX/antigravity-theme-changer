@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "scripts/theme_server.py": {
-    "mtime": 1789159877.037113,
-    "seen": 1789159887.7779589,
-    "ast_hash": "054d100666e644c1bc7801baa9dcb5ae",
+    "mtime": 1789160009.3369353,
+    "seen": 1789160251.389608,
+    "ast_hash": "3e4605d6a89a04ef1782a4a4073ca3c1",
     "semantic_hash": ""
   },
   "tests/test_theme_changer.py": {
@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "theme_server.py": {
-    "mtime": 1789159873.5324876,
-    "seen": 1789159887.777961,
-    "ast_hash": "054d100666e644c1bc7801baa9dcb5ae",
+    "mtime": 1789160004.1807027,
+    "seen": 1789160251.389614,
+    "ast_hash": "3e4605d6a89a04ef1782a4a4073ca3c1",
     "semantic_hash": ""
   },
   ".github/workflows/audit.yml": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789159808.2710845,
-    "seen": 1789159887.777964,
-    "ast_hash": "0762a39402ad6badfe123174fe4c8f2d",
+    "mtime": 1789160204.1403055,
+    "seen": 1789160251.389618,
+    "ast_hash": "abc4dc5602e077e496582ad2bc98a635",
     "semantic_hash": ""
   },
   "agents/theme-changer.md": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "docs/ARCHITECTURE.md": {
-    "mtime": 1789159767.4057903,
-    "seen": 1789159887.7779682,
-    "ast_hash": "328bdc1aa6afc21c53d61fc5ac4efc7c",
+    "mtime": 1789160077.1687932,
+    "seen": 1789160251.389621,
+    "ast_hash": "10a494f24d3a027c116d66c0a35bc914",
     "semantic_hash": ""
   },
   "docs/SHELL_UTILITIES.md": {
@@ -90,15 +90,15 @@
     "semantic_hash": ""
   },
   "theme_changer_app.html": {
-    "mtime": 1789149904.7974672,
-    "seen": 1789149915.722002,
-    "ast_hash": "52980a6355a93fac5a15d302ee31736e",
+    "mtime": 1789160058.702486,
+    "seen": 1789160251.389625,
+    "ast_hash": "2279691c8751b6d86bc3d5916d987723",
     "semantic_hash": ""
   },
   "web/theme_changer_app.html": {
-    "mtime": 1789149904.7984006,
-    "seen": 1789149915.722004,
-    "ast_hash": "52980a6355a93fac5a15d302ee31736e",
+    "mtime": 1789160063.2814388,
+    "seen": 1789160251.389625,
+    "ast_hash": "2279691c8751b6d86bc3d5916d987723",
     "semantic_hash": ""
   },
   "js/webgl-backgrounds.js": {
@@ -123,6 +123,18 @@
     "mtime": 1789141617.7126052,
     "seen": 1789141688.9197161,
     "ast_hash": "270c0013e50daf1ee9ea55749051e2f5",
+    "semantic_hash": ""
+  },
+  "tests/test_e2e_portability.py": {
+    "mtime": 1789160210.9867685,
+    "seen": 1789160251.3896089,
+    "ast_hash": "e1df9ed5a09797e2ffddbe45888b8115",
+    "semantic_hash": ""
+  },
+  "test_e2e_err.txt": {
+    "mtime": 1789160106.9336197,
+    "seen": 1789160251.389624,
+    "ast_hash": "58c6c929180964a1bf785b34c7ed2975",
     "semantic_hash": ""
   }
 }

@@ -47,7 +47,7 @@
   "45": "addSegment",
   "46": "loadImage",
   "47": "loadImage",
-  "48": "squaredDistance",
+  "48": "frustumIntersectsMesh",
   "49": "🎨 Catálogo de 31 Temas de Elite",
   "50": "setShaders",
   "51": "applyMatrix3",
@@ -77,10 +77,12 @@
   "75": "fromAxisAngle",
   "76": "fromMatrix4",
   "77": "fromOrthogonal",
-  "78": "getMaxScaleOnAxis",
+  "78": "TestE2EPortabilityAndDocs",
   "79": "getScaling",
   "80": "negate",
   "81": "Oi",
   "82": "setShaders",
-  "83": "translate"
+  "83": "translate",
+  "84": "applyQuaternion",
+  "85": "createVAO"
 }

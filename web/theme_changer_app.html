@@ -3990,7 +3990,7 @@
                 </div>
                 <div>
                   <label class="form-label" style="font-size: 11px; margin-bottom: 4px;">Pasta Local no Mac (Diretório do Código)</label>
-                  <input type="text" id="newProjectFolderInput" class="form-input" placeholder="Ex: /Users/mcp/Projects/meu-projeto-ia">
+                  <input type="text" id="newProjectFolderInput" class="form-input" placeholder="Ex: ~/Projects/meu-projeto-ia">
                 </div>
                 <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px;">
                   <button type="button" class="btn-preset-pill" onclick="toggleNewProjectCard(false)">Cancelar</button>
@@ -4154,9 +4154,9 @@
 
                 <div class="field-hint" style="margin-top: 4px; margin-bottom: 6px;">Atalhos rápidos de arquivos do projeto:</div>
                 <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;">
-                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('theme_changer_app.html', '/Users/mcp/.gemini/antigravity/scratch/antigravity-theme-changer/theme_changer_app.html')">theme_changer_app.html</button>
-                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('theme_server.py', '/Users/mcp/.gemini/antigravity/scratch/antigravity-theme-changer/scripts/theme_server.py')">theme_server.py</button>
-                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('SKILL.md', '/Users/mcp/.gemini/config/skills/theme-changer/SKILL.md')">SKILL.md</button>
+                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('theme_changer_app.html', (window.SERVER_BASE_DIR || '.') + '/theme_changer_app.html')">theme_changer_app.html</button>
+                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('theme_server.py', (window.SERVER_BASE_DIR || '.') + '/scripts/theme_server.py')">theme_server.py</button>
+                  <button type="button" class="btn-preset-pill" onclick="attachFileQuick('SKILL.md', '~/.gemini/config/skills/theme-changer/SKILL.md')">SKILL.md</button>
                 </div>
                 <div class="field-hint" style="margin-bottom: 6px;">Ou informe um caminho absoluto de arquivo ou diretório:</div>
                 <div style="display: flex; gap: 8px;">
@@ -6227,7 +6227,9 @@
     }
 
     function attachWorkspaceQuick() {
-      addContext("workspace", "Workspace: antigravity-theme-changer", "/Users/mcp/.gemini/antigravity/scratch/antigravity-theme-changer");
+      const wsPath = window.SERVER_BASE_DIR || ".";
+      const wsName = wsPath.includes("/") ? wsPath.split("/").pop() : "antigravity-theme-changer";
+      addContext("workspace", `Workspace: ${wsName}`, wsPath);
     }
 
     function attachGraphifyQuick() {
@@ -7714,6 +7716,7 @@
         const res = await fetch(`${apiBase}/api/status`, { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
+          if (data.base_dir) window.SERVER_BASE_DIR = data.base_dir;
           updateServerStatus(true, data.port || 48123);
           if (userTriggered) {
             showToast(`Servidor conectado na porta ${data.port || 48123}`);
@@ -7746,6 +7749,7 @@
 
         if (statusRes.status === "fulfilled" && statusRes.value.ok) {
           const statusData = await statusRes.value.json();
+          if (statusData.base_dir) window.SERVER_BASE_DIR = statusData.base_dir;
           updateServerStatus(true, statusData.port || 48123);
         } else {
           updateServerStatus(false);

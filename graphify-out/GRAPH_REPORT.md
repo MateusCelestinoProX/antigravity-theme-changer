@@ -1,11 +1,11 @@
 # Graph Report - antigravity-theme-changer  (2026-09-11)
 
 ## Corpus Check
-- 18 files · ~113,708 words
+- 19 files · ~119,998 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 944 nodes · 1872 edges · 84 communities (52 shown, 31 thin omitted)
+- 959 nodes · 1887 edges · 86 communities (53 shown, 31 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 48 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
@@ -29,7 +29,6 @@
 - sub
 - multiply
 - sub
-- web/js/ogl.js
 - js/ogl.js
 - constructor
 - constructor
@@ -57,7 +56,7 @@
 - addSegment
 - loadImage
 - loadImage
-- squaredDistance
+- frustumIntersectsMesh
 - 🎨 Catálogo de 31 Temas de Elite
 - setShaders
 - applyMatrix3
@@ -87,12 +86,14 @@
 - fromAxisAngle
 - fromMatrix4
 - fromOrthogonal
-- getMaxScaleOnAxis
+- TestE2EPortabilityAndDocs
 - getScaling
 - negate
 - Oi
 - setShaders
 - translate
+- applyQuaternion
+- createVAO
 
 ## God Nodes (most connected - your core abstractions)
 1. `constructor()` - 45 edges
@@ -121,7 +122,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (84 total, 31 thin omitted)
+## Communities (86 total, 31 thin omitted)
 
 ### Community 0 - "💻 Central de Utilitários de Terminal & Screensavers Estéticos macOS"
 Cohesion: 0.06
@@ -180,24 +181,24 @@ Cohesion: 0.17
 Nodes (23): setSize(), buildStrandsPalette(), createOptimizedRenderer(), hexToRgb(), hexToRgbArr(), hexToVec4Arr(), initAcidSquares(), initBalatro() (+15 more)
 
 ### Community 15 - "web/js/webgl-backgrounds.js"
-Cohesion: 0.17
-Nodes (23): setSize(), buildStrandsPalette(), createOptimizedRenderer(), hexToRgb(), hexToRgbArr(), hexToVec4Arr(), initAcidSquares(), initBalatro() (+15 more)
+Cohesion: 0.16
+Nodes (24): resize(), setSize(), buildStrandsPalette(), createOptimizedRenderer(), hexToRgb(), hexToRgbArr(), hexToVec4Arr(), initAcidSquares() (+16 more)
 
 ### Community 16 - "sub"
 Cohesion: 0.08
 Nodes (34): Ai(), applyMatrix4(), ce(), computeBoundingBox(), computeBoundingSphere(), cross(), de(), dot() (+26 more)
 
 ### Community 17 - "multiply"
-Cohesion: 0.07
-Nodes (37): add(), ae(), bindAttributes(), Bt(), v(), createVAO(), di(), divide() (+29 more)
+Cohesion: 0.08
+Nodes (30): add(), ae(), v(), di(), draw(), fe(), getNormalMatrix(), hr() (+22 more)
 
 ### Community 18 - "sub"
-Cohesion: 0.08
-Nodes (34): Ai(), applyMatrix4(), ce(), computeBoundingBox(), computeBoundingSphere(), cross(), de(), dot() (+26 more)
+Cohesion: 0.09
+Nodes (29): Ai(), applyMatrix4(), ce(), cross(), de(), dot(), Dt(), Ei() (+21 more)
 
 ### Community 21 - "constructor"
-Cohesion: 0.09
-Nodes (31): activeTexture(), addAttribute(), b(), bind(), buildPlane(), constructor(), R(), createBones() (+23 more)
+Cohesion: 0.10
+Nodes (30): activeTexture(), addAttribute(), b(), bind(), buildPlane(), constructor(), R(), createBones() (+22 more)
 
 ### Community 22 - "constructor"
 Cohesion: 0.09
@@ -228,8 +229,8 @@ Cohesion: 0.12
 Nodes (18): an(), br(), l(), o(), It(), load(), loadKTX(), mr() (+10 more)
 
 ### Community 30 - "copy"
-Cohesion: 0.16
-Nodes (18): clone(), copy(), dr(), equals(), Fi(), Fr(), _getCatmullRomPoints(), _getCubicBezierPoints() (+10 more)
+Cohesion: 0.12
+Nodes (23): Bt(), clone(), copy(), divide(), dr(), equals(), Fi(), Fr() (+15 more)
 
 ### Community 31 - "computeFrenetFrames"
 Cohesion: 0.18
@@ -248,8 +249,8 @@ Cohesion: 0.16
 Nodes (14): addChild(), addFrustumCull(), createTexture(), gr(), identity(), Ni(), onBeforeRender(), parseNodes() (+6 more)
 
 ### Community 35 - "addFrustumCull"
-Cohesion: 0.16
-Nodes (14): addChild(), addFrustumCull(), createTexture(), gr(), identity(), Ni(), onBeforeRender(), parseNodes() (+6 more)
+Cohesion: 0.12
+Nodes (18): addChild(), addFrustumCull(), createTexture(), decompose(), determinant(), gr(), identity(), ne() (+10 more)
 
 ### Community 36 - "parse"
 Cohesion: 0.18
@@ -260,8 +261,8 @@ Cohesion: 0.22
 Nodes (10): decompose(), determinant(), distance(), gi(), len(), me(), ne(), ot() (+2 more)
 
 ### Community 38 - "distance"
-Cohesion: 0.22
-Nodes (10): decompose(), determinant(), distance(), gi(), len(), me(), ne(), ot() (+2 more)
+Cohesion: 0.40
+Nodes (6): distance(), gi(), len(), me(), ot(), updateFrustum()
 
 ### Community 39 - "🔄 Motor de Tripla Sincronização (Tri-Sync)"
 Cohesion: 0.50
@@ -299,9 +300,9 @@ Nodes (4): as(), hn(), loadImage(), on()
 Cohesion: 0.50
 Nodes (4): as(), hn(), loadImage(), on()
 
-### Community 48 - "squaredDistance"
-Cohesion: 0.67
-Nodes (4): Kt(), squaredDistance(), squaredLen(), xi()
+### Community 48 - "frustumIntersectsMesh"
+Cohesion: 0.22
+Nodes (11): computeBoundingBox(), computeBoundingSphere(), frustumIntersectsMesh(), frustumIntersectsSphere(), getMaxScaleOnAxis(), getPosition(), ir(), Kt() (+3 more)
 
 ### Community 49 - "🎨 Catálogo de 31 Temas de Elite"
 Cohesion: 0.50
@@ -331,9 +332,13 @@ Nodes (3): fromQuaternion(), nr(), pr()
 Cohesion: 0.67
 Nodes (3): rotate(), tr(), wr()
 
+### Community 78 - "TestE2EPortabilityAndDocs"
+Cohesion: 0.13
+Nodes (8): Garante que todas as rotas documentadas em API_REFERENCE.md existem no…, Garante que todos os 31 temas e 13 fontes estão listados no README.md e na…, Teste E2E real: inicia o servidor em porta efêmera e executa ciclo completo de…, tests/test_e2e_portability.py Suíte de Testes Ponta a Ponta (E2E) para Máxima…, Garante que nenhum script do projeto exige pacotes pip de terceiros., Garante que o script install.sh tem sintaxe bash válida e permissões corretas., Valida que todos os manuais técnicos citados no README.md existem fisicamente., TestE2EPortabilityAndDocs
+
 ## Knowledge Gaps
 - **117 isolated node(s):** `install.sh script`, `OPTIMIZED_DPR`, `fs`, `path`, `FONTS` (+112 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 221 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 228 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -342,7 +347,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `💻 Central de Utilitários de Terminal & Screensavers Estéticos macOS` connect `💻 Central de Utilitários de Terminal & Screensavers Estéticos macOS` to `README.md`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Why does `🏛️ Arquitetura Técnica — Google Antigravity Theme & Font Engine` connect `🏛️ Arquitetura Técnica — Google Antigravity Theme & Font Engine` to `🔤 Mecanismo de Tipografia com Ligaduras de Código`, `README.md`, `🔄 Motor de Tripla Sincronização (Tri-Sync)`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 10 inferred relationships involving `constructor()` (e.g. with `b()` and `l()`) actually correct?**
   _`constructor()` has 10 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 10 inferred relationships involving `constructor()` (e.g. with `b()` and `l()`) actually correct?**

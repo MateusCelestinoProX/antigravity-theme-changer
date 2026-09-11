@@ -225,10 +225,10 @@ O novo motor do Theme Changer incorpora um sistema de orquestração de mensagen
 Antes do envio da mensagem ao agente, o despachante agrupa e injeta os contextos especificados em um cabeçalho estruturado legível pelo modelo:
 ```xml
 <CONTEXT_ATTACHMENTS>
-[PROJETO ANTIGRAVITY]: meu-projeto (ID: proj-123) [/Users/mcp/.../meu-projeto]
-- @folder:/Users/mcp/.../meu-projeto
-- @graphify: Mapa estrutural de código (/Users/mcp/.../graphify-out/graph.json)
-- @file:/Users/mcp/.../meu-projeto/main.py
+[PROJETO ANTIGRAVITY]: meu-projeto (ID: proj-123) [/Users/usuario/Projects/meu-projeto]
+- @folder:/Users/usuario/Projects/meu-projeto
+- @graphify: Mapa estrutural de código (/Users/usuario/Projects/meu-projeto/graphify-out/graph.json)
+- @file:/Users/usuario/Projects/meu-projeto/main.py
 - @skill:theme-changer
 </CONTEXT_ATTACHMENTS>
 

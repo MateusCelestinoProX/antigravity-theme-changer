@@ -1284,7 +1284,9 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                     "theme": cur_theme,
                     "current_font": cur_font,
                     "font_name": cur_name,
-                    "font_scope": cur_scope
+                    "font_scope": cur_scope,
+                    "base_dir": str(BASE_DIR.resolve()),
+                    "home_dir": str(Path.home().resolve())
                 }
                 self.wfile.write(json.dumps(resp).encode("utf-8"))
                 return

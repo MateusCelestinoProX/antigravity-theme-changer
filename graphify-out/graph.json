@@ -30,6 +30,19 @@
       "source_location": "L947"
     },
     {
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "label": "TestE2EPortabilityAndDocs",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": "teste2eportabilityanddocs",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L31"
+    },
+    {
       "id": "theme_server_themehandler",
       "label": "ThemeHandler",
       "_callable": true,
@@ -365,6 +378,18 @@
       "norm_label": "prepferrocolors()",
       "source_file": "js/webgl-backgrounds.js",
       "source_location": "L820"
+    },
+    {
+      "id": "web_js_ogl_resize",
+      "label": "resize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "web/js/webgl-backgrounds.js",
+      "file_type": "code",
+      "norm_label": "resize()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
     },
     {
       "id": "web_js_ogl_setsize",
@@ -1099,30 +1124,6 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_bindattributes",
-      "label": "bindAttributes()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "bindattributes()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
-      "id": "web_js_ogl_bt",
-      "label": "Bt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "bt()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
       "id": "web_js_ogl_constructor_v",
       "label": "v()",
       "_callable": true,
@@ -1135,18 +1136,6 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_createvao",
-      "label": "createVAO()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "createvao()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
       "id": "web_js_ogl_di",
       "label": "di()",
       "_callable": true,
@@ -1155,18 +1144,6 @@
       "community_name": "multiply",
       "file_type": "code",
       "norm_label": "di()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
-      "id": "web_js_ogl_divide",
-      "label": "divide()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "divide()",
       "source_file": "web/js/ogl.js",
       "source_location": "L2"
     },
@@ -1411,18 +1388,6 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_mi",
-      "label": "mi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "mi()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
       "id": "web_js_ogl_multiply",
       "label": "multiply()",
       "_callable": true,
@@ -1469,18 +1434,6 @@
       "norm_label": "perspective()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_pt",
-      "label": "Pt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "pt()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
     },
     {
       "id": "web_js_ogl_re",
@@ -1531,18 +1484,6 @@
       "source_location": "L193"
     },
     {
-      "id": "web_js_ogl_zr",
-      "label": "zr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "multiply",
-      "file_type": "code",
-      "norm_label": "zr()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
       "id": "web_js_ogl_ai",
       "label": "Ai()",
       "_callable": true,
@@ -1577,30 +1518,6 @@
       "norm_label": "ce()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_computeboundingbox",
-      "label": "computeBoundingBox()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "sub",
-      "file_type": "code",
-      "norm_label": "computeboundingbox()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
-      "id": "web_js_ogl_computeboundingsphere",
-      "label": "computeBoundingSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "sub",
-      "file_type": "code",
-      "norm_label": "computeboundingsphere()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
     },
     {
       "id": "web_js_ogl_cross",
@@ -1663,30 +1580,6 @@
       "source_location": "L2"
     },
     {
-      "id": "web_js_ogl_frustumintersectsmesh",
-      "label": "frustumIntersectsMesh()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "sub",
-      "file_type": "code",
-      "norm_label": "frustumintersectsmesh()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_frustumintersectssphere",
-      "label": "frustumIntersectsSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "sub",
-      "file_type": "code",
-      "norm_label": "frustumintersectssphere()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
       "id": "web_js_ogl_ge",
       "label": "ge()",
       "_callable": true,
@@ -1709,18 +1602,6 @@
       "norm_label": "getbarycoord()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_getposition",
-      "label": "getPosition()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "sub",
-      "file_type": "code",
-      "norm_label": "getposition()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
     },
     {
       "id": "web_js_ogl_intersectbounds",
@@ -1995,18 +1876,6 @@
       "community_name": "web/js/ogl.js",
       "file_type": "code",
       "norm_label": "angle()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
-    },
-    {
-      "id": "web_js_ogl_applyquaternion",
-      "label": "applyQuaternion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "web/js/ogl.js",
-      "file_type": "code",
-      "norm_label": "applyquaternion()",
       "source_file": "web/js/ogl.js",
       "source_location": "L2"
     },
@@ -2309,18 +2178,6 @@
       "norm_label": "sortui()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_vi",
-      "label": "vi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "web/js/ogl.js",
-      "file_type": "code",
-      "norm_label": "vi()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L2"
     },
     {
       "id": "web_js_ogl_w",
@@ -3027,18 +2884,6 @@
       "community_name": "constructor",
       "file_type": "code",
       "norm_label": "_r()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_resize",
-      "label": "resize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 21,
-      "community_name": "constructor",
-      "file_type": "code",
-      "norm_label": "resize()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
     },
@@ -5275,6 +5120,18 @@
       "source_location": "L617"
     },
     {
+      "id": "web_js_ogl_bt",
+      "label": "Bt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "bt()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
       "id": "web_js_ogl_clone",
       "label": "clone()",
       "_callable": true,
@@ -5295,6 +5152,18 @@
       "community_name": "copy",
       "file_type": "code",
       "norm_label": "copy()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_divide",
+      "label": "divide()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "divide()",
       "source_file": "web/js/ogl.js",
       "source_location": "L2"
     },
@@ -5443,6 +5312,18 @@
       "source_location": "L2"
     },
     {
+      "id": "web_js_ogl_mi",
+      "label": "mi()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "mi()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
       "id": "web_js_ogl_nt",
       "label": "Nt()",
       "_callable": true,
@@ -5453,6 +5334,18 @@
       "norm_label": "nt()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_pt",
+      "label": "Pt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "pt()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
     },
     {
       "id": "web_js_ogl_qr",
@@ -5487,6 +5380,18 @@
       "community_name": "copy",
       "file_type": "code",
       "norm_label": "xs()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_zr",
+      "label": "zr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "zr()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
     },
@@ -6415,6 +6320,30 @@
       "source_location": "L193"
     },
     {
+      "id": "web_js_ogl_decompose",
+      "label": "decompose()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "addFrustumCull",
+      "file_type": "code",
+      "norm_label": "decompose()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_determinant",
+      "label": "determinant()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "addFrustumCull",
+      "file_type": "code",
+      "norm_label": "determinant()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
       "id": "web_js_ogl_gr",
       "label": "gr()",
       "_callable": true,
@@ -6435,6 +6364,18 @@
       "community_name": "addFrustumCull",
       "file_type": "code",
       "norm_label": "identity()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_ne",
+      "label": "ne()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "addFrustumCull",
+      "file_type": "code",
+      "norm_label": "ne()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
     },
@@ -6509,6 +6450,18 @@
       "norm_label": "removefrustumcull()",
       "source_file": "web/js/ogl.js",
       "source_location": "L193"
+    },
+    {
+      "id": "web_js_ogl_rr",
+      "label": "rr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "addFrustumCull",
+      "file_type": "code",
+      "norm_label": "rr()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
     },
     {
       "id": "web_js_ogl_setparent",
@@ -6835,30 +6788,6 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_decompose",
-      "label": "decompose()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "distance",
-      "file_type": "code",
-      "norm_label": "decompose()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
-      "id": "web_js_ogl_determinant",
-      "label": "determinant()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "distance",
-      "file_type": "code",
-      "norm_label": "determinant()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
       "id": "web_js_ogl_distance",
       "label": "distance()",
       "_callable": true,
@@ -6907,18 +6836,6 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_ne",
-      "label": "ne()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "distance",
-      "file_type": "code",
-      "norm_label": "ne()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
-    },
-    {
       "id": "web_js_ogl_ot",
       "label": "ot()",
       "_callable": true,
@@ -6929,18 +6846,6 @@
       "norm_label": "ot()",
       "source_file": "web/js/ogl.js",
       "source_location": "L2"
-    },
-    {
-      "id": "web_js_ogl_rr",
-      "label": "rr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 38,
-      "community_name": "distance",
-      "file_type": "code",
-      "norm_label": "rr()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
     },
     {
       "id": "web_js_ogl_updatefrustum",
@@ -7339,12 +7244,96 @@
       "source_location": "L193"
     },
     {
+      "id": "web_js_ogl_computeboundingbox",
+      "label": "computeBoundingBox()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "computeboundingbox()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_computeboundingsphere",
+      "label": "computeBoundingSphere()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "computeboundingsphere()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_frustumintersectsmesh",
+      "label": "frustumIntersectsMesh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "frustumintersectsmesh()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_frustumintersectssphere",
+      "label": "frustumIntersectsSphere()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "frustumintersectssphere()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_getmaxscaleonaxis",
+      "label": "getMaxScaleOnAxis()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "getmaxscaleonaxis()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_getposition",
+      "label": "getPosition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "getposition()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_ir",
+      "label": "ir()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "frustumIntersectsMesh",
+      "file_type": "code",
+      "norm_label": "ir()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L8"
+    },
+    {
       "id": "web_js_ogl_kt",
       "label": "Kt()",
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "squaredDistance",
+      "community_name": "frustumIntersectsMesh",
       "file_type": "code",
       "norm_label": "kt()",
       "source_file": "web/js/ogl.js",
@@ -7356,7 +7345,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "squaredDistance",
+      "community_name": "frustumIntersectsMesh",
       "file_type": "code",
       "norm_label": "squareddistance()",
       "source_file": "web/js/ogl.js",
@@ -7368,7 +7357,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "squaredDistance",
+      "community_name": "frustumIntersectsMesh",
       "file_type": "code",
       "norm_label": "squaredlen()",
       "source_file": "web/js/ogl.js",
@@ -7380,7 +7369,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 48,
-      "community_name": "squaredDistance",
+      "community_name": "frustumIntersectsMesh",
       "file_type": "code",
       "norm_label": "xi()",
       "source_file": "web/js/ogl.js",
@@ -7960,7 +7949,7 @@
       "file_type": "code",
       "norm_label": "create_server()",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1790"
+      "source_location": "L1792"
     },
     {
       "id": "scripts_theme_server_delete_agent_from_disk",
@@ -8152,7 +8141,7 @@
       "file_type": "code",
       "norm_label": "run()",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1816"
+      "source_location": "L1818"
     },
     {
       "id": "scripts_theme_server_save_agent_to_disk",
@@ -8260,7 +8249,7 @@
       "file_type": "code",
       "norm_label": ".do_post()",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1440"
+      "source_location": "L1442"
     },
     {
       "id": "scripts_theme_server_themehandler_init",
@@ -8503,28 +8492,76 @@
       "source_location": "L8"
     },
     {
-      "id": "web_js_ogl_getmaxscaleonaxis",
-      "label": "getMaxScaleOnAxis()",
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_01_pure_standard_library_portability",
+      "label": ".test_01_pure_standard_library_portability()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
-      "community_name": "getMaxScaleOnAxis",
+      "community_name": "TestE2EPortabilityAndDocs",
       "file_type": "code",
-      "norm_label": "getmaxscaleonaxis()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
+      "norm_label": ".test_01_pure_standard_library_portability()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L33"
     },
     {
-      "id": "web_js_ogl_ir",
-      "label": "ir()",
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_02_installer_syntax_and_executables",
+      "label": ".test_02_installer_syntax_and_executables()",
       "_callable": true,
       "_origin": "ast",
       "community": 78,
-      "community_name": "getMaxScaleOnAxis",
+      "community_name": "TestE2EPortabilityAndDocs",
       "file_type": "code",
-      "norm_label": "ir()",
-      "source_file": "web/js/ogl.js",
-      "source_location": "L8"
+      "norm_label": ".test_02_installer_syntax_and_executables()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L62"
+    },
+    {
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_03_documentation_links_and_files_integrity",
+      "label": ".test_03_documentation_links_and_files_integrity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": ".test_03_documentation_links_and_files_integrity()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L82"
+    },
+    {
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_04_documentation_api_routes_coverage",
+      "label": ".test_04_documentation_api_routes_coverage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": ".test_04_documentation_api_routes_coverage()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L103"
+    },
+    {
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_05_documentation_themes_and_fonts_consistency",
+      "label": ".test_05_documentation_themes_and_fonts_consistency()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": ".test_05_documentation_themes_and_fonts_consistency()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L135"
+    },
+    {
+      "id": "tests_test_e2e_portability_teste2eportabilityanddocs_test_06_e2e_http_server_and_scheduler_lifecycle",
+      "label": ".test_06_e2e_http_server_and_scheduler_lifecycle()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": ".test_06_e2e_http_server_and_scheduler_lifecycle()",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L148"
     },
     {
       "id": "web_js_ogl_getscaling",
@@ -8572,7 +8609,7 @@
       "file_type": "code",
       "norm_label": "create_server()",
       "source_file": "theme_server.py",
-      "source_location": "L1790"
+      "source_location": "L1792"
     },
     {
       "id": "theme_server_delete_agent_from_disk",
@@ -8764,7 +8801,7 @@
       "file_type": "code",
       "norm_label": "run()",
       "source_file": "theme_server.py",
-      "source_location": "L1816"
+      "source_location": "L1818"
     },
     {
       "id": "theme_server_save_agent_to_disk",
@@ -8872,7 +8909,7 @@
       "file_type": "code",
       "norm_label": ".do_post()",
       "source_file": "theme_server.py",
-      "source_location": "L1440"
+      "source_location": "L1442"
     },
     {
       "id": "theme_server_themehandler_init",
@@ -9017,6 +9054,54 @@
       "norm_label": "yr()",
       "source_file": "web/js/ogl.js",
       "source_location": "L8"
+    },
+    {
+      "id": "web_js_ogl_applyquaternion",
+      "label": "applyQuaternion()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "applyQuaternion",
+      "file_type": "code",
+      "norm_label": "applyquaternion()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_vi",
+      "label": "vi()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 84,
+      "community_name": "applyQuaternion",
+      "file_type": "code",
+      "norm_label": "vi()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_bindattributes",
+      "label": "bindAttributes()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 85,
+      "community_name": "createVAO",
+      "file_type": "code",
+      "norm_label": "bindattributes()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
+    },
+    {
+      "id": "web_js_ogl_createvao",
+      "label": "createVAO()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 85,
+      "community_name": "createVAO",
+      "file_type": "code",
+      "norm_label": "createvao()",
+      "source_file": "web/js/ogl.js",
+      "source_location": "L2"
     },
     {
       "id": "docs_shell_utilities_10_fastfetch_utilit\u00e1rio_de_telemetria_de_sistema_em_c",
@@ -11091,6 +11176,94 @@
       "norm_label": "executa o envio real da mensagem agendada usando o cli nativo agentapi do...",
       "source_file": "scripts/theme_server.py",
       "source_location": "L721"
+    },
+    {
+      "id": "tests_test_e2e_portability",
+      "label": "test_e2e_portability.py",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "code",
+      "norm_label": "test_e2e_portability.py",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_104",
+      "label": "Garante que todas as rotas documentadas em API_REFERENCE.md existem no\u2026",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "garante que todas as rotas documentadas em api_reference.md existem no...",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L104"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_136",
+      "label": "Garante que todos os 31 temas e 13 fontes est\u00e3o listados no README.md e na\u2026",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "garante que todos os 31 temas e 13 fontes estao listados no readme.md e na...",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L136"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_149",
+      "label": "Teste E2E real: inicia o servidor em porta ef\u00eamera e executa ciclo completo de\u2026",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "teste e2e real: inicia o servidor em porta efemera e executa ciclo completo de...",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L149"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_2",
+      "label": "tests/test_e2e_portability.py Su\u00edte de Testes Ponta a Ponta (E2E) para M\u00e1xima\u2026",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "tests/test_e2e_portability.py suite de testes ponta a ponta (e2e) para maxima...",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L2"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_34",
+      "label": "Garante que nenhum script do projeto exige pacotes pip de terceiros.",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "garante que nenhum script do projeto exige pacotes pip de terceiros.",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L34"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_63",
+      "label": "Garante que o script install.sh tem sintaxe bash v\u00e1lida e permiss\u00f5es corretas.",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "garante que o script install.sh tem sintaxe bash valida e permissoes corretas.",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L63"
+    },
+    {
+      "id": "tests_test_e2e_portability_rationale_83",
+      "label": "Valida que todos os manuais t\u00e9cnicos citados no README.md existem fisicamente.",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "TestE2EPortabilityAndDocs",
+      "file_type": "rationale",
+      "norm_label": "valida que todos os manuais tecnicos citados no readme.md existem fisicamente.",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L83"
     },
     {
       "id": "theme_server",
@@ -16496,7 +16669,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1817",
+      "source_location": "L1819",
       "weight": 1.0
     },
     {
@@ -16508,7 +16681,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1818",
+      "source_location": "L1820",
       "weight": 1.0
     },
     {
@@ -16544,7 +16717,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1330",
+      "source_location": "L1332",
       "weight": 1.0
     },
     {
@@ -16556,7 +16729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1331",
+      "source_location": "L1333",
       "weight": 1.0
     },
     {
@@ -16568,7 +16741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1342",
+      "source_location": "L1344",
       "weight": 1.0
     },
     {
@@ -16580,7 +16753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1354",
+      "source_location": "L1356",
       "weight": 1.0
     },
     {
@@ -16592,7 +16765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1362",
+      "source_location": "L1364",
       "weight": 1.0
     },
     {
@@ -16604,7 +16777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1393",
+      "source_location": "L1395",
       "weight": 1.0
     },
     {
@@ -16616,7 +16789,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1427",
+      "source_location": "L1429",
       "weight": 1.0
     },
     {
@@ -16652,7 +16825,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1459",
+      "source_location": "L1461",
       "weight": 1.0
     },
     {
@@ -16664,7 +16837,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1472",
+      "source_location": "L1474",
       "weight": 1.0
     },
     {
@@ -16676,7 +16849,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1480",
+      "source_location": "L1482",
       "weight": 1.0
     },
     {
@@ -16688,7 +16861,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1506",
+      "source_location": "L1508",
       "weight": 1.0
     },
     {
@@ -16700,7 +16873,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1521",
+      "source_location": "L1523",
       "weight": 1.0
     },
     {
@@ -16712,7 +16885,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1535",
+      "source_location": "L1537",
       "weight": 1.0
     },
     {
@@ -16724,7 +16897,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1550",
+      "source_location": "L1552",
       "weight": 1.0
     },
     {
@@ -16736,7 +16909,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1567",
+      "source_location": "L1569",
       "weight": 1.0
     },
     {
@@ -16748,7 +16921,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1579",
+      "source_location": "L1581",
       "weight": 1.0
     },
     {
@@ -16760,7 +16933,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1628",
+      "source_location": "L1630",
       "weight": 1.0
     },
     {
@@ -16772,7 +16945,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1658",
+      "source_location": "L1660",
       "weight": 1.0
     },
     {
@@ -16784,7 +16957,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1660",
+      "source_location": "L1662",
       "weight": 1.0
     },
     {
@@ -16796,7 +16969,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1712",
+      "source_location": "L1714",
       "weight": 1.0
     },
     {
@@ -16880,7 +17053,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1817",
+      "source_location": "L1819",
       "weight": 1.0
     },
     {
@@ -16892,7 +17065,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1818",
+      "source_location": "L1820",
       "weight": 1.0
     },
     {
@@ -16928,7 +17101,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1330",
+      "source_location": "L1332",
       "weight": 1.0
     },
     {
@@ -16940,7 +17113,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1331",
+      "source_location": "L1333",
       "weight": 1.0
     },
     {
@@ -16952,7 +17125,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1342",
+      "source_location": "L1344",
       "weight": 1.0
     },
     {
@@ -16964,7 +17137,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1354",
+      "source_location": "L1356",
       "weight": 1.0
     },
     {
@@ -16976,7 +17149,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1362",
+      "source_location": "L1364",
       "weight": 1.0
     },
     {
@@ -16988,7 +17161,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1393",
+      "source_location": "L1395",
       "weight": 1.0
     },
     {
@@ -17000,7 +17173,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1427",
+      "source_location": "L1429",
       "weight": 1.0
     },
     {
@@ -17036,7 +17209,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1459",
+      "source_location": "L1461",
       "weight": 1.0
     },
     {
@@ -17048,7 +17221,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1472",
+      "source_location": "L1474",
       "weight": 1.0
     },
     {
@@ -17060,7 +17233,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1480",
+      "source_location": "L1482",
       "weight": 1.0
     },
     {
@@ -17072,7 +17245,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1506",
+      "source_location": "L1508",
       "weight": 1.0
     },
     {
@@ -17084,7 +17257,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1521",
+      "source_location": "L1523",
       "weight": 1.0
     },
     {
@@ -17096,7 +17269,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1535",
+      "source_location": "L1537",
       "weight": 1.0
     },
     {
@@ -17108,7 +17281,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1550",
+      "source_location": "L1552",
       "weight": 1.0
     },
     {
@@ -17120,7 +17293,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1567",
+      "source_location": "L1569",
       "weight": 1.0
     },
     {
@@ -17132,7 +17305,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1579",
+      "source_location": "L1581",
       "weight": 1.0
     },
     {
@@ -17144,7 +17317,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1628",
+      "source_location": "L1630",
       "weight": 1.0
     },
     {
@@ -17156,7 +17329,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1658",
+      "source_location": "L1660",
       "weight": 1.0
     },
     {
@@ -17168,7 +17341,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1660",
+      "source_location": "L1662",
       "weight": 1.0
     },
     {
@@ -17180,7 +17353,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "theme_server.py",
-      "source_location": "L1712",
+      "source_location": "L1714",
       "weight": 1.0
     },
     {
@@ -22476,6 +22649,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_e2e_portability",
+      "target": "theme_server",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
       "source": "js_webgl_backgrounds",
       "target": "js_ogl",
       "relation": "imports_from",
@@ -27655,7 +27840,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1790",
+      "source_location": "L1792",
       "weight": 1.0
     },
     {
@@ -27666,7 +27851,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1816",
+      "source_location": "L1818",
       "weight": 1.0
     },
     {
@@ -28011,6 +28196,17 @@
       "weight": 1.0
     },
     {
+      "source": "tests_test_e2e_portability",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
       "source": "tests_test_theme_changer",
       "target": "tests_test_theme_changer_testantigravitythemechanger",
       "relation": "contains",
@@ -28062,7 +28258,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "theme_server.py",
-      "source_location": "L1790",
+      "source_location": "L1792",
       "weight": 1.0
     },
     {
@@ -28073,7 +28269,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "theme_server.py",
-      "source_location": "L1816",
+      "source_location": "L1818",
       "weight": 1.0
     },
     {
@@ -31736,7 +31932,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "scripts/theme_server.py",
-      "source_location": "L1440",
+      "source_location": "L1442",
       "weight": 1.0
     },
     {
@@ -31792,6 +31988,72 @@
       "confidence_score": 1.0,
       "source_file": "scripts/theme_server.py",
       "source_location": "L970",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_04_documentation_api_routes_coverage",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_05_documentation_themes_and_fonts_consistency",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_06_e2e_http_server_and_scheduler_lifecycle",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_01_pure_standard_library_portability",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_02_installer_syntax_and_executables",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_teste2eportabilityanddocs",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_03_documentation_links_and_files_integrity",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -31912,7 +32174,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "theme_server.py",
-      "source_location": "L1440",
+      "source_location": "L1442",
       "weight": 1.0
     },
     {
@@ -32067,6 +32329,83 @@
       "confidence_score": 1.0,
       "source_file": "scripts/theme_server.py",
       "source_location": "L721",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_104",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_04_documentation_api_routes_coverage",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_136",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_05_documentation_themes_and_fonts_consistency",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_149",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_06_e2e_http_server_and_scheduler_lifecycle",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_2",
+      "target": "tests_test_e2e_portability",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_34",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_01_pure_standard_library_portability",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_63",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_02_installer_syntax_and_executables",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_e2e_portability_rationale_83",
+      "target": "tests_test_e2e_portability_teste2eportabilityanddocs_test_03_documentation_links_and_files_integrity",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/test_e2e_portability.py",
+      "source_location": "L83",
       "weight": 1.0
     },
     {

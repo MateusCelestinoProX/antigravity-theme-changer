@@ -186,27 +186,27 @@ O instalador universal configura:
 | `-dark-emerald`| **Forest Emerald Night** | `#07140E` | `#10B981` | Verde floresta profunda e esmeralda |
 | `-nordic` | **Nordic Arctic Slate** | `#0B1017` | `#22D3EE` | Ardósia polar e ciano glacial |
 | `-tokyo` | **Tokyo Sunset Coral** | `#140B14` | `#FB7185` | Crepúsculo metropolitano e coral |
-| `-matcha` | **Dark Matcha Obsidian** | `#0C100B` | `#84CC16` | Chá-verde matcha e obsidiana |
-| `-copper` | **Dark Basalt Copper** | `#120E0A` | `#FB923C` | Basalto vulcânico e cobre metálico |
-| `-ultraviolet` | **Dark Cosmic Ultraviolet**| `#080616` | `#818CF8` | Espaço cósmico e luz ultravioleta |
+| `-matcha` / `-dark-matcha` | **Dark Matcha Obsidian** | `#0C100B` | `#84CC16` | Chá-verde matcha e obsidiana |
+| `-copper` / `-dark-copper` | **Dark Basalt Copper** | `#120E0A` | `#FB923C` | Basalto vulcânico e cobre metálico |
+| `-ultraviolet` / `-dark-ultraviolet` | **Dark Cosmic Ultraviolet**| `#080616` | `#818CF8` | Espaço cósmico e luz ultravioleta |
 
 ### ☀️ 3. Temas Light Luminary (14 Opções)
 | Flag | Nome | Background | Primary | Destaque |
 | :--- | :--- | :--- | :--- | :--- |
 | `-white` | **Pure Clean White** | `#FFFFFF` | `#111827` | Branco minimalista puro e nítido |
-| `-emerald` | **Light Emerald** | `#F7FDF9` | `#059669` | Menta suave e verde esmeralda |
-| `-sapphire` | **Light Sapphire** | `#F0F9FF` | `#0284C7` | Base cristalina e azul safira executivo |
-| `-ruby` | **Light Ruby** | `#FFF1F2` | `#E11D48` | Energizante com vermelho rubi |
-| `-lavender` | **Light Lavender** | `#F5F3FF` | `#7C3AED` | Lavanda suave e violeta real |
-| `-sunburst` | **Light Amber Sunburst** | `#FFFBEB` | `#D97706` | Luz solar dourada acolhedora |
-| `-latte` | **Light Coffee Latte** | `#FAF5F0` | `#9A3412` | Marfim aveludado e café latte |
-| `-rose` | **Light Rosé Wine** | `#FFF5F7` | `#BE123C` | Champagne rosé francês |
-| `-teal` | **Light Ocean Teal** | `#F2FBF9` | `#0D9488` | Azul turquesa oceânico límpido |
-| `-coral` | **Light Coral Peach** | `#FFF9F6` | `#EA580C` | Laranja coral e pêssego aquecido |
-| `-indigo` | **Light Electric Indigo** | `#F8F9FE` | `#4F46E5` | Índigo elétrico de alta definição |
-| `-pistachio` | **Light Pistachio Gelato** | `#F8FAF0` | `#65A30D` | Creme marfim e pistache siciliano |
-| `-terracotta` | **Light Tuscan Terracotta** | `#FDF8F6` | `#C2410C` | Linho artesanal e terracota toscana |
-| `-azure` | **Light Alpine Sky Azure** | `#F0F9FF` | `#00A3FF` | Gelo glacial e azul celeste alpino |
+| `-emerald` / `-light-emerald` | **Light Emerald** | `#F7FDF9` | `#059669` | Menta suave e verde esmeralda |
+| `-sapphire` / `-light-sapphire` | **Light Sapphire** | `#F0F9FF` | `#0284C7` | Base cristalina e azul safira executivo |
+| `-ruby` / `-light-ruby` | **Light Ruby** | `#FFF1F2` | `#E11D48` | Energizante com vermelho rubi |
+| `-lavender` / `-light-lavender` | **Light Lavender** | `#F5F3FF` | `#7C3AED` | Lavanda suave e violeta real |
+| `-sunburst` / `-light-amber` | **Light Amber Sunburst** | `#FFFBEB` | `#D97706` | Luz solar dourada acolhedora |
+| `-latte` / `-light-latte` | **Light Coffee Latte** | `#FAF5F0` | `#9A3412` | Marfim aveludado e café latte |
+| `-rose` / `-light-rose` | **Light Rosé Wine** | `#FFF5F7` | `#BE123C` | Champagne rosé francês |
+| `-teal` / `-light-teal` | **Light Ocean Teal** | `#F2FBF9` | `#0D9488` | Azul turquesa oceânico límpido |
+| `-coral` / `-light-coral` | **Light Coral Peach** | `#FFF9F6` | `#EA580C` | Laranja coral e pêssego aquecido |
+| `-indigo` / `-light-indigo` | **Light Electric Indigo** | `#F8F9FE` | `#4F46E5` | Índigo elétrico de alta definição |
+| `-pistachio` / `-light-pistachio` | **Light Pistachio Gelato** | `#F8FAF0` | `#65A30D` | Creme marfim e pistache siciliano |
+| `-terracotta` / `-light-terracotta` | **Light Tuscan Terracotta** | `#FDF8F6` | `#C2410C` | Linho artesanal e terracota toscana |
+| `-azure` / `-light-azure` | **Light Alpine Sky Azure** | `#F0F9FF` | `#00A3FF` | Gelo glacial e azul celeste alpino |
 
 ---
 
@@ -303,5 +303,5 @@ Todos os comandos possuem botão de **cópia em 1 clique** com feedback visual i
 
 ## 📄 Licença
 
-Distribuído sob a licença MIT. Livre para uso pessoal e modificação.  
+Distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes. Livre para uso pessoal e modificação.  
 Desenvolvido com foco em excelência visual e engenharia de precisão para o ecossistema **Google Antigravity**.
