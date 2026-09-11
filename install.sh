@@ -18,6 +18,9 @@ echo "────────────────────────�
 # 1. Criar diretórios naturais do Antigravity
 mkdir -p "$TARGET_SCRIPTS_DIR"
 mkdir -p "$TARGET_WEB_DIR"
+mkdir -p "$TARGET_WEB_DIR/js"
+mkdir -p "$TARGET_SKILL_DIR/js"
+mkdir -p "$TARGET_SKILL_DIR/uploads"
 mkdir -p "$TARGET_AGENTS_DIR"
 mkdir -p "$TARGET_AGENT_AGENTS_DIR"
 
@@ -30,9 +33,13 @@ cp "$SCRIPT_DIR/scripts/apply_font.js" "$TARGET_SCRIPTS_DIR/apply_font.js"
 chmod +x "$TARGET_SCRIPTS_DIR/theme_changer.py"
 chmod +x "$TARGET_SCRIPTS_DIR/theme_server.py"
 
-# 3. Copiar interface web Apple Liquid Glass
-echo "💎 Instalando interface web Apple Liquid Glass..."
+# 3. Copiar interface web Apple Liquid Glass & Backgrounds WebGL
+echo "💎 Instalando interface web Apple Liquid Glass & Engine WebGL..."
 cp "$SCRIPT_DIR/web/theme_changer_app.html" "$TARGET_WEB_DIR/theme_changer_app.html"
+if [ -d "$SCRIPT_DIR/js" ]; then
+  cp -r "$SCRIPT_DIR/js/"* "$TARGET_WEB_DIR/js/" 2>/dev/null || true
+  cp -r "$SCRIPT_DIR/js/"* "$TARGET_SKILL_DIR/js/" 2>/dev/null || true
+fi
 
 # 4. Copiar especificação de Skill
 echo "🧠 Registrando Skill no Google Antigravity..."

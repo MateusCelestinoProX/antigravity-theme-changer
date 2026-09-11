@@ -5,14 +5,16 @@
 ![Antigravity Theme Studio](https://img.shields.io/badge/Google-Antigravity_2.0-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Themes](https://img.shields.io/badge/31-Elite_Themes-10B981?style=for-the-badge)
 ![Fonts](https://img.shields.io/badge/13-Dev_Fonts_w%2F_Ligatures-8B5CF6?style=for-the-badge)
+![Scheduler](https://img.shields.io/badge/Agent_Scheduler-agentapi_Native-blueviolet?style=for-the-badge)
+![WebGL](https://img.shields.io/badge/WebGL_Engine-OGL.js_Shaders-00F0FF?style=for-the-badge)
 ![UI](https://img.shields.io/badge/Apple_Liquid_Glass-VisionOS_Design-0071E3?style=for-the-badge)
 ![Speed](https://img.shields.io/badge/Sub--150ms-Realtime_CDP-EC4899?style=for-the-badge)
 ![API](https://img.shields.io/badge/REST_API-Port_48123-F59E0B?style=for-the-badge)
 
-**A suíte definitiva de customização visual, paletas cromáticas e tipografia para o Google Antigravity.**  
-Alterne instantaneamente entre **31 temas de elite** e **13 fontes de programação com ligaduras nativas**, com injeção em tempo real via Chrome DevTools Protocol (CDP), interface Apple Liquid Glass e controle total por Agente de IA.
+**A central definitiva de customização visual, orquestração de agentes e fila de tarefas para o Google Antigravity.**  
+Alterne instantaneamente entre **31 temas de elite** e **13 fontes de código com ligaduras nativas**, desfrute de **Backgrounds WebGL de alta fidelidade**, e gerencie uma **Fila de Mensagens & Agendador Autônomo com `agentapi` nativo**, anexos universais de contexto (`@file`, `@folder`, `@skill`, `@graphify`), projetos e servidores MCP.
 
-[🚀 Início Rápido](#-início-rápido) • [🤖 Comandos do Agente](#-comandos-do-agente-theme-changer) • [🎨 Catálogo de Temas](#-catálogo-de-31-temas-de-elite) • [🔤 Catálogo de Fontes](#-catálogo-de-13-fontes-com-ligaduras) • [🏛️ Arquitetura](#️-arquitetura-técnica) • [📚 Guias & Documentação](#-guias--documentação-técnica) • [📦 Instalação](#-instalação-automatizada)
+[🚀 Início Rápido](#-início-rápido) • [⚡ Agendador & Fila](#-agendador--fila-de-mensagens-autônoma) • [🤖 Comandos do Agente](#-comandos-do-agente-theme-changer) • [🎨 Catálogo de Temas](#-catálogo-de-31-temas-de-elite) • [🔤 Catálogo de Fontes](#-catálogo-de-13-fontes-com-ligaduras) • [🏛️ Arquitetura](#️-arquitetura-técnica) • [📚 Guias & Documentação](#-guias--documentação-técnica) • [📦 Instalação](#-instalação-automatizada)
 
 </div>
 
@@ -23,14 +25,28 @@ Alterne instantaneamente entre **31 temas de elite** e **13 fontes de programaç
 Para um mergulho profundo em cada faceta da solução, consulte nossos manuais dedicados:
 
 - 🤖 **[Guia do Agente Autônomo (AGENT_GUIDE.md)](docs/AGENT_GUIDE.md)**: Documentação completa do agente `@theme-changer`, gramática de comandos, políticas de execução, manifesto YAML e integração com o Antigravity 2.0.
-- 🏛️ **[Arquitetura do Sistema (ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: Detalhamento do motor Tri-Sync, protocolo CDP WebSocket, injeção de CSS em <150ms, busca dinâmica de portas e doutrina de design Apple Liquid Glass.
-- 📡 **[Referência da API REST (API_REFERENCE.md)](docs/API_REFERENCE.md)**: Especificação completa de todas as rotas HTTP locais da porta 48123 (`/api/status`, `/api/list`, `/api/set-theme`, `/api/set-font`), schemas JSON e exemplos com cURL e JavaScript.
+- 🏛️ **[Arquitetura do Sistema (ARCHITECTURE.md)](docs/ARCHITECTURE.md)**: Detalhamento do motor Tri-Sync, protocolo CDP WebSocket, subsistema de Scheduler com `agentapi`, motor WebGL com OGL.js e doutrina de design Apple Liquid Glass.
+- 📡 **[Referência da API REST (API_REFERENCE.md)](docs/API_REFERENCE.md)**: Especificação completa de todas as rotas HTTP locais da porta 48123 (Temas, Fontes, Scheduler, Projetos, Agentes e MCPs) com exemplos em cURL e JS.
 - 💻 **[Catálogo de Utilitários Shell macOS (SHELL_UTILITIES.md)](docs/SHELL_UTILITIES.md)**: Guia completo dos 10 utilitários de terminal e screensavers estéticos para macOS, 70+ presets e exemplos de comandos pesquisados na comunidade, atalhos em tempo real e setups multi-painel para iTerm2 e Tmux.
 
 ---
 
 ## ✨ Destaques & Diferenciais
 
+- **⚡ Agendador & Fila Autônoma (`agentapi` Nativo)**:
+  - Disparo de mensagens e tarefas programadas diretamente no núcleo de IA do Antigravity.
+  - Seleção flexível de alvo: conversa ativa existente ou criação de novo chat com modelos de raciocínio (`inherit`, `flash_lite`, `flash`, `pro`).
+  - Gatilhos inteligentes: `Ao liberar o agente (Idle)`, temporizador regressivo (`Delay`), horário específico e tarefas periódicas (`Cron`).
+  - Anexos universais de contexto: injeção atômica de `@file`, `@folder`, `@skill`, mapas de arquitetura `@graphify`, `@artifact` e `@conversation`.
+  - Upload direto de anexos do macOS com drag-and-drop.
+  - Gerenciamento de Projetos Nativos em `~/.gemini/config/projects/` com detecção de mapas Graphify por projeto.
+- **💎 Engine de Backgrounds Procedurais WebGL (OGL.js)**:
+  - Shaders animados interativos de alta fidelidade visual integrados ao Theme Studio.
+  - DPR Clamping inteligente (`1.15x`) reduzindo em >60% o custo de renderização em telas Retina.
+  - Descarte total de VRAM (`WEBGL_lose_context`) e pausa de renderização em segundo plano via Page Visibility API.
+- **🤖 Hub de Agentes e Servidores MCP**:
+  - Leitura, criação e edição de personas de agentes (`~/.gemini/config/agents/*.md`).
+  - Ativação, desativação e configuração de servidores MCP em tempo real.
 - **⚡ 31 Temas de Elite em 3 Categorias**:
   - **Full Monocromáticos (6)**: Alto contraste, saturação vibrante e estética Cyberpunk/CRT.
   - **Dark Velvet Tinted (11)**: Bases escuras aveludadas (`#080616` a `#181311`) com filtros de cor refinados (Matcha Obsidian, Basalt Copper, Ultraviolet, Tokyo Coral, Cappuccino, etc.).
@@ -41,7 +57,6 @@ Para um mergulho profundo em cada faceta da solução, consulte nossos manuais d
 - **🍏 Interface Web Apple Liquid Glass**:
   - Design ultra minimalista inspirado no visionOS e macOS Tahoe.
   - Superfícies translúcidas com `backdrop-filter: blur(36px)`, bordas com realce especular de refração e orbes fluidos em background.
-  - Mini-janelas interativas com renderização fiel de paleta e badges hexadecimais.
 - **⚡ Injeção Sub-150ms em Tempo Real**:
   - Sem necessidade de recarregar a janela do Antigravity.
   - Conexão direta via Chrome DevTools Protocol (CDP) com sincronização bidirecional em `config.json` e `antigravity_state.pbtxt`.
@@ -72,6 +87,45 @@ O servidor será ativado na porta `48123` e o painel será aberto automaticament
 
 ---
 
+## ⚡ Agendador & Fila de Mensagens Autônoma
+
+O Theme Studio agora conta com um poderoso centro de controle e agendamento de mensagens para o Google Antigravity, integrando-se diretamente ao CLI `agentapi` nativo e executando despachos automatizados mesmo sem intervenção manual contínua:
+
+### 🎯 1. Modos de Destino Flexíveis
+- **Conversa Ativa (`existing_chat`)**: Envia instruções de continuidade diretamente para o chat atual ou qualquer outra sessão do histórico.
+- **Novo Chat Dedicado (`new_chat`)**: Abre uma nova thread limpa no Antigravity com título customizado e seleção de modelo de raciocínio:
+  - `inherit`: Herda o modelo configurado no momento.
+  - `flash_lite`: Modelo ultraleve para triagens e verificações rápidas.
+  - `flash`: Modelo ágil ideal para buscas e inspeções de código.
+  - `pro`: Modelo avançado para raciocínio profundo e refatorações complexas.
+
+### ⏱️ 2. Gatilhos de Execução Inteligentes
+- **Ao liberar o agente (`on_idle`)**: A mensagem permanece em espera na fila e é disparada automaticamente no instante exato em que o agente conclui suas tarefas correntes.
+- **Temporizador Regressivo (`delayed`)**: Disparo após contagem regressiva definida pelo usuário (segundos ou minutos).
+- **Data e Hora Fixa (`exact_time`)**: Programação precisa para início de tarefas noturnas ou agendadas.
+- **Recorrência Periódica (`cron`)**: Disparos contínuos em intervalos configuráveis com cálculo automático do próximo ciclo.
+
+### 📎 3. Anexos Universais de Contexto
+Permite associar insumos fundamentais à mensagem que são injetados sob a tag estruturada `<CONTEXT_ATTACHMENTS>`:
+- `@file`: Vincula arquivos específicos do sistema ou projeto.
+- `@folder`: Fornece caminhos de diretórios e escopos de trabalho.
+- `@skill`: Direciona o agente para executar procedimentos de uma skill instalada.
+- `@graphify`: Anexa o mapa estrutural e grafo de dependências do projeto para navegação econômica de tokens.
+- `@artifact`: Conecta relatórios e arquivos gerados em sessões anteriores.
+- `@conversation`: Referencia transcrições de conversas passadas.
+- **Upload Direto macOS**: Interface drag-and-drop para envio imediato de arquivos do Mac para anexo automático.
+
+---
+
+## 💎 Engine de Backgrounds Procedurais WebGL (OGL.js)
+
+O painel visual do Theme Studio foi equipado com um motor gráfico acelerado por hardware:
+- **Shaders Otimizados**: Efeitos dinâmicos fluidos renderizados via WebGL com a biblioteca OGL.js.
+- **DPR Clamping (1.15x)**: Garante máxima fidelidade visual enquanto poupa mais de 60% do consumo de fragment shaders em telas Retina de alta densidade.
+- **Gerenciamento Ativo de Memória**: Liberação imediata de VRAM via `WEBGL_lose_context` e suspensão completa de animações quando a aba fica em background (Page Visibility API).
+
+---
+
 ## 🤖 Comandos do Agente Theme Changer
 
 Você pode invocar o agente autônomo `@theme-changer` no chat do Antigravity para executar comandos rápidos:
@@ -85,6 +139,9 @@ Você pode invocar o agente autônomo `@theme-changer` no chat do Antigravity pa
 | `@theme-changer theme -[FLAG]` | Altera o tema instantaneamente em tempo real | `@theme-changer theme -matcha` |
 | `@theme-changer font -[FLAG]` | Altera a tipografia globalmente com ligaduras | `@theme-changer font -victor` |
 | `@theme-changer font -[FLAG] -code-only` | Aplica a fonte apenas no editor e terminais | `@theme-changer font -fira -code-only` |
+| `@theme-changer queue` | Consulta a fila de mensagens e histórico do Scheduler | `@theme-changer queue` |
+| `@theme-changer schedule [MENSAGEM]` | Agenda mensagem/tarefa para execução em idle ou delay | `@theme-changer schedule "Rodar testes"` |
+| `@theme-changer mcps` | Exibe o catálogo e status de servidores MCP configurados | `@theme-changer mcps` |
 
 ---
 

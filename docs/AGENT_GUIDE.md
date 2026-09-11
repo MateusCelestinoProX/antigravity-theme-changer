@@ -124,6 +124,31 @@ Aplica fontes consagradas de engenharia de software com suporte a ligaduras.
 
 ---
 
+### 6. Agendamento e Fila Autônoma (`schedule` e `queue`)
+Permite gerenciar a fila de mensagens e tarefas programadas para os agentes:
+
+```text
+# Consultar fila ativa e histórico
+@theme-changer queue
+
+# Agendar instrução para quando o agente terminar a tarefa atual
+@theme-changer schedule "Rodar testes unitários e lint no repositório"
+
+# Disparar mensagem imediatamente da fila
+@theme-changer dispatch msg_a1b2c3d4
+```
+
+---
+
+### 7. Gestão de MCPs e Conectores (`mcps`)
+Consulta servidores Model Context Protocol ativos e desabilitados:
+
+```text
+@theme-changer mcps
+```
+
+---
+
 ## 🗣️ Compreensão de Linguagem Natural
 
 O agente `theme-changer` não exige que você memorize flags exatas. Ele mapeia requisições em linguagem natural para os comandos corretos:

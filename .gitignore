@@ -9,3 +9,16 @@ node_modules/
 .idea/
 .tempmediaStorage/
 scratch/
+
+# Scheduler state e fila local
+scheduler_messages.json
+scripts/scheduler_messages.json
+*/scheduler_messages.json
+
+# Uploads locais de teste
+uploads/*
+!uploads/.gitkeep
+
+# Cache de AST do Graphify
+graphify-out/cache/ast/
+graphify-out/cache/last_query_stamp

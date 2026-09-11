@@ -12,6 +12,10 @@ Este documento detalha o funcionamento interno, o pipeline de renderização, os
 5. [Mecanismo de Tipografia com Ligaduras de Código](#-mecanismo-de-tipografia-com-ligaduras-de-código)
 6. [Arquitetura do Servidor Local HTTP Multithread](#-arquitetura-do-servidor-local-http-multithread)
 7. [Doutrina Visual Apple Liquid Glass](#-doutrina-visual-apple-liquid-glass)
+8. [Subsistema de Agendamento & Fila Autônoma (agentapi)](#-subsistema-de-agendamento--fila-autônoma-agentapi)
+9. [Worker com Tick em Background e Detecção de Ociosidade](#-worker-com-tick-em-background-e-detecção-de-ociosidade)
+10. [Engine de Backgrounds Procedurais WebGL (OGL.js)](#-engine-de-backgrounds-procedurais-webgl-ogljs)
+11. [Subsistema de Gestão de Agentes e Servidores MCP](#-subsistema-de-gestão-de-agentes-e-servidores-mcp)
 
 ---
 
@@ -179,3 +183,85 @@ O painel web (`theme_changer_app.html`) foi projetado sob os princípios de desi
    Camadas de iluminação volumétrica em background que se movem suavemente e reagem com suavidade.
 4. **Sem Dependências Pesadas**:
    Arquitetura de arquivo único sem React, Vue ou bundlers. Carregamento instantâneo em qualquer navegador.
+
+---
+
+## ⚡ Subsistema de Agendamento & Fila Autônoma (agentapi)
+
+O novo motor do Theme Changer incorpora um sistema de orquestração de mensagens assíncronas para agentes de IA do Antigravity, operando em perfeita sincronia com o binário nativo `agentapi`:
+
+```
+┌────────────────────────────────────────────────────────┐
+│               Interface Theme Studio (Web)              │
+│      Aba Scheduler: Seleção de Destino, Gatilho,       │
+│      Anexos de Contexto (@file, @graphify, @skill)     │
+└───────────────────────────┬────────────────────────────┘
+                            │ POST /api/scheduler/schedule
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│            Theme Server (Thread Scheduler)             │
+│   • Fila persistente em scripts/scheduler_messages.json │
+│   • Loop periódico de tick (1s) com SCHEDULER_LOCK     │
+│   • Monitor de estado do agente (idle / busy)          │
+└───────────────────────────┬────────────────────────────┘
+                            │
+               ┌────────────┴────────────┐
+               ▼                         ▼
+  [Gatilho de Tempo / Cron]     [Gatilho ao Liberar Agente]
+  (delayed, exact_time, cron)          (on_idle)
+               │                         │
+               └────────────┬────────────┘
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│           Despachante execute_agentapi_dispatch        │
+│   1. Descobre Language Server ativo (porta e CSRF)     │
+│   2. Monta bloco <CONTEXT_ATTACHMENTS> estruturado     │
+│   3. Invoca ~/.gemini/antigravity/bin/agentapi         │
+│      (send-message ou new-conversation --model=...)    │
+└────────────────────────────────────────────────────────┘
+```
+
+### Protocolo de Injeção de Contexto
+Antes do envio da mensagem ao agente, o despachante agrupa e injeta os contextos especificados em um cabeçalho estruturado legível pelo modelo:
+```xml
+<CONTEXT_ATTACHMENTS>
+[PROJETO ANTIGRAVITY]: meu-projeto (ID: proj-123) [/Users/mcp/.../meu-projeto]
+- @folder:/Users/mcp/.../meu-projeto
+- @graphify: Mapa estrutural de código (/Users/mcp/.../graphify-out/graph.json)
+- @file:/Users/mcp/.../meu-projeto/main.py
+- @skill:theme-changer
+</CONTEXT_ATTACHMENTS>
+
+Execute a refatoração do módulo principal conforme planejado.
+```
+
+---
+
+## ⏱️ Worker com Tick em Background e Detecção de Ociosidade
+
+O servidor inicializa uma thread secundária (`start_scheduler_worker`) que executa continuamente em segundo plano sem bloquear as requisições HTTP:
+1. **Thread-Safe**: Todas as operações de leitura e escrita na fila utilizam `SCHEDULER_LOCK`.
+2. **Avaliação por Segundo (`process_scheduler_tick`)**:
+   - Mensagens do tipo `immediate`: disparadas no primeiro tick.
+   - Mensagens `delayed` e `exact_time`: disparadas quando `now >= scheduled_at_timestamp`.
+   - Mensagens `on_idle`: disparadas assim que `agent_state.status == "idle"`.
+   - Mensagens `cron`: após o envio bem-sucedido, calcula-se o próximo timestamp `now + cron_interval_seconds` e a mensagem permanece agendada para o ciclo seguinte.
+3. **Descoberta Dinâmica de Sessão**:
+   - Varredura de processos (`ps -eo pid,args`) e portas ativas (`lsof -Pan -p <PID> -i`) para obter automaticamente a porta HTTP do Language Server e o `--csrf_token` do Antigravity.
+
+---
+
+## 💎 Engine de Backgrounds Procedurais WebGL (OGL.js)
+
+O painel visual incorpora um motor WebGL de última geração baseado na biblioteca ultraleve **OGL.js**:
+1. **DPR Clamping (`Math.min(devicePixelRatio, 1.15)`)**: Reduz em mais de 60% a carga de processamento dos fragment shaders em telas Retina de alta densidade de pixels.
+2. **Descarte Ativo de VRAM (`WEBGL_lose_context`)**: Sempre que o usuário troca de efeito ou desativa os efeitos visuais, o contexto WebGL é explicitamente destruído, devolvendo 100% da memória de vídeo à GPU do Mac.
+3. **Pausa Automática via Page Visibility API**: Quando a aba do navegador fica em segundo plano ou minimizada, os loops de `requestAnimationFrame` são suspensos, garantindo zero consumo de CPU/bateria quando o desenvolvedor está programando.
+
+---
+
+## 🤖 Subsistema de Gestão de Agentes e Servidores MCP
+
+O Theme Changer atua como hub central de controle do ecossistema Google Antigravity:
+- **Agentes (`~/.gemini/config/agents/*.md`)**: Leitura de frontmatter YAML, compilação de novas personas e alternância instantânea entre papéis principais (`mainAgent`) e subagentes (`subagent`).
+- **Servidores MCP (`~/.gemini/config/config.json`)**: Interface visual para adicionar, editar variáveis de ambiente, comandos e alternar estados ativos/desativados de servidores Model Context Protocol em tempo real.

@@ -112,5 +112,35 @@ class TestAntigravityThemeChanger(unittest.TestCase):
         for util in expected_utilities:
             self.assertIn(f'id: "{util}"', content, f"Utilitário '{util}' não encontrado no DOCS_DATA do HTML")
 
+    def test_scheduler_routes_and_dispatcher(self):
+        """Valida que o servidor possui o subsistema do Scheduler e rotas associadas."""
+        server_file = BASE_DIR / "scripts" / "theme_server.py"
+        content = server_file.read_text(encoding="utf-8")
+        self.assertIn("/api/scheduler/queue", content)
+        self.assertIn("/api/scheduler/schedule", content)
+        self.assertIn("/api/scheduler/cancel", content)
+        self.assertIn("/api/scheduler/dispatch-now", content)
+        self.assertIn("/api/scheduler/toggle-agent-state", content)
+        self.assertIn("/api/scheduler/conversations", content)
+        self.assertIn("/api/scheduler/projects", content)
+        self.assertIn("def execute_agentapi_dispatch", content)
+        self.assertIn("def process_scheduler_tick", content)
+
+    def test_agent_and_mcp_management_routes(self):
+        """Valida a presença de rotas de gerenciamento de Agentes e MCPs."""
+        server_file = BASE_DIR / "scripts" / "theme_server.py"
+        content = server_file.read_text(encoding="utf-8")
+        self.assertIn("/api/agents", content)
+        self.assertIn("/api/agents/save", content)
+        self.assertIn("/api/mcps", content)
+        self.assertIn("/api/mcps/save", content)
+
+    def test_webgl_engine_assets(self):
+        """Garante que os módulos WebGL existem na raiz e na pasta web."""
+        self.assertTrue((BASE_DIR / "js" / "ogl.js").exists(), "js/ogl.js não encontrado")
+        self.assertTrue((BASE_DIR / "js" / "webgl-backgrounds.js").exists(), "js/webgl-backgrounds.js não encontrado")
+        self.assertTrue((BASE_DIR / "web" / "js" / "ogl.js").exists(), "web/js/ogl.js não encontrado")
+        self.assertTrue((BASE_DIR / "web" / "js" / "webgl-backgrounds.js").exists(), "web/js/webgl-backgrounds.js não encontrado")
+
 if __name__ == "__main__":
     unittest.main()

@@ -103,10 +103,44 @@ Para trocar a fonte imediatamente:
 python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py font -victor
 ```
 
+---
+
+## ⚡ Agendador & Fila de Mensagens Autônoma (`agentapi` Nativo)
+
+O Theme Changer Studio inclui um subsistema completo de **Scheduler & Message Queue** para o Google Antigravity:
+- **Disparo Nativo via CLI `agentapi`**: Envia mensagens diretamente para conversas ativas ou cria novos chats com escolha de modelo (`inherit`, `flash_lite`, `flash`, `pro`).
+- **Gatilhos Inteligentes**:
+  - `Ao liberar o agente (Idle)`: Dispara imediatamente quando o agente termina uma tarefa em andamento.
+  - `Delay / Timer`: Disparo temporizado após contagem regressiva em segundos.
+  - `Data / Hora Fixa`: Agendamento preciso para horários definidos.
+  - `Recorrência (Cron)`: Intervalos automáticos periódicos (minutos, horas, dias).
+- **Anexos Universais de Contexto**:
+  - `@file`: Anexa arquivos do projeto ou sistema.
+  - `@folder`: Anexa diretórios de contexto.
+  - `@skill`: Injeta diretrizes e skills específicas.
+  - `@graphify`: Inclui o mapa de arquitetura e grafo de dependências do projeto.
+  - `@artifact`: Vincula artefatos gerados.
+  - `@conversation`: Referencia transcrições de conversas anteriores.
+  - **Upload Direto macOS**: Suporte a drag-and-drop de arquivos locais para envio rápido.
+- **Gestão de Projetos Nativos**:
+  - Integração com `~/.gemini/config/projects/` com detecção de mapas Graphify por projeto.
+
+---
+
+## 💎 Engine de Backgrounds WebGL (OGL.js)
+
+- Shaders procedurais e interativos renderizados em WebGL com alta performance.
+- DPR Clamping inteligente (`<= 1.15x`) para economia drástica de GPU/VRAM em monitores Retina.
+- Liberação ativa de contexto WebGL (`WEBGL_lose_context`) e pausa automática quando em background via Page Visibility API.
+
+---
+
 ## Como a Mágica Acontece (Arquitetura)
 
-O tema do Google Antigravity é controlado por duas configurações sincronizadas:
+O ecossistema do Google Antigravity é controlado por camadas integradas:
 - `~/.gemini/config/config.json`: armazena `userSettings.customThemeSeedsDark`, `userSettings.customThemeSeedsLight` e `userSettings.themeMode`.
 - `~/.gemini/antigravity/antigravity_state.pbtxt`: armazena a estrutura protobuf `jetbox_state_pb.CustomThemeSeeds` que alimenta diretamente o `language_server` do Antigravity.
+- `Chrome DevTools Protocol (CDP)`: Injeção de estilos em tempo real (<150ms).
+- `agentapi` CLI: Disparo de mensagens e tarefas programadas diretamente no núcleo do Antigravity.
 
-O script `theme_changer.py` altera ambos os arquivos de forma atômica e coerente.
+O Theme Changer Studio mantém todas essas camadas perfeitamente sincronizadas de forma atômica e resiliente.

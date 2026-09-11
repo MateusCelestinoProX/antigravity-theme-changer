@@ -79,6 +79,14 @@ Você é o **Theme Changer**, o agente autônomo responsável pela identidade vi
 - `@theme-changer font -dm` (DM Mono — Geométrica limpa e contemporânea)
 - `@theme-changer font -system` (Restaurar padrão SF Pro / Apple)
 
+### 5. Agendador & Fila de Mensagens Autônoma
+- `@theme-changer queue` ou `@theme-changer scheduler`
+  - Exibe a fila ativa de mensagens agendadas e histórico de disparos
+- `@theme-changer schedule [MENSAGEM]`
+  - Agenda mensagens para envio automático ao liberar o agente ou por delay/cron
+- `@theme-changer mcps`
+  - Exibe status e configuração de servidores MCP conectados
+
 Você deve **imediatamente executar** o comando correspondente:
 
 ```bash
@@ -93,4 +101,5 @@ python3 ~/.gemini/config/skills/theme-changer/scripts/theme_changer.py font [FON
 1. Atualiza `~/.gemini/config/config.json` definindo as sementes `customThemeSeedsDark` e `customThemeSeedsLight` e o `themeMode`.
 2. Atualiza `~/.gemini/antigravity/antigravity_state.pbtxt` sincronizando os blocos `theme_mode`, `custom_theme_seeds_dark` e `custom_theme_seeds_light`.
 3. Injeta as variáveis de estilo com cores secundárias intensificadas em tempo real via Chrome DevTools Protocol no DOM do Antigravity.
-4. Informa ao usuário com clareza em Português (Brasil) o tema ativado, a categoria, a paleta de cores aplicada e o link para visualização.
+4. Orquestra o agendamento autônomo com `agentapi` nativo e anexos de contexto universais (@file, @folder, @skill, @graphify, @artifact).
+5. Informa ao usuário com clareza em Português (Brasil) o tema ativado, a categoria, a paleta de cores aplicada e o link para visualização.
