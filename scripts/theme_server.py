@@ -1340,7 +1340,7 @@ class ThemeHandler(http.server.SimpleHTTPRequestHandler):
                 params = urllib.parse.parse_qs(parsed.query)
                 q = params.get("q", params.get("query", [""]))[0]
                 page = int(params.get("page", ["1"])[0])
-                limit = int(params.get("limit", ["48"])[0])
+                limit = int(params.get("limit", ["100"])[0])
                 catalog = get_skills_catalog(query=q, page=page, limit=limit)
                 return self.send_json({"success": True, **catalog})
             except Exception as e:

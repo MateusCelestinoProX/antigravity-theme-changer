@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "scripts/theme_server.py": {
-    "mtime": 1789160009.3369353,
-    "seen": 1789160251.389608,
-    "ast_hash": "3e4605d6a89a04ef1782a4a4073ca3c1",
+    "mtime": 1789186210.9108343,
+    "seen": 1789186240.454083,
+    "ast_hash": "db77ee8ac408ff49efeb43efd193d2cc",
     "semantic_hash": ""
   },
   "tests/test_theme_changer.py": {
@@ -90,15 +90,15 @@
     "semantic_hash": ""
   },
   "theme_changer_app.html": {
-    "mtime": 1789160058.702486,
-    "seen": 1789160251.389625,
-    "ast_hash": "2279691c8751b6d86bc3d5916d987723",
+    "mtime": 1789186232.817132,
+    "seen": 1789186240.4540951,
+    "ast_hash": "4f347c34ed15a8c90b90fd3059755a92",
     "semantic_hash": ""
   },
   "web/theme_changer_app.html": {
-    "mtime": 1789160063.2814388,
-    "seen": 1789160251.389625,
-    "ast_hash": "2279691c8751b6d86bc3d5916d987723",
+    "mtime": 1789186235.6780005,
+    "seen": 1789186240.4540958,
+    "ast_hash": "4f347c34ed15a8c90b90fd3059755a92",
     "semantic_hash": ""
   },
   "js/webgl-backgrounds.js": {
@@ -108,8 +108,8 @@
     "semantic_hash": ""
   },
   "web/js/webgl-backgrounds.js": {
-    "mtime": 1789141617.7133088,
-    "seen": 1789141688.919717,
+    "mtime": 1789185738.762159,
+    "seen": 1789185745.361894,
     "ast_hash": "79cb41a66511e8bf1062e64d0da5a6b5",
     "semantic_hash": ""
   },
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "web/js/ogl.js": {
-    "mtime": 1789141617.7126052,
-    "seen": 1789141688.9197161,
+    "mtime": 1789185738.7608747,
+    "seen": 1789185745.3618932,
     "ast_hash": "270c0013e50daf1ee9ea55749051e2f5",
     "semantic_hash": ""
   },
@@ -131,10 +131,34 @@
     "ast_hash": "e1df9ed5a09797e2ffddbe45888b8115",
     "semantic_hash": ""
   },
-  "test_e2e_err.txt": {
-    "mtime": 1789160106.9336197,
-    "seen": 1789160251.389624,
-    "ast_hash": "58c6c929180964a1bf785b34c7ed2975",
+  "scratch_card1.png": {
+    "mtime": 1789174179.661433,
+    "seen": 1789184733.438119,
+    "ast_hash": "aa208fb68a37780acf4db0947ed3fbe9",
+    "semantic_hash": ""
+  },
+  "scratch_search.png": {
+    "mtime": 1789174784.9626873,
+    "seen": 1789184733.43812,
+    "ast_hash": "1e1ed2d0e24f06d8745dc16092e50c0b",
+    "semantic_hash": ""
+  },
+  "scratch_seg.png": {
+    "mtime": 1789174784.9678202,
+    "seen": 1789184733.43812,
+    "ast_hash": "26a1570e8687a9b9dd815f919e1ff0eb",
+    "semantic_hash": ""
+  },
+  "scratch_title.png": {
+    "mtime": 1789174784.958739,
+    "seen": 1789184733.4381208,
+    "ast_hash": "6c3bf550fff46668b136bafac18666f9",
+    "semantic_hash": ""
+  },
+  "scratch_topbar.png": {
+    "mtime": 1789174179.6572454,
+    "seen": 1789184733.438122,
+    "ast_hash": "cf08e22334385ab215747ff7461b7bf4",
     "semantic_hash": ""
   }
 }
